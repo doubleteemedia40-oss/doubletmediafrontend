@@ -13,7 +13,7 @@ export default function LandingPage() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-black flex flex-col items-center justify-center min-h-screen py-20 sm:py-32 gap-12 sm:gap-20">
+        <section className="relative overflow-hidden bg-black flex flex-col items-center justify-center min-h-[100dvh] py-16 sm:py-32 gap-8 sm:gap-20">
           {/* Advanced Dribbble Lighting & Grid */}
           <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
              {/* Center Glow */}
@@ -24,7 +24,7 @@ export default function LandingPage() {
              <div className="absolute bottom-0 left-0 w-full h-[80vh] bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_10%,#000_10%,transparent_70%)] [transform:perspective(1000px)_rotateX(60deg)_scale(2.5)] origin-top pointer-events-none" />
           </div>
 
-          <div className="container-custom relative z-20 flex flex-col items-center text-center w-full max-w-5xl mx-auto h-full flex-grow py-12">
+          <div className="container-custom relative z-20 flex flex-col items-center text-center w-full max-w-5xl mx-auto h-full flex-grow py-6 sm:py-12">
             
 
 
@@ -33,7 +33,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] xl:text-[110px] font-black tracking-[-0.04em] mb-6 leading-[0.95] text-white"
+              className="text-[2.5rem] sm:text-7xl md:text-8xl lg:text-[100px] xl:text-[110px] font-black tracking-[-0.04em] mb-4 sm:mb-6 leading-[0.95] text-white"
             >
                #1 Social Media
                <br />
@@ -44,7 +44,7 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="text-lg sm:text-xl lg:text-2xl text-white/40 font-medium max-w-2xl mb-10 leading-relaxed"
+                className="text-base sm:text-xl lg:text-2xl text-white/40 font-medium max-w-2xl mb-6 sm:mb-10 leading-relaxed px-2 sm:px-0"
              >
                 Accelerate your social media growth with DoubleTmedia. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
              </motion.p>
@@ -70,35 +70,35 @@ export default function LandingPage() {
                initial={{ opacity: 0, y: 60 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-               className="mt-12 sm:mt-16 lg:mt-24 w-full max-w-4xl relative"
+               className="mt-8 sm:mt-16 lg:mt-24 w-full max-w-4xl relative"
              >
-               <div className="relative w-full aspect-[21/9] sm:aspect-[21/8] bg-[#050505]/40 backdrop-blur-3xl border border-white/[0.08] rounded-t-[2.5rem] shadow-[0_-20px_80px_rgba(220,38,38,0.05)] overflow-hidden flex items-end justify-center">
+               <div className="relative w-full aspect-[16/9] sm:aspect-[21/8] bg-[#050505]/40 backdrop-blur-3xl border border-white/[0.08] rounded-t-[1.5rem] sm:rounded-t-[2.5rem] shadow-[0_-20px_80px_rgba(220,38,38,0.05)] overflow-hidden flex items-end justify-center">
                  {/* Top Window Bar */}
-                 <div className="absolute top-0 left-0 w-full h-12 border-b border-white/[0.05] flex items-center px-6 gap-2 bg-white/[0.01]">
-                   <div className="h-3 w-3 rounded-full bg-red-500/50" />
-                   <div className="h-3 w-3 rounded-full bg-yellow-500/50" />
-                   <div className="h-3 w-3 rounded-full bg-green-500/50" />
+                 <div className="absolute top-0 left-0 w-full h-8 sm:h-12 border-b border-white/[0.05] flex items-center px-4 sm:px-6 gap-1.5 sm:gap-2 bg-white/[0.01]">
+                   <div className="h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-red-500/50" />
+                   <div className="h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-yellow-500/50" />
+                   <div className="h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-green-500/50" />
                  </div>
 
                  {/* Simulated UI Content */}
-                 <div className="w-full h-[calc(100%-3rem)] flex items-end justify-center p-8 gap-4 sm:gap-8 opacity-80">
+                 <div className="w-full h-[calc(100%-2rem)] sm:h-[calc(100%-3rem)] flex items-end justify-center p-3 sm:p-8 gap-2 sm:gap-8 opacity-80">
                    {/* Card 1 */}
-                   <div className="w-1/3 h-full max-h-[140px] bg-white/[0.02] border border-white/[0.05] rounded-2xl flex flex-col justify-end p-5 relative overflow-hidden group hover:border-red-600/30 transition-colors">
-                     <div className="absolute top-5 left-5 h-8 w-8 rounded-full bg-white/[0.05] flex items-center justify-center text-white/30"><BarChart3 size={14} /></div>
-                     <p className="text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">Followers</p>
-                     <p className="text-2xl font-black text-white">+14,029</p>
-                     <p className="text-[10px] font-bold text-green-500 mt-2 flex items-center gap-1"><TrendingUp size={12}/> 94%</p>
+                   <div className="w-1/2 sm:w-1/3 h-full max-h-[100px] sm:max-h-[140px] bg-white/[0.02] border border-white/[0.05] rounded-xl sm:rounded-2xl flex flex-col justify-end p-3 sm:p-5 relative overflow-hidden group hover:border-red-600/30 transition-colors">
+                     <div className="absolute top-3 left-3 sm:top-5 sm:left-5 h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-white/[0.05] flex items-center justify-center text-white/30"><BarChart3 size={12} className="sm:hidden" /><BarChart3 size={14} className="hidden sm:block" /></div>
+                     <p className="text-[8px] sm:text-[10px] font-bold text-white/40 uppercase tracking-wider mb-0.5 sm:mb-1">Followers</p>
+                     <p className="text-lg sm:text-2xl font-black text-white">+14,029</p>
+                     <p className="text-[8px] sm:text-[10px] font-bold text-green-500 mt-1 sm:mt-2 flex items-center gap-1"><TrendingUp size={10} className="sm:hidden" /><TrendingUp size={12} className="hidden sm:block" /> 94%</p>
                    </div>
                    {/* Card 2 (Elevated) */}
-                   <div className="w-1/3 h-full max-h-[190px] bg-red-600/10 border border-red-600/20 rounded-2xl flex flex-col justify-end p-5 relative overflow-hidden shadow-[0_0_30px_rgba(220,38,38,0.15)] transform -translate-y-4">
+                   <div className="w-1/2 sm:w-1/3 h-full max-h-[130px] sm:max-h-[190px] bg-red-600/10 border border-red-600/20 rounded-xl sm:rounded-2xl flex flex-col justify-end p-3 sm:p-5 relative overflow-hidden shadow-[0_0_30px_rgba(220,38,38,0.15)] transform -translate-y-2 sm:-translate-y-4">
                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600/0 via-red-500 to-red-600/0" />
-                     <div className="absolute top-5 left-5 h-8 w-8 rounded-full bg-red-600/20 flex items-center justify-center text-red-500"><Zap size={14} /></div>
-                     <p className="text-[10px] font-bold text-red-500/80 uppercase tracking-wider mb-1">Active Orders</p>
-                     <p className="text-3xl font-black text-white">402</p>
-                     <p className="text-[10px] font-bold text-white/40 mt-2">Delivering currently</p>
+                     <div className="absolute top-3 left-3 sm:top-5 sm:left-5 h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-red-600/20 flex items-center justify-center text-red-500"><Zap size={12} className="sm:hidden" /><Zap size={14} className="hidden sm:block" /></div>
+                     <p className="text-[8px] sm:text-[10px] font-bold text-red-500/80 uppercase tracking-wider mb-0.5 sm:mb-1">Active Orders</p>
+                     <p className="text-xl sm:text-3xl font-black text-white">402</p>
+                     <p className="text-[8px] sm:text-[10px] font-bold text-white/40 mt-1 sm:mt-2">Delivering currently</p>
                    </div>
                    {/* Card 3 */}
-                   <div className="w-1/3 h-full max-h-[140px] bg-white/[0.02] border border-white/[0.05] rounded-2xl flex flex-col justify-end p-5 relative overflow-hidden group hover:border-red-600/30 transition-colors hidden sm:flex">
+                   <div className="w-1/3 h-full max-h-[140px] bg-white/[0.02] border border-white/[0.05] rounded-xl sm:rounded-2xl flex flex-col justify-end p-3 sm:p-5 relative overflow-hidden group hover:border-red-600/30 transition-colors hidden sm:flex">
                      <div className="absolute top-5 left-5 h-8 w-8 rounded-full bg-white/[0.05] flex items-center justify-center text-white/30"><Wallet size={14} /></div>
                      <p className="text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">Spent Today</p>
                      <p className="text-2xl font-black text-white">$84.50</p>
@@ -198,12 +198,12 @@ export default function LandingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {[
-                { image: '/platforms/instagram.png', title: 'Instagram Growth', desc: 'Accelerate your influence with high-quality followers, likes, and reel views delivered instantly.' },
-                { image: '/platforms/tiktok.png', title: 'TikTok Dominance', desc: 'Skyrocket your videos to the For You page with real engagement and massive view spikes.' },
-                { image: '/platforms/youtube.png', title: 'YouTube Authority', desc: 'Gain real subscribers and high-retention views to boost your channel rank and watch time.' },
-                { image: '/platforms/facebook.png', title: 'Facebook Impact', desc: 'Solidify your social proof with professional page likes and post engagement at scale.' },
-                { image: '/platforms/x.png', title: 'X (Twitter) Reach', desc: 'Amplify your voice with real followers and retweets to dominate global conversations.' },
-                { icon: Globe, title: 'Global Platforms', desc: 'Support for Spotify, Threads, Discord, and 20+ other major social ecosystems worldwide.' }
+                { image: '/platforms/instagram.png', title: 'Instagram', desc: 'Accelerate your influence with high-quality followers, likes, and reel views delivered instantly.' },
+                { image: '/platforms/tiktok.png', title: 'TikTok', desc: 'Skyrocket your videos to the For You page with real engagement and massive view spikes.' },
+                { image: '/platforms/youtube.png', title: 'YouTube', desc: 'Gain real subscribers and high-retention views to boost your channel rank and watch time.' },
+                { image: '/platforms/facebook.png', title: 'Facebook', desc: 'Solidify your social proof with professional page likes and post engagement at scale.' },
+                { image: '/platforms/x.png', title: 'X (Twitter)', desc: 'Amplify your voice with real followers and retweets to dominate global conversations.' },
+                { icon: Globe, title: 'More Platforms', desc: 'Support for Spotify, Threads, Discord, and 20+ other major social ecosystems worldwide.' }
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (

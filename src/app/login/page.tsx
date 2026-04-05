@@ -45,7 +45,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-black flex flex-col">
       <Navbar />
       
-      <main className="flex-grow flex pt-16 sm:pt-20">
+      <main className="flex-1 flex flex-col lg:flex-row pt-16 sm:pt-20 min-h-[calc(100dvh-4rem)] sm:min-h-[calc(100dvh-5rem)]">
         {/* Left marketing panel — desktop only */}
         <div className="hidden lg:flex lg:w-1/2 flex-col justify-between px-12 xl:px-20 py-16 relative overflow-hidden bg-[#050505] border-r border-white/5">
           <div className="relative z-10 mt-8 max-w-md w-full">
@@ -101,7 +101,7 @@ export default function LoginPage() {
         </div>
 
         {/* Right side: Form */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-6 sm:px-12 xl:px-20 py-12 bg-black">
+        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-6 sm:px-12 xl:px-20 py-12 bg-black flex-1">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -171,7 +171,9 @@ export default function LoginPage() {
         </div>
       </main>
       
-      <Footer />
+      <div className="hidden lg:block">
+        <Footer />
+      </div>
     </div>
   );
 }
