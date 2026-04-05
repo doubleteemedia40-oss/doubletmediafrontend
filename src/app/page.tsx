@@ -184,7 +184,7 @@ export default function LandingPage() {
               <div className="max-w-xl">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 tracking-tight uppercase italic underline decoration-red-600 decoration-4 underline-offset-8">Social Boosting</h2>
                 <p className="text-white/40 font-medium leading-relaxed">
-                  The industry's most advanced infrastructure for digital growth. Real engagement, algorithmic impact, instantly delivered.
+                  The industry's most advanced infrastructure for digital growth. Real followers, likes, views, and algorithmic impact—instantly delivered.
                 </p>
               </div>
               <Link href="/register" className="text-[10px] font-black uppercase tracking-[0.3em] text-red-600 hover:text-white flex items-center gap-2 group transition-colors whitespace-nowrap">
