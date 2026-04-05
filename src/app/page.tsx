@@ -46,7 +46,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="text-lg sm:text-xl lg:text-2xl text-white/40 font-medium max-w-2xl mb-10 leading-relaxed"
              >
-                The industry's most advanced infrastructure for digital growth. Real engagement, algorithmic impact, instantly delivered.
+                The world's first decentralized social dominance grid. Empowering 10,000+ elite agencies with proprietary neural growth nodes and surgical precision.
              </motion.p>
 
              {/* Buttons */}
@@ -184,7 +184,7 @@ export default function LandingPage() {
               <div className="max-w-xl">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 tracking-tight uppercase italic underline decoration-red-600 decoration-4 underline-offset-8">Social Boosting</h2>
                 <p className="text-white/40 font-medium leading-relaxed">
-                  Built for influencers, creators, and brands who need fast, reliable, and affordable social media growth at scale. We cover all your favorite platforms.
+                  The industry's most advanced infrastructure for digital growth. Real engagement, algorithmic impact, instantly delivered.
                 </p>
               </div>
               <Link href="/register" className="text-[10px] font-black uppercase tracking-[0.3em] text-red-600 hover:text-white flex items-center gap-2 group transition-colors whitespace-nowrap">

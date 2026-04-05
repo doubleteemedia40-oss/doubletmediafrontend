@@ -40,8 +40,7 @@ export default function Footer() {
             &copy; 2026 DoubleTmedia. SECURED BY ENCRYPTION PROTOCOL 2.4.0
           </p>
           <div className="flex gap-8">
-             <div className="h-6 w-20 bg-white/5 rounded-md border border-white/10 flex items-center justify-center text-[8px] font-black tracking-tighter text-white/20 uppercase">Visa</div>
-             <div className="h-6 w-20 bg-white/5 rounded-md border border-white/10 flex items-center justify-center text-[8px] font-black tracking-tighter text-white/20 uppercase">Mastercard</div>
+             {/* Payment badges removed */}
           </div>
         </div>
       </div>
