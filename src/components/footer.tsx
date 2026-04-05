@@ -12,7 +12,7 @@ export default function Footer() {
               DoubleTmedia
             </Link>
             <p className="text-white/40 text-sm font-medium leading-relaxed max-w-sm">
-              The world's first decentralized social dominance grid. Empowering 10,000+ elite agencies with proprietary neural growth nodes and surgical precision.
+              The Ultimate Infrastructure for Social Dominance. Scale your presence with premium followers, high-retention views, and instant likes—delivered with surgical precision.
             </p>
           </div>
           
