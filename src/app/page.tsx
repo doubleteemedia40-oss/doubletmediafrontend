@@ -11,9 +11,9 @@ export default function LandingPage() {
     <div className="min-h-screen bg-black flex flex-col">
       <Navbar />
       
-      <main className="flex-grow pt-16 sm:pt-20">
+      <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative pt-12 lg:pt-20 overflow-hidden bg-black flex flex-col items-center justify-between min-h-[calc(100vh-80px)] xl:min-h-[calc(100vh-80px)] max-h-[1100px]">
+        <section className="relative overflow-hidden bg-black flex flex-col items-center justify-center min-h-[105vh] py-24 sm:py-32 lg:pt-40 lg:pb-32 gap-16 sm:gap-24">
           {/* Advanced Dribbble Lighting & Grid */}
           <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
              {/* Center Glow */}
