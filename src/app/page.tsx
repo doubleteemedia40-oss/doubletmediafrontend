@@ -46,7 +46,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="text-lg sm:text-xl lg:text-2xl text-white/40 font-medium max-w-2xl mb-10 leading-relaxed"
              >
-                The world's first decentralized social dominance grid. Empowering 10,000+ elite agencies with proprietary neural growth nodes and surgical precision.
+                The world's first decentralized social dominance grid. Delivering elite followers, views, and likes with proprietary neural growth nodes and surgical precision.
              </motion.p>
 
              {/* Buttons */}
