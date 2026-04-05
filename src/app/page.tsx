@@ -112,13 +112,6 @@ export default function LandingPage() {
              </motion.div>
           </div>
         </section>
-
-        {/* Spacer to guarantee Banner is off-screen */}
-        <div className="h-24 sm:h-32 lg:h-48 bg-black w-full" />
-
-
-
-
         {/* Banner Section — Animated Marquee */}
         <section className="w-full relative z-10 border-y border-white/[0.06]">
           <div className="w-full h-24 sm:h-32 md:h-40 xl:h-48 relative overflow-hidden bg-black">
