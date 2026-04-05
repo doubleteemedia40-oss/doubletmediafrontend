@@ -23,7 +23,7 @@ export default function AdminServicesPage() {
   const [importing, setImporting] = useState(false);
   const [providers, setProviders] = useState<ProviderOption[]>([]);
   const [selectedProviderId, setSelectedProviderId] = useState<string>('');
-  const [globalMarkup, setGlobalMarkup] = useState('1.5');
+  const [globalMarkup, setGlobalMarkup] = useState('50');
   const [bulkUpdating, setBulkUpdating] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editRate, setEditRate] = useState<string>('');
@@ -98,7 +98,7 @@ export default function AdminServicesPage() {
   };
 
   const applyGlobalMarkup = async () => {
-     if(!confirm(`Apply a global x${globalMarkup} multiplier to all services based on their origin provider rate?`)) return;
+     if(!confirm(`Apply a global +${globalMarkup}% markup to all services based on their origin provider rate?`)) return;
      try {
        setBulkUpdating(true);
        await api.patch('/services/admin/markup', { markup: parseFloat(globalMarkup) });
@@ -120,8 +120,8 @@ export default function AdminServicesPage() {
         
         <div className="flex items-center gap-4 flex-wrap">
            <div className="flex items-center bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden p-1">
-             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/40">Global Multiplier</span>
-             <input type="number" step="0.1" value={globalMarkup} onChange={e => setGlobalMarkup(e.target.value)} className="w-16 bg-transparent text-sm font-bold text-center outline-none" />
+             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/40">Global Markup (%)</span>
+             <input type="number" step="1" value={globalMarkup} onChange={e => setGlobalMarkup(e.target.value)} className="w-16 bg-transparent text-sm font-bold text-center outline-none" />
              <button onClick={applyGlobalMarkup} disabled={bulkUpdating} className="px-3 py-2 bg-red-600/20 text-red-600 hover:bg-red-600 hover:text-white rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors disabled:opacity-50">
                 {bulkUpdating ? '...' : 'Apply'}
              </button>

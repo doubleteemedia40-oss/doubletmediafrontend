@@ -11,6 +11,7 @@ interface User {
   name: string;
   balance: any;
   role: string;
+  isSuspended: boolean;
 }
 
 export default function AdminUsersPage() {
@@ -36,7 +37,12 @@ export default function AdminUsersPage() {
   };
 
   const toggleBan = async (id: string, currentStatus: boolean) => {
-    alert('User suspending is currently disabled in this environment.');
+    try {
+      await api.patch(`/users/${id}/suspend`, { isSuspended: !currentStatus });
+      fetchUsers();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const updateBalance = async (id: string) => {
@@ -135,17 +141,18 @@ export default function AdminUsersPage() {
                       )}
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-middle">
-                         <span className="px-2.5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] bg-green-500/10 border border-green-500/20 text-green-500 flex w-fit items-center gap-1.5">
-                           <ShieldCheck size={10} /> Active
+                         <span className={`px-2.5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] flex w-fit items-center gap-1.5 ${user.isSuspended ? 'bg-red-500/10 border border-red-500/20 text-red-500' : 'bg-green-500/10 border border-green-500/20 text-green-500'}`}>
+                           {user.isSuspended ? <ShieldBan size={10} /> : <ShieldCheck size={10} />}
+                           {user.isSuspended ? 'Suspended' : 'Active'}
                          </span>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-middle text-right">
                        <button 
-                         onClick={() => toggleBan(user.id, false)}
-                         className="text-[9px] font-black uppercase tracking-[0.1em] px-3 py-2 rounded-xl bg-white/5 hover:bg-red-600/20 border border-transparent hover:border-red-600/30 text-white/60 hover:text-red-500 transition-all font-medium flex items-center gap-1.5 ml-auto"
+                         onClick={() => toggleBan(user.id, user.isSuspended || false)}
+                         className={`text-[9px] font-black uppercase tracking-[0.1em] px-3 py-2 rounded-xl bg-white/5 border border-transparent transition-all font-medium flex items-center gap-1.5 ml-auto ${user.isSuspended ? 'hover:bg-green-500/20 hover:border-green-500/30 text-white/60 hover:text-green-500' : 'hover:bg-red-600/20 hover:border-red-600/30 text-white/60 hover:text-red-500'}`}
                        >
-                         <ShieldBan size={12} />
-                         Suspend
+                         {user.isSuspended ? <ShieldCheck size={12} /> : <ShieldBan size={12} />}
+                         {user.isSuspended ? 'Unsuspend' : 'Suspend'}
                        </button>
                     </td>
                   </tr>

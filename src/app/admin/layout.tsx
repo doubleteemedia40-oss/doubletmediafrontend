@@ -4,7 +4,7 @@ import { useAuth } from '@/context/auth-context';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { LayoutDashboard, Users, Webhook, Box, ShieldAlert, LogOut, FileCode2, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Users, Webhook, Box, ShieldAlert, LogOut, FileCode2, Menu, X, Settings, Megaphone, LifeBuoy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_ITEMS = [
@@ -13,6 +13,9 @@ const NAV_ITEMS = [
   { href: '/admin/orders', label: 'All Orders', icon: Box },
   { href: '/admin/services', label: 'Services', icon: FileCode2 },
   { href: '/admin/providers', label: 'Providers', icon: Webhook },
+  { href: '/admin/announcements', label: 'Announcements', icon: Megaphone },
+  { href: '/admin/settings', label: 'Settings', icon: Settings },
+  { href: '/admin/support', label: 'Support Desk', icon: LifeBuoy },
 ];
 
 const PAGE_TITLES: Record<string, string> = {
@@ -21,6 +24,9 @@ const PAGE_TITLES: Record<string, string> = {
   '/admin/orders': 'All Orders',
   '/admin/services': 'Services',
   '/admin/providers': 'Providers',
+  '/admin/announcements': 'Announcements',
+  '/admin/settings': 'Settings',
+  '/admin/support': 'Support Desk',
 };
 
 export default function AdminLayout({

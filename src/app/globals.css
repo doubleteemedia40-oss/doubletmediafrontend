@@ -57,3 +57,19 @@ body {
 .bg-red-solid {
   background-color: #dc2626;
 }
+
+/* Marquee banner animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 25s linear infinite;
+}

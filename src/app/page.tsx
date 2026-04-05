@@ -115,11 +115,65 @@ export default function LandingPage() {
 
 
 
-        {/* Banner Section */}
-        <section className="w-full relative z-10 border-y border-white/[0.05]">
-          <div className="w-full h-24 sm:h-32 md:h-40 xl:h-48 relative overflow-hidden flex items-center justify-center bg-black">
-             {/* eslint-disable-next-line @next/next/no-img-element */}
-             <img src="/banner.png" alt="DoubleTmedia Social Presence Infrastructure" className="w-full h-full object-cover object-center max-h-48 border-y border-red-600/20 shadow-[0_0_50px_rgba(220,38,38,0.05)]" />
+        {/* Banner Section — Animated Marquee */}
+        <section className="w-full relative z-10 border-y border-white/[0.06]">
+          <div className="w-full h-24 sm:h-32 md:h-40 xl:h-48 relative overflow-hidden bg-black">
+            {/* Background glow */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-red-600/10 blur-[120px] rounded-full" />
+            </div>
+
+            {/* Marquee Row 1 — scrolls left */}
+            <div className="absolute top-[15%] sm:top-[18%] left-0 w-full flex whitespace-nowrap animate-marquee">
+              {[...Array(2)].map((_, i) => (
+                <span key={i} className="flex items-center gap-4 sm:gap-6 mr-4 sm:mr-6 text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-[0.25em] text-white/[0.06]">
+                  {['Followers', 'Likes', 'Views', 'Subscribers', 'Comments', 'Shares', 'Retweets', 'Saves', 'Impressions', 'Reach', 'Engagement', 'Growth'].map((w) => (
+                    <span key={w} className="flex items-center gap-4 sm:gap-6">
+                      {w}
+                      <span className="text-red-600/30">✦</span>
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </div>
+
+            {/* Marquee Row 2 — scrolls right */}
+            <div className="absolute bottom-[15%] sm:bottom-[18%] left-0 w-full flex whitespace-nowrap animate-marquee-reverse">
+              {[...Array(2)].map((_, i) => (
+                <span key={i} className="flex items-center gap-4 sm:gap-6 mr-4 sm:mr-6 text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-[0.25em] text-white/[0.06]">
+                  {['Instagram', 'TikTok', 'YouTube', 'Facebook', 'Twitter / X', 'Spotify', 'Threads', 'Discord', 'Telegram', 'LinkedIn', 'Twitch', 'Snapchat'].map((w) => (
+                    <span key={w} className="flex items-center gap-4 sm:gap-6">
+                      {w}
+                      <span className="text-red-600/30">✦</span>
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </div>
+
+            {/* Floating glass stat pills */}
+            <div className="absolute inset-0 z-10 flex items-center justify-center gap-3 sm:gap-6 pointer-events-none">
+              {[
+                { label: '2 M+ Orders', accent: true },
+                { label: '10 K+ Clients', accent: false },
+                { label: '99.9% Uptime', accent: false },
+              ].map((pill) => (
+                <div
+                  key={pill.label}
+                  className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full backdrop-blur-xl text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] border shadow-lg
+                    ${pill.accent
+                      ? 'bg-red-600/15 border-red-600/30 text-red-400 shadow-red-600/10'
+                      : 'bg-white/[0.04] border-white/[0.08] text-white/60'
+                    }`}
+                >
+                  {pill.label}
+                </div>
+              ))}
+            </div>
+
+            {/* Edge fades */}
+            <div className="absolute inset-y-0 left-0 w-20 sm:w-32 bg-gradient-to-r from-black to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-y-0 right-0 w-20 sm:w-32 bg-gradient-to-l from-black to-transparent pointer-events-none z-20" />
           </div>
         </section>
 

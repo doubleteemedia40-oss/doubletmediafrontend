@@ -1,10 +1,11 @@
 'use client';
 
 import { useAuth } from '@/context/auth-context';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { LayoutDashboard, ShoppingCart, Wallet, User as UserIcon, LogOut, Menu, X, ListOrdered } from 'lucide-react';
+import { api } from '@/lib/api';
+import { LayoutDashboard, ShoppingCart, Wallet, User as UserIcon, LogOut, Menu, X, ListOrdered, Megaphone, LifeBuoy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_ITEMS = [
@@ -13,6 +14,7 @@ const NAV_ITEMS = [
   { href: '/dashboard/orders', label: 'My Orders', icon: ListOrdered },
   { href: '/dashboard/add-funds', label: 'Add Funds', icon: Wallet },
   { href: '/dashboard/profile', label: 'My Profile', icon: UserIcon },
+  { href: '/dashboard/support', label: 'Contact Us', icon: LifeBuoy },
 ];
 
 const PAGE_TITLES: Record<string, string> = {
@@ -21,6 +23,7 @@ const PAGE_TITLES: Record<string, string> = {
   '/dashboard/orders': 'My Orders',
   '/dashboard/add-funds': 'Add Funds',
   '/dashboard/profile': 'My Profile',
+  '/dashboard/support': 'Contact Us',
 };
 
 export default function DashboardLayout({
@@ -33,10 +36,21 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activeAnnouncements, setActiveAnnouncements] = useState<any[]>([]);
 
   useEffect(() => {
     setMounted(true);
+    fetchAnnouncements();
   }, []);
+
+  const fetchAnnouncements = async () => {
+    try {
+      const { data } = await api.get('/announcements/active');
+      setActiveAnnouncements(data);
+    } catch (err) {
+      console.error('Failed to load announcements', err);
+    }
+  };
 
   useEffect(() => {
     if (mounted && !loading && !user) {
@@ -184,7 +198,24 @@ export default function DashboardLayout({
           </div>
         </header>
         
-        <div className="p-4 sm:p-6 lg:p-8">
+        <div className="p-4 sm:p-6 lg:p-8 space-y-6">
+          {activeAnnouncements.length > 0 && (
+            <div className="space-y-3">
+              {activeAnnouncements.map((ann) => (
+                <div key={ann.id} className={`p-4 rounded-2xl border flex items-start gap-4 ${
+                  ann.type === 'danger' ? 'bg-red-500/10 border-red-500/20 text-red-500' :
+                  ann.type === 'warning' ? 'bg-yellow-500/10 border-yellow-500/20 text-yellow-500' :
+                  ann.type === 'success' ? 'bg-green-500/10 border-green-500/20 text-green-500' :
+                  'bg-blue-500/10 border-blue-500/20 text-blue-400'
+                }`}>
+                   <Megaphone size={18} className="shrink-0 mt-0.5" />
+                   <div>
+                     <p className="text-sm font-bold">{ann.message}</p>
+                   </div>
+                </div>
+              ))}
+            </div>
+          )}
           {children}
         </div>
       </main>

@@ -38,14 +38,19 @@ export default function AdminOrdersPage() {
     }
   };
 
-  const handleAction = async (id: string, action: 'retry' | 'cancel') => {
-    if(action === 'retry') { alert('Retry operation is currently disabled on this API schema.'); return; }
-    if (!confirm(`Are you sure you want to force ${action} this order?`)) return;
+  const handleAction = async (id: string, action: 'refund' | 'complete' | 'cancel') => {
+    if (!confirm(`Are you sure you want to ${action} this order?`)) return;
     try {
-      await api.post(`/orders/${id}/${action}`);
+      if (action === 'refund') {
+        await api.patch(`/orders/admin/${id}/refund`);
+      } else if (action === 'complete') {
+        await api.patch(`/orders/admin/${id}/status`, { status: 'COMPLETED' });
+      } else if (action === 'cancel') {
+        await api.patch(`/orders/admin/${id}/status`, { status: 'CANCELED' });
+      }
       fetchOrders();
     } catch (err) {
-      console.error(`Failed to ${action} order`, err);
+      console.error(`Failed to process action ${action}`, err);
     }
   };
 
@@ -127,13 +132,24 @@ export default function AdminOrdersPage() {
                       </td>
                       <td className="px-5 sm:px-6 py-4 align-top text-right">
                          <div className="flex items-center justify-end gap-2">
-                            <button 
-                              onClick={(e) => { e.stopPropagation(); handleAction(order.id, 'retry'); }}
-                              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-colors group relative border border-transparent"
-                              title="Force Retry"
-                            >
-                              <RefreshCcw size={14} className="group-active:rotate-180 transition-transform" />
-                            </button>
+                            {order.status !== 'REFUNDED' && order.status !== 'CANCELED' && (
+                              <button 
+                                onClick={(e) => { e.stopPropagation(); handleAction(order.id, 'refund'); }}
+                                className="p-2 rounded-lg bg-white/5 hover:bg-yellow-500/10 text-white/60 hover:text-yellow-500 transition-colors group relative border border-transparent"
+                                title="Refund Order"
+                              >
+                                <RefreshCcw size={14} className="group-active:-rotate-180 transition-transform" />
+                              </button>
+                            )}
+                            {order.status !== 'COMPLETED' && (
+                              <button 
+                                onClick={(e) => { e.stopPropagation(); handleAction(order.id, 'complete'); }}
+                                className="p-2 rounded-lg bg-white/5 hover:bg-green-500/10 text-white/60 hover:text-green-500 transition-colors group relative border border-transparent"
+                                title="Mark Completed"
+                              >
+                                <Box size={14} />
+                              </button>
+                            )}
                             {order.status !== 'CANCELED' && (
                                <button 
                                  onClick={(e) => { e.stopPropagation(); handleAction(order.id, 'cancel'); }}

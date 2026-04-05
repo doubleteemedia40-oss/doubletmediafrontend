@@ -1,29 +1,60 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { api } from '@/lib/api';
 import { motion } from 'framer-motion';
-import { Wallet, CreditCard, ShieldCheck } from 'lucide-react';
+import { Wallet, CreditCard, ShieldCheck, CheckCircle } from 'lucide-react';
 import { useAuth } from '@/context/auth-context';
+import { useSearchParams } from 'next/navigation';
 
-export default function AddFundsPage() {
-  const { user } = useAuth();
+function AddFundsContent() {
+  const { user, refreshUser } = useAuth();
+  const searchParams = useSearchParams();
   const [amount, setAmount] = useState<number | ''>('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [verifying, setVerifying] = useState(false);
+  const [success, setSuccess] = useState('');
 
-  const predefinedAmounts = [25, 50, 100, 500];
+  const predefinedAmounts = [1000, 2000, 5000, 10000];
+
+  // Handle redirect back from Korapay checkout
+  useEffect(() => {
+    const ref = searchParams.get('ref');
+    if (ref) {
+      verifyPayment(ref);
+    }
+  }, [searchParams]);
+
+  const verifyPayment = async (reference: string) => {
+    try {
+      setVerifying(true);
+      setError('');
+      const { data } = await api.get(`/payments/korapay/verify?reference=${reference}`);
+      if (data.status === 'success') {
+        setSuccess('Payment verified successfully! Your balance has been updated.');
+        if (refreshUser) refreshUser();
+      } else {
+        setError(`Payment status: ${data.status}. If you were charged, please contact support.`);
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Could not verify payment. Contact support if you were charged.');
+    } finally {
+      setVerifying(false);
+    }
+  };
 
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!amount || amount < 5) {
-       setError('Minimum deposit amount is $5.00');
+    if (!amount || amount < 100) {
+       setError('Minimum deposit amount is ₦100');
        return;
     }
 
     try {
       setLoading(true);
       setError('');
+      setSuccess('');
       
       const { data } = await api.post('/payments/korapay/init', { amount: Number(amount) });
       
@@ -56,7 +87,7 @@ export default function AddFundsPage() {
             <Wallet size={16} className="text-red-600" />
             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-white/60">Current Balance</h3>
           </div>
-          <p className="text-3xl sm:text-4xl font-black">${user?.walletBalance?.toFixed(2) || '0.00'}</p>
+          <p className="text-3xl sm:text-4xl font-black">₦{user?.walletBalance?.toFixed(2) || '0.00'}</p>
         </motion.div>
 
         <motion.div 
@@ -72,6 +103,28 @@ export default function AddFundsPage() {
           <p className="text-sm font-bold text-white/80">Payments are securely processed directly by KoraPay. We never store your card data.</p>
         </motion.div>
       </div>
+
+      {verifying && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="p-6 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 text-center"
+        >
+          <div className="h-6 w-6 border-2 border-yellow-500/30 border-t-yellow-500 rounded-full animate-spin mx-auto mb-3" />
+          <p className="text-sm font-bold text-yellow-500">Verifying your payment...</p>
+        </motion.div>
+      )}
+
+      {success && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="p-6 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center gap-4"
+        >
+          <CheckCircle size={24} className="text-green-500 shrink-0" />
+          <p className="text-sm font-bold text-green-500">{success}</p>
+        </motion.div>
+      )}
 
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
@@ -94,27 +147,27 @@ export default function AddFundsPage() {
                      : 'bg-white/[0.02] border border-white/10 text-white/60 hover:bg-white/5 hover:text-white'
                    }`}
                  >
-                   ${val}
+                   ₦{val.toLocaleString()}
                  </button>
                ))}
              </div>
           </div>
 
           <div className="space-y-2 sm:space-y-3">
-            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 ml-1 sm:ml-2">Custom Amount (USD)</label>
+            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 ml-1 sm:ml-2">Custom Amount (NGN)</label>
             <div className="relative">
                <div className="absolute inset-y-0 left-0 pl-5 sm:pl-6 flex items-center pointer-events-none">
-                 <span className="text-white/40 font-black">$</span>
+                 <span className="text-white/40 font-black">₦</span>
                </div>
                <input 
                  type="number" 
                  value={amount}
                  onChange={(e) => setAmount(Number(e.target.value))}
-                 min={5}
-                 step={0.01}
+                 min={100}
+                 step={1}
                  required
                  className="w-full bg-white/[0.02] border border-white/10 rounded-2xl pl-10 sm:pl-12 pr-5 sm:pr-6 py-4 outline-none focus:border-red-600/50 transition-all font-bold text-lg"
-                 placeholder="5.00"
+                 placeholder="1000"
                />
             </div>
           </div>
@@ -128,7 +181,7 @@ export default function AddFundsPage() {
 
           <button 
             type="submit"
-            disabled={loading || !amount}
+            disabled={loading || verifying || !amount}
             className="w-full h-14 sm:h-16 mt-4 rounded-2xl bg-white text-black font-black uppercase tracking-[0.2em] text-[11px] hover:bg-white/90 transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 shadow-[0_0_40px_-15px_rgba(255,255,255,0.4)]"
           >
             {loading ? (
@@ -143,5 +196,23 @@ export default function AddFundsPage() {
         </form>
       </motion.div>
     </div>
+  );
+}
+
+export default function AddFundsPage() {
+  return (
+    <Suspense fallback={
+       <div className="max-w-2xl animate-pulse">
+         <div className="h-10 w-48 bg-white/5 rounded-lg mb-4" />
+         <div className="h-4 w-72 bg-white/5 rounded-lg mb-8" />
+         <div className="grid grid-cols-2 gap-6 mb-8">
+           <div className="h-32 bg-white/5 rounded-2xl" />
+           <div className="h-32 bg-white/5 rounded-2xl" />
+         </div>
+         <div className="h-[400px] bg-white/5 rounded-3xl" />
+       </div>
+    }>
+      <AddFundsContent />
+    </Suspense>
   );
 }
