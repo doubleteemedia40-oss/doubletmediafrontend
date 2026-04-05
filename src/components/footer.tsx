@@ -12,7 +12,7 @@ export default function Footer() {
               DoubleTmedia
             </Link>
             <p className="text-white/40 text-sm font-medium leading-relaxed max-w-sm">
-              The Ultimate Infrastructure for Social Dominance. Scale your presence with premium followers, high-retention views, and instant likes—delivered with surgical precision.
+              Accelerate your social media growth with DoubleTmedia. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
             </p>
           </div>
           

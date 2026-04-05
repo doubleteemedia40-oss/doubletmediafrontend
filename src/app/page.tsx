@@ -35,9 +35,9 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] xl:text-[110px] font-black tracking-[-0.04em] mb-6 leading-[0.95] text-white"
             >
-               Scale Social Without
+               #1 Social Media
                <br />
-               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/30 tracking-tight">The Friction.</span>
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/30 tracking-tight">Marketplace.</span>
             </motion.h1>
 
              <motion.p 
@@ -46,7 +46,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="text-lg sm:text-xl lg:text-2xl text-white/40 font-medium max-w-2xl mb-10 leading-relaxed"
              >
-                The Ultimate Infrastructure for Social Dominance. Scale your accounts with premium followers, high-retention views, and instant engagement—powered by the world's most advanced growth engine.
+                Accelerate your social media growth with DoubleTmedia. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
              </motion.p>
 
              {/* Buttons */}
