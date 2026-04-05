@@ -28,8 +28,13 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-600">Support</h4>
             <div className="flex flex-col gap-4">
-              {['Help Center', 'Terms', 'Privacy', 'Contact'].map(item => (
-                <Link key={item} href="#" className="text-sm font-bold text-white/30 hover:text-white transition-colors">{item}</Link>
+              {[
+                { name: 'Help Center', href: '#' },
+                { name: 'Terms', href: '#' },
+                { name: 'Privacy', href: '/privacy' },
+                { name: 'Contact', href: '#' }
+              ].map(item => (
+                <Link key={item.name} href={item.href} className="text-sm font-bold text-white/30 hover:text-white transition-colors">{item.name}</Link>
               ))}
             </div>
           </div>
