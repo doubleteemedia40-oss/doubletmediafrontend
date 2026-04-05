@@ -13,7 +13,7 @@ export default function LandingPage() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-black flex flex-col items-center justify-center min-h-[105vh] py-24 sm:py-32 lg:pt-40 lg:pb-32 gap-16 sm:gap-24">
+        <section className="relative overflow-hidden bg-black flex flex-col items-center justify-center min-h-screen py-20 sm:py-32 gap-12 sm:gap-20">
           {/* Advanced Dribbble Lighting & Grid */}
           <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
              {/* Center Glow */}
@@ -24,7 +24,7 @@ export default function LandingPage() {
              <div className="absolute bottom-0 left-0 w-full h-[80vh] bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_10%,#000_10%,transparent_70%)] [transform:perspective(1000px)_rotateX(60deg)_scale(2.5)] origin-top pointer-events-none" />
           </div>
 
-          <div className="container-custom relative z-20 flex flex-col items-center text-center w-full max-w-5xl mx-auto h-full flex-grow">
+          <div className="container-custom relative z-20 flex flex-col items-center text-center w-full max-w-5xl mx-auto h-full flex-grow py-12">
             
 
 
@@ -70,7 +70,7 @@ export default function LandingPage() {
                initial={{ opacity: 0, y: 60 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-               className="mt-12 sm:mt-16 lg:mt-auto w-full max-w-4xl relative"
+               className="mt-12 sm:mt-16 lg:mt-24 w-full max-w-4xl relative"
              >
                <div className="relative w-full aspect-[21/9] sm:aspect-[21/8] bg-[#050505]/40 backdrop-blur-3xl border border-white/[0.08] rounded-t-[2.5rem] shadow-[0_-20px_80px_rgba(220,38,38,0.05)] overflow-hidden flex items-end justify-center">
                  {/* Top Window Bar */}
@@ -112,6 +112,10 @@ export default function LandingPage() {
              </motion.div>
           </div>
         </section>
+
+        {/* Spacer to guarantee Banner is off-screen */}
+        <div className="h-24 sm:h-32 lg:h-48 bg-black w-full" />
+
 
 
 
