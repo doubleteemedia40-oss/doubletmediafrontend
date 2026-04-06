@@ -115,12 +115,12 @@ export default function AdminServicesPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h2 className="text-3xl font-black italic uppercase tracking-tight">Service Directory</h2>
-          <p className="text-white/40 text-sm font-medium mt-1">Regulate active services and internal markup margins.</p>
+          <p className="text-white/70 text-sm font-medium mt-1">Regulate active services and internal markup margins.</p>
         </div>
         
         <div className="flex items-center gap-4 flex-wrap">
            <div className="flex items-center bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden p-1">
-             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/40">Global Markup (%)</span>
+             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/70">Global Markup (%)</span>
              <input type="number" step="1" value={globalMarkup} onChange={e => setGlobalMarkup(e.target.value)} className="w-16 bg-transparent text-sm font-bold text-center outline-none" />
              <button onClick={applyGlobalMarkup} disabled={bulkUpdating} className="px-3 py-2 bg-red-600/20 text-red-600 hover:bg-red-600 hover:text-white rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors disabled:opacity-50">
                 {bulkUpdating ? '...' : 'Apply'}
@@ -128,7 +128,7 @@ export default function AdminServicesPage() {
            </div>
            
            <div className="flex items-center bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden p-1">
-             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/40">From Provider</span>
+             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/70">From Provider</span>
              <select 
                value={selectedProviderId} 
                onChange={e => setSelectedProviderId(e.target.value)}
@@ -154,12 +154,12 @@ export default function AdminServicesPage() {
            <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-white/5 bg-[#050505]">
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">ID / Category</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Service Asset</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Base Rate</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Client Rate (Markup)</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Provider</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 text-right">Status</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">ID / Category</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Service Asset</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Base Rate</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Client Rate (Markup)</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Provider</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70 text-right">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -171,20 +171,20 @@ export default function AdminServicesPage() {
                   </tr>
                 ) : services.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-white/40">No services synchronized. Click "Sync External Nodes" to pull upstream inventory.</td>
+                    <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-white/70">No services synchronized. Click "Sync External Nodes" to pull upstream inventory.</td>
                   </tr>
                 ) : (
                   services.map(srv => (
                     <tr key={srv.id} className={`border-b border-white/5 hover:bg-white/[0.02] transition-colors ${!srv.enabled ? 'opacity-50' : ''}`}>
                       <td className="px-6 py-4 align-top">
-                        <p className="text-xs font-mono font-bold text-white/60 mb-1">{srv.providerServiceId}</p>
-                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest truncate max-w-[150px]">{srv.category}</p>
+                        <p className="text-xs font-mono font-bold text-white/90 mb-1">{srv.providerServiceId}</p>
+                        <p className="text-[10px] font-bold text-white/70 uppercase tracking-widest truncate max-w-[150px]">{srv.category}</p>
                       </td>
                       <td className="px-6 py-4 align-top max-w-[300px]">
                         <p className="text-sm font-bold truncate">{srv.name}</p>
                       </td>
                       <td className="px-6 py-4 align-top">
-                        <p className="text-sm font-bold text-white/40">${Number(srv.providerRate).toFixed(3)}</p>
+                        <p className="text-sm font-bold text-white/70">${Number(srv.providerRate).toFixed(3)}</p>
                       </td>
                       <td className="px-6 py-4 align-top">
                         {editingId === srv.id ? (

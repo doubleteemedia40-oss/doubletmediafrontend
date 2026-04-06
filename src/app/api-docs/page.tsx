@@ -24,7 +24,7 @@ export default function ApiDocsPage() {
               <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 italic uppercase text-white">
                 Developer <span className="text-red-600">API.</span>
               </h1>
-              <p className="text-lg sm:text-xl text-white/40 font-medium leading-relaxed">
+              <p className="text-lg sm:text-xl text-white/70 font-medium leading-relaxed">
                 Integrate DoubleTmedia's industry-leading social infrastructure into your own applications. Our robust REST API allows for seamless order automation, service sync, and balance management.
               </p>
             </motion.div>
@@ -34,9 +34,9 @@ export default function ApiDocsPage() {
             {/* Sidebar Sticky Nav */}
             <div className="lg:col-span-3 hidden lg:block">
               <div className="sticky top-32 space-y-4">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 mb-6">Documentation</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/50 mb-6">Documentation</p>
                 {['Introduction', 'Authentication', 'Services', 'Orders', 'User Balance', 'Error Codes'].map((item) => (
-                  <button key={item} className="block w-full text-left text-sm font-bold text-white/40 hover:text-red-600 transition-colors py-2 border-l-2 border-transparent hover:border-red-600 pl-4">
+                  <button key={item} className="block w-full text-left text-sm font-bold text-white/70 hover:text-red-600 transition-colors py-2 border-l-2 border-transparent hover:border-red-600 pl-4">
                     {item}
                   </button>
                 ))}
@@ -52,7 +52,7 @@ export default function ApiDocsPage() {
                   <Terminal size={24} />
                   <h2 className="text-2xl font-black uppercase tracking-tight italic">Getting Started</h2>
                 </div>
-                <div className="prose prose-invert max-w-none text-white/50 leading-relaxed space-y-4">
+                <div className="prose prose-invert max-w-none text-white/80 leading-relaxed space-y-4">
                   <p>Our API is built on REST principles and returns JSON-encoded responses. The base URL for all requests is:</p>
                   <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 font-mono text-sm text-red-500 overflow-x-auto">
                     http://localhost:3001/api
@@ -67,10 +67,10 @@ export default function ApiDocsPage() {
                   <Key size={24} />
                   <h2 className="text-2xl font-black uppercase tracking-tight italic">Authentication</h2>
                 </div>
-                <p className="text-white/50 leading-relaxed">To authenticate your requests, you must include your personal Bearer token in the `Authorization` header of every request.</p>
+                <p className="text-white/80 leading-relaxed">To authenticate your requests, you must include your personal Bearer token in the `Authorization` header of every request.</p>
                 <div className="rounded-3xl border border-white/10 bg-[#050505] overflow-hidden shadow-2xl">
                   <div className="px-6 py-4 border-b border-white/5 bg-white/[0.02] flex items-center justify-between">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-white/30">Header Example</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-white/60">Header Example</span>
                     <div className="flex gap-1.5">
                       <div className="w-2.5 h-2.5 rounded-full bg-red-600/30" />
                       <div className="w-2.5 h-2.5 rounded-full bg-yellow-600/30" />
@@ -90,7 +90,7 @@ export default function ApiDocsPage() {
                   <h2 className="text-2xl font-black uppercase tracking-tight italic">Create Order</h2>
                 </div>
                 <div className="space-y-6">
-                  <p className="text-white/50 leading-relaxed">Place a new order for any social boosting service available in our catalog.</p>
+                  <p className="text-white/80 leading-relaxed">Place a new order for any social boosting service available in our catalog.</p>
                   <div className="flex items-center gap-3">
                     <span className="px-3 py-1 rounded-md bg-green-900/30 border border-green-600/30 text-green-500 text-[10px] font-black uppercase tracking-widest">POST</span>
                     <span className="text-sm font-mono text-white/80">/orders</span>
@@ -98,7 +98,7 @@ export default function ApiDocsPage() {
 
                   <div className="rounded-3xl border border-white/10 bg-[#050505] overflow-hidden shadow-2xl">
                     <div className="px-6 py-4 border-b border-white/5 bg-white/[0.02]">
-                       <span className="text-[10px] font-black uppercase tracking-widest text-white/30">Request Payload (JSON)</span>
+                       <span className="text-[10px] font-black uppercase tracking-widest text-white/60">Request Payload (JSON)</span>
                     </div>
                     <pre className="p-8 font-mono text-[13px] leading-relaxed overflow-x-auto text-blue-400">
                       <code>{`{
@@ -112,7 +112,7 @@ export default function ApiDocsPage() {
 
                   <div className="rounded-3xl border border-white/10 bg-[#050505] overflow-hidden shadow-2xl">
                     <div className="px-6 py-4 border-b border-white/5 bg-white/[0.02]">
-                       <span className="text-[10px] font-black uppercase tracking-widest text-white/30">Response (201 Created)</span>
+                       <span className="text-[10px] font-black uppercase tracking-widest text-white/60">Response (201 Created)</span>
                     </div>
                     <pre className="p-8 font-mono text-[13px] leading-relaxed overflow-x-auto text-green-400">
                       <code>{`{

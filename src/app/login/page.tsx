@@ -79,7 +79,7 @@ export default function LoginPage() {
                     </div>
                     <div>
                       <h4 className="font-black text-sm tracking-tight uppercase italic">{item.title}</h4>
-                      <p className="text-xs text-white/40 font-medium leading-relaxed mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-white/70 font-medium leading-relaxed mt-0.5">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -110,7 +110,7 @@ export default function LoginPage() {
             <div>
               <h1 className="text-3xl sm:text-4xl font-black mb-3 tracking-tight uppercase italic">Sign In</h1>
               <div className="h-1 w-10 bg-red-600 mb-5" />
-              <p className="text-white/40 text-sm font-medium">Log in to manage your growth campaigns and orders.</p>
+              <p className="text-white/70 text-sm font-medium">Log in to manage your growth campaigns and orders.</p>
             </div>
 
             {error && (
@@ -122,7 +122,7 @@ export default function LoginPage() {
 
             <form onSubmit={handleSubmit} className="space-y-5 flex flex-col w-full">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ml-1">Email Address</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 ml-1">Email Address</label>
                 <input
                   type="email"
                   required
@@ -135,7 +135,7 @@ export default function LoginPage() {
 
               <div className="space-y-2">
                 <div className="flex justify-between items-center ml-1">
-                  <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">Password</label>
+                  <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">Password</label>
                 </div>
                 <input
                   type="password"
@@ -163,7 +163,7 @@ export default function LoginPage() {
               </button>
             </form>
 
-            <p className="text-center w-full text-[10px] text-white/30 font-black uppercase tracking-[0.2em]">
+            <p className="text-center w-full text-[10px] text-white/60 font-black uppercase tracking-[0.2em]">
               Don't have an account?{' '}
               <Link href="/register" className="text-red-600 hover:text-white transition-colors ml-1 underline decoration-white/10 underline-offset-4">Register Now</Link>
             </p>

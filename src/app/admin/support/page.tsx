@@ -84,7 +84,7 @@ export default function AdminSupportPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
           <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">Support Desk</h2>
-          <p className="text-white/40 text-sm font-medium mt-1">Manage user inquiries and tickets submitted via Contact Us.</p>
+          <p className="text-white/70 text-sm font-medium mt-1">Manage user inquiries and tickets submitted via Contact Us.</p>
         </div>
       </div>
 
@@ -92,11 +92,11 @@ export default function AdminSupportPage() {
         {/* Ticket List */}
         <div className="lg:col-span-1 space-y-3 h-[700px] overflow-y-auto pr-2">
           {loading && tickets.length === 0 ? (
-             <div className="py-20 text-center text-white/20">Loading...</div>
+             <div className="py-20 text-center text-white/50">Loading...</div>
           ) : tickets.length === 0 ? (
              <div className="py-10 text-center bg-white/[0.02] border border-white/5 rounded-2xl">
-               <HelpCircle size={24} className="mx-auto text-white/20 mb-3" />
-               <p className="text-xs font-bold text-white/40">No incoming tickets.</p>
+               <HelpCircle size={24} className="mx-auto text-white/50 mb-3" />
+               <p className="text-xs font-bold text-white/70">No incoming tickets.</p>
              </div>
           ) : (
             tickets.map(ticket => (
@@ -107,15 +107,15 @@ export default function AdminSupportPage() {
               >
                 <div className="flex justify-between items-start mb-2 gap-2">
                   <p className="text-sm font-bold truncate flex-1">{ticket.subject}</p>
-                  <span className={`text-[9px] px-2 py-0.5 rounded-md uppercase tracking-wider font-bold border shrink-0 ${ticket.status === 'ANSWERED' ? 'bg-green-500/10 text-green-500 border-green-500/20' : ticket.status === 'RESOLVED' ? 'bg-white/10 text-white/50 border-white/10' : 'bg-red-500/10 text-red-500 border-red-500/20'}`}>
+                  <span className={`text-[9px] px-2 py-0.5 rounded-md uppercase tracking-wider font-bold border shrink-0 ${ticket.status === 'ANSWERED' ? 'bg-green-500/10 text-green-500 border-green-500/20' : ticket.status === 'RESOLVED' ? 'bg-white/10 text-white/80 border-white/10' : 'bg-red-500/10 text-red-500 border-red-500/20'}`}>
                     {ticket.status}
                   </span>
                 </div>
-                <p className="text-[10px] text-white/50 font-bold mb-1.5">{ticket.user?.email}</p>
-                <p className="text-xs text-white/30 truncate">
+                <p className="text-[10px] text-white/80 font-bold mb-1.5">{ticket.user?.email}</p>
+                <p className="text-xs text-white/60 truncate">
                   {ticket.messages?.[0]?.content || "No messages"}
                 </p>
-                <p className="text-[9px] uppercase font-bold tracking-widest text-white/20 border-t border-white/5 pt-2 mt-2">
+                <p className="text-[9px] uppercase font-bold tracking-widest text-white/50 border-t border-white/5 pt-2 mt-2">
                    {new Date(ticket.updatedAt).toLocaleString()}
                 </p>
               </div>
@@ -130,14 +130,14 @@ export default function AdminSupportPage() {
                <div className="p-6 border-b border-white/5 bg-[#050505] flex justify-between items-center">
                  <div className="flex-1 min-w-0 pr-4">
                    <h3 className="text-lg font-black truncate">{activeTicket.subject}</h3>
-                   <p className="text-[10px] uppercase font-bold tracking-widest text-white/40 mt-1">
+                   <p className="text-[10px] uppercase font-bold tracking-widest text-white/70 mt-1">
                      Ticket #{activeTicket.id.slice(0,8)} • {activeTicket.user?.email}
                    </p>
                  </div>
                  {activeTicket.status !== 'RESOLVED' && (
                    <button 
                      onClick={() => updateStatus('RESOLVED')}
-                     className="px-4 py-2 bg-white/5 hover:bg-green-500/20 text-white/60 hover:text-green-500 border border-transparent hover:border-green-500/30 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all"
+                     className="px-4 py-2 bg-white/5 hover:bg-green-500/20 text-white/90 hover:text-green-500 border border-transparent hover:border-green-500/30 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all"
                    >
                      Mark Resolved
                    </button>
@@ -147,7 +147,7 @@ export default function AdminSupportPage() {
                <div className="flex-1 p-6 overflow-y-auto space-y-6">
                  {activeTicket.messages.map(msg => (
                    <div key={msg.id} className={`flex flex-col max-w-[80%] ${msg.sender === 'ADMIN' ? 'ml-auto items-end' : 'mr-auto items-start'}`}>
-                     <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-1.5 ml-1">
+                     <p className="text-[10px] font-bold text-white/60 uppercase tracking-widest mb-1.5 ml-1">
                        {msg.sender === 'ADMIN' ? 'You (Admin)' : 'User'} • {new Date(msg.createdAt).toLocaleTimeString()}
                      </p>
                      <div className={`p-4 rounded-2xl text-sm font-medium leading-relaxed ${msg.sender === 'ADMIN' ? 'bg-red-600/20 border border-red-600/30 text-white' : 'bg-white/[0.03] border border-white/10 text-white/80'}`}>
@@ -181,8 +181,8 @@ export default function AdminSupportPage() {
             </motion.div>
           ) : (
             <div className="h-full min-h-[500px] flex flex-col items-center justify-center text-center bg-black/50 border border-white/5 rounded-3xl">
-              <Mail size={32} className="text-white/20 mb-4" />
-              <p className="text-sm font-bold text-white/40">Select a ticket from the list to view and reply.</p>
+              <Mail size={32} className="text-white/50 mb-4" />
+              <p className="text-sm font-bold text-white/70">Select a ticket from the list to view and reply.</p>
             </div>
           )}
         </div>

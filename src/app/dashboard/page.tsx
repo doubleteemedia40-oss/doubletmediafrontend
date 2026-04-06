@@ -48,7 +48,7 @@ export default function DashboardPage() {
             <h2 className="text-xl sm:text-2xl font-black italic uppercase">
               Welcome back{user?.name ? `, ${user.name}` : ''}!
             </h2>
-            <p className="text-white/40 mt-1 text-sm font-medium">Your account is active. Start placing orders or add funds below.</p>
+            <p className="text-white/70 mt-1 text-sm font-medium">Your account is active. Start placing orders or add funds below.</p>
           </div>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
             <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
@@ -69,7 +69,7 @@ export default function DashboardPage() {
           >
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2">{stat.label}</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 mb-2">{stat.label}</p>
                 <h3 className="text-xl sm:text-2xl font-black">{stat.value}</h3>
               </div>
               <div className={`p-2.5 rounded-xl border ${stat.bg} ${stat.color}`}>
@@ -78,7 +78,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href={stat.action.href}
-              className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] text-white/30 hover:text-red-600 transition-colors group-hover:text-white/50"
+              className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] text-white/60 hover:text-red-600 transition-colors group-hover:text-white/80"
             >
               {stat.action.label} <ArrowRight size={12} className="ml-1" />
             </Link>
@@ -120,7 +120,7 @@ export default function DashboardPage() {
             ].map(({ step, text }) => (
               <div key={step} className="flex items-center gap-3">
                 <div className="h-6 w-6 rounded-full bg-red-600/10 border border-red-600/20 flex items-center justify-center text-[10px] font-black text-red-600 shrink-0">{step}</div>
-                <p className="text-sm font-medium text-white/60">{text}</p>
+                <p className="text-sm font-medium text-white/90">{text}</p>
               </div>
             ))}
           </div>

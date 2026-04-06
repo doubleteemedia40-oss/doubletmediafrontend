@@ -59,15 +59,15 @@ export default function AdminOrdersPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">Global Orders</h2>
-          <p className="text-white/40 text-sm font-medium mt-1">Oversight of all active and past SMM campaigns across the platform.</p>
+          <p className="text-white/70 text-sm font-medium mt-1">Oversight of all active and past SMM campaigns across the platform.</p>
         </div>
         
         <div className="relative w-full md:w-72">
-           <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40" />
+           <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70" />
            <input 
              type="text"
              placeholder="Search by ID, User, or Link..."
-             className="w-full bg-white/[0.02] border border-white/10 rounded-2xl pl-12 pr-4 py-3 sm:py-3.5 text-sm font-bold placeholder:text-white/30 outline-none focus:border-red-600/50 transition-all"
+             className="w-full bg-white/[0.02] border border-white/10 rounded-2xl pl-12 pr-4 py-3 sm:py-3.5 text-sm font-bold placeholder:text-white/60 outline-none focus:border-red-600/50 transition-all"
            />
         </div>
       </div>
@@ -81,12 +81,12 @@ export default function AdminOrdersPage() {
           <table className="w-full text-left border-collapse min-w-[1000px]">
             <thead>
               <tr className="border-b border-white/5 bg-[#050505]">
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Order IDs</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">User</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Service & Link</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Volume</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Status</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 text-right">Actions</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Order IDs</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">User</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Service & Link</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Volume</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Status</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70 text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -98,7 +98,7 @@ export default function AdminOrdersPage() {
                 </tr>
               ) : orders.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-white/40">No orders in the system yet.</td>
+                  <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-white/70">No orders in the system yet.</td>
                 </tr>
               ) : (
                 orders.map(order => (
@@ -106,10 +106,10 @@ export default function AdminOrdersPage() {
                     <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors cursor-pointer" onClick={() => setExpandedId(expandedId === order.id ? null : order.id)}>
                       <td className="px-5 sm:px-6 py-4 align-top">
                         <p className="inline-block text-xs font-mono font-bold text-white bg-white/5 px-2 py-1 rounded-md mb-1.5">{order.id.slice(0,8)}</p>
-                        <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest flex items-center gap-1">EXT: <span className="text-white/60">{order.remoteOrderId || 'None'}</span></p>
+                        <p className="text-[10px] font-mono text-white/70 uppercase tracking-widest flex items-center gap-1">EXT: <span className="text-white/90">{order.remoteOrderId || 'None'}</span></p>
                       </td>
                       <td className="px-5 sm:px-6 py-4 align-top">
-                        <p className="text-xs font-bold text-white/60 truncate max-w-[150px]" title={order.user?.email}>{order.user?.email}</p>
+                        <p className="text-xs font-bold text-white/90 truncate max-w-[150px]" title={order.user?.email}>{order.user?.email}</p>
                       </td>
                       <td className="px-5 sm:px-6 py-4 align-top max-w-[250px]">
                         <p className="text-sm font-bold truncate mb-1">{order.service?.name}</p>
@@ -125,7 +125,7 @@ export default function AdminOrdersPage() {
                          <span className={`px-2.5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] border ${
                            order.status === 'Completed' ? 'text-green-500 bg-green-500/10 border-green-500/20' :
                            order.status === 'Pending' ? 'text-yellow-500 bg-yellow-500/10 border-yellow-500/20' :
-                           'text-white/60 bg-white/5 border-white/10'
+                           'text-white/90 bg-white/5 border-white/10'
                          }`}>
                            {order.status}
                          </span>
@@ -135,7 +135,7 @@ export default function AdminOrdersPage() {
                             {order.status !== 'REFUNDED' && order.status !== 'CANCELED' && (
                               <button 
                                 onClick={(e) => { e.stopPropagation(); handleAction(order.id, 'refund'); }}
-                                className="p-2 rounded-lg bg-white/5 hover:bg-yellow-500/10 text-white/60 hover:text-yellow-500 transition-colors group relative border border-transparent"
+                                className="p-2 rounded-lg bg-white/5 hover:bg-yellow-500/10 text-white/90 hover:text-yellow-500 transition-colors group relative border border-transparent"
                                 title="Refund Order"
                               >
                                 <RefreshCcw size={14} className="group-active:-rotate-180 transition-transform" />
@@ -144,7 +144,7 @@ export default function AdminOrdersPage() {
                             {order.status !== 'COMPLETED' && (
                               <button 
                                 onClick={(e) => { e.stopPropagation(); handleAction(order.id, 'complete'); }}
-                                className="p-2 rounded-lg bg-white/5 hover:bg-green-500/10 text-white/60 hover:text-green-500 transition-colors group relative border border-transparent"
+                                className="p-2 rounded-lg bg-white/5 hover:bg-green-500/10 text-white/90 hover:text-green-500 transition-colors group relative border border-transparent"
                                 title="Mark Completed"
                               >
                                 <Box size={14} />
@@ -153,7 +153,7 @@ export default function AdminOrdersPage() {
                             {order.status !== 'CANCELED' && (
                                <button 
                                  onClick={(e) => { e.stopPropagation(); handleAction(order.id, 'cancel'); }}
-                                 className="p-2 rounded-lg bg-white/5 hover:bg-red-600/10 border border-transparent hover:border-red-600/20 text-white/50 hover:text-red-500 transition-colors"
+                                 className="p-2 rounded-lg bg-white/5 hover:bg-red-600/10 border border-transparent hover:border-red-600/20 text-white/80 hover:text-red-500 transition-colors"
                                  title="Force Cancel"
                                >
                                  <XCircle size={14} />
@@ -167,23 +167,23 @@ export default function AdminOrdersPage() {
                           <td colSpan={6} className="bg-[#080808] p-5 sm:p-8 border-b border-white/5">
                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                                 <div>
-                                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3 ml-1">Raw Database Record</p>
-                                   <pre className="text-[10px] font-mono text-white/60 bg-black border border-white/10 p-5 rounded-2xl overflow-x-auto">
+                                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 mb-3 ml-1">Raw Database Record</p>
+                                   <pre className="text-[10px] font-mono text-white/90 bg-black border border-white/10 p-5 rounded-2xl overflow-x-auto">
 {JSON.stringify(order, null, 2)}
                                    </pre>
                                 </div>
                                 <div className="space-y-4">
                                    <div>
-                                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3 ml-1">Financials</p>
+                                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 mb-3 ml-1">Financials</p>
                                      <div className="bg-black border border-white/10 p-5 rounded-2xl">
-                                        <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Total Cost</p>
+                                        <p className="text-[10px] text-white/70 uppercase tracking-widest font-bold">Total Cost</p>
                                         <p className="text-xl sm:text-2xl font-black text-green-500 mt-1">${Number(order.charge).toFixed(4)}</p>
                                      </div>
                                    </div>
                                    <div>
-                                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3 ml-1">Timeline</p>
+                                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 mb-3 ml-1">Timeline</p>
                                      <div className="bg-black border border-white/10 p-5 rounded-2xl">
-                                        <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Placed At</p>
+                                        <p className="text-[10px] text-white/70 uppercase tracking-widest font-bold">Placed At</p>
                                         <p className="text-sm font-bold text-white mt-1">{new Date(order.createdAt).toLocaleString()}</p>
                                      </div>
                                    </div>

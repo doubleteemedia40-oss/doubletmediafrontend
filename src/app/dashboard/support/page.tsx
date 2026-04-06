@@ -91,7 +91,7 @@ export default function UserSupportPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
           <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">Contact Support</h2>
-          <p className="text-white/40 text-sm font-medium mt-1">Submit inquiries or get help with your orders.</p>
+          <p className="text-white/70 text-sm font-medium mt-1">Submit inquiries or get help with your orders.</p>
         </div>
         <button 
           onClick={() => { setShowNew(true); setActiveTicket(null); }}
@@ -105,11 +105,11 @@ export default function UserSupportPage() {
         {/* Ticket List */}
         <div className="lg:col-span-1 space-y-3">
           {loading && tickets.length === 0 ? (
-             <div className="py-20 text-center text-white/20">Loading...</div>
+             <div className="py-20 text-center text-white/50">Loading...</div>
           ) : tickets.length === 0 ? (
              <div className="py-10 text-center bg-white/[0.02] border border-white/5 rounded-2xl">
-               <HelpCircle size={24} className="mx-auto text-white/20 mb-3" />
-               <p className="text-xs font-bold text-white/40">No tickets found.</p>
+               <HelpCircle size={24} className="mx-auto text-white/50 mb-3" />
+               <p className="text-xs font-bold text-white/70">No tickets found.</p>
              </div>
           ) : (
             tickets.map(ticket => (
@@ -120,14 +120,14 @@ export default function UserSupportPage() {
               >
                 <div className="flex justify-between items-start mb-2">
                   <p className="text-sm font-bold truncate pr-4">{ticket.subject}</p>
-                  <span className={`text-[9px] px-2 py-0.5 rounded-md uppercase tracking-wider font-bold border shrink-0 ${ticket.status === 'ANSWERED' ? 'bg-green-500/10 text-green-500 border-green-500/20' : ticket.status === 'RESOLVED' ? 'bg-white/10 text-white/50 border-white/10' : 'bg-red-500/10 text-red-500 border-red-500/20'}`}>
+                  <span className={`text-[9px] px-2 py-0.5 rounded-md uppercase tracking-wider font-bold border shrink-0 ${ticket.status === 'ANSWERED' ? 'bg-green-500/10 text-green-500 border-green-500/20' : ticket.status === 'RESOLVED' ? 'bg-white/10 text-white/80 border-white/10' : 'bg-red-500/10 text-red-500 border-red-500/20'}`}>
                     {ticket.status}
                   </span>
                 </div>
-                <p className="text-xs text-white/40 truncate">
+                <p className="text-xs text-white/70 truncate">
                   {ticket.messages?.[0]?.content || "No messages"}
                 </p>
-                <p className="text-[10px] uppercase font-bold tracking-widest text-white/20 border-t border-white/5 pt-2 mt-2">
+                <p className="text-[10px] uppercase font-bold tracking-widest text-white/50 border-t border-white/5 pt-2 mt-2">
                    {new Date(ticket.updatedAt).toLocaleString()}
                 </p>
               </div>
@@ -139,10 +139,10 @@ export default function UserSupportPage() {
         <div className="lg:col-span-2">
           {showNew ? (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black border border-white/10 p-6 sm:p-8 rounded-3xl">
-              <h3 className="text-sm font-black uppercase tracking-widest text-white/40 mb-6">Create Ticket</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-white/70 mb-6">Create Ticket</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block ml-1">Subject</label>
+                  <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-2 block ml-1">Subject</label>
                   <input 
                     type="text" 
                     value={subject} 
@@ -152,7 +152,7 @@ export default function UserSupportPage() {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block ml-1">Message</label>
+                  <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-2 block ml-1">Message</label>
                   <textarea 
                     value={message} 
                     onChange={e => setMessage(e.target.value)}
@@ -176,13 +176,13 @@ export default function UserSupportPage() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black border border-white/10 rounded-3xl overflow-hidden flex flex-col h-[600px]">
                <div className="p-6 border-b border-white/5 bg-[#050505]">
                  <h3 className="text-lg font-black truncate">{activeTicket.subject}</h3>
-                 <p className="text-[10px] uppercase font-bold tracking-widest text-white/40 mt-1">Ticket #{activeTicket.id.slice(0,8)}</p>
+                 <p className="text-[10px] uppercase font-bold tracking-widest text-white/70 mt-1">Ticket #{activeTicket.id.slice(0,8)}</p>
                </div>
                
                <div className="flex-1 p-6 overflow-y-auto space-y-6">
                  {activeTicket.messages.map(msg => (
                    <div key={msg.id} className={`flex flex-col max-w-[80%] ${msg.sender === 'USER' ? 'ml-auto items-end' : 'mr-auto items-start'}`}>
-                     <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-1.5 ml-1">
+                     <p className="text-[10px] font-bold text-white/60 uppercase tracking-widest mb-1.5 ml-1">
                        {msg.sender === 'USER' ? 'You' : 'Admin Staff'} • {new Date(msg.createdAt).toLocaleTimeString()}
                      </p>
                      <div className={`p-4 rounded-2xl text-sm font-medium leading-relaxed ${msg.sender === 'USER' ? 'bg-red-600/20 border border-red-600/30 text-white' : 'bg-white/[0.03] border border-white/10 text-white/80'}`}>
@@ -216,8 +216,8 @@ export default function UserSupportPage() {
             </motion.div>
           ) : (
             <div className="h-full min-h-[400px] flex flex-col items-center justify-center text-center bg-black/50 border border-white/5 rounded-3xl">
-              <Mail size={32} className="text-white/20 mb-4" />
-              <p className="text-sm font-bold text-white/40">Select a ticket or create a new one.</p>
+              <Mail size={32} className="text-white/50 mb-4" />
+              <p className="text-sm font-bold text-white/70">Select a ticket or create a new one.</p>
             </div>
           )}
         </div>

@@ -49,7 +49,7 @@ export default function AdminSettingsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">Global Settings</h2>
-          <p className="text-white/40 text-sm font-medium mt-1">Configure platform-wide variables and maintenance mode.</p>
+          <p className="text-white/70 text-sm font-medium mt-1">Configure platform-wide variables and maintenance mode.</p>
         </div>
       </div>
 
@@ -66,7 +66,7 @@ export default function AdminSettingsPage() {
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-white/40">Maintenance Mode</label>
+                <label className="text-xs font-black uppercase tracking-widest text-white/70">Maintenance Mode</label>
                 <select 
                   value={settings['maintenance_mode'] || 'false'} 
                   onChange={(e) => handleChange('maintenance_mode', e.target.value)}
@@ -78,7 +78,7 @@ export default function AdminSettingsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-white/40">Support Email</label>
+                <label className="text-xs font-black uppercase tracking-widest text-white/70">Support Email</label>
                 <input 
                   type="email"
                   value={settings['support_email'] || ''} 
@@ -89,7 +89,7 @@ export default function AdminSettingsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-white/40">Support WhatsApp</label>
+                <label className="text-xs font-black uppercase tracking-widest text-white/70">Support WhatsApp</label>
                 <input 
                   type="text"
                   value={settings['support_whatsapp'] || ''} 

@@ -57,7 +57,7 @@ export default function ProfilePage() {
     <div className="max-w-2xl space-y-6 sm:space-y-8">
       <div>
         <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">My Profile</h2>
-        <p className="text-white/40 text-sm font-medium mt-1">Manage your personal information and API access.</p>
+        <p className="text-white/70 text-sm font-medium mt-1">Manage your personal information and API access.</p>
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:gap-8">
@@ -74,12 +74,12 @@ export default function ProfilePage() {
           
           <form onSubmit={updateProfile} className="space-y-5 sm:space-y-6">
             <div className="space-y-2">
-               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-1 sm:ml-2">Email Address</label>
+               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 ml-1 sm:ml-2">Email Address</label>
                <input 
                  type="text" 
                  value={user?.email || ''}
                  disabled
-                 className="w-full bg-white/[0.02] border border-white/5 rounded-2xl px-5 sm:px-6 py-3.5 sm:py-4 text-white/40 font-bold text-sm cursor-not-allowed"
+                 className="w-full bg-white/[0.02] border border-white/5 rounded-2xl px-5 sm:px-6 py-3.5 sm:py-4 text-white/70 font-bold text-sm cursor-not-allowed"
                />
             </div>
 
@@ -118,7 +118,7 @@ export default function ProfilePage() {
             <h3 className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-white">Developer API Key</h3>
           </div>
           
-          <p className="text-sm font-medium text-white/60 mb-6 leading-relaxed">Your secret API key allows you to integrate our social growth services with your own applications. Keep it secure and never share it publicly.</p>
+          <p className="text-sm font-medium text-white/90 mb-6 leading-relaxed">Your secret API key allows you to integrate our social growth services with your own applications. Keep it secure and never share it publicly.</p>
           
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
              <div className="flex-1 bg-white/[0.02] border border-white/10 rounded-2xl px-5 sm:px-6 py-3.5 sm:py-4 flex flex-col justify-center overflow-hidden">
@@ -129,7 +129,7 @@ export default function ProfilePage() {
                <button 
                  onClick={copyToClipboard}
                  disabled={apiKey.includes('*')}
-                 className={`flex-1 sm:w-14 h-12 sm:h-14 flex items-center justify-center rounded-xl transition-all ${copied ? 'bg-green-500 text-white' : 'bg-white/5 text-white/60 hover:text-white hover:bg-white/10'} disabled:opacity-50`}
+                 className={`flex-1 sm:w-14 h-12 sm:h-14 flex items-center justify-center rounded-xl transition-all ${copied ? 'bg-green-500 text-white' : 'bg-white/5 text-white/90 hover:text-white hover:bg-white/10'} disabled:opacity-50`}
                  title="Copy to clipboard"
                >
                  {copied ? <Check size={16} /> : <Copy size={16} />}

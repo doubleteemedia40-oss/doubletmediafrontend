@@ -44,7 +44,7 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="text-base sm:text-xl lg:text-2xl text-white/40 font-medium max-w-2xl mb-6 sm:mb-10 leading-relaxed px-2 sm:px-0"
+                className="text-base sm:text-xl lg:text-2xl text-white/70 font-medium max-w-2xl mb-6 sm:mb-10 leading-relaxed px-2 sm:px-0"
              >
                 Accelerate your social media growth with DoubleTmedia. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
              </motion.p>
@@ -84,8 +84,8 @@ export default function LandingPage() {
                  <div className="w-full h-[calc(100%-2rem)] sm:h-[calc(100%-3rem)] flex items-end justify-center p-3 sm:p-8 gap-2 sm:gap-8 opacity-80">
                    {/* Card 1 */}
                    <div className="w-1/2 sm:w-1/3 h-full max-h-[100px] sm:max-h-[140px] bg-white/[0.02] border border-white/[0.05] rounded-xl sm:rounded-2xl flex flex-col justify-end p-3 sm:p-5 relative overflow-hidden group hover:border-red-600/30 transition-colors">
-                     <div className="absolute top-3 left-3 sm:top-5 sm:left-5 h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-white/[0.05] flex items-center justify-center text-white/30"><BarChart3 size={12} className="sm:hidden" /><BarChart3 size={14} className="hidden sm:block" /></div>
-                     <p className="text-[8px] sm:text-[10px] font-bold text-white/40 uppercase tracking-wider mb-0.5 sm:mb-1">Followers</p>
+                     <div className="absolute top-3 left-3 sm:top-5 sm:left-5 h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-white/[0.05] flex items-center justify-center text-white/60"><BarChart3 size={12} className="sm:hidden" /><BarChart3 size={14} className="hidden sm:block" /></div>
+                     <p className="text-[8px] sm:text-[10px] font-bold text-white/70 uppercase tracking-wider mb-0.5 sm:mb-1">Followers</p>
                      <p className="text-lg sm:text-2xl font-black text-white">+14,029</p>
                      <p className="text-[8px] sm:text-[10px] font-bold text-green-500 mt-1 sm:mt-2 flex items-center gap-1"><TrendingUp size={10} className="sm:hidden" /><TrendingUp size={12} className="hidden sm:block" /> 94%</p>
                    </div>
@@ -95,14 +95,14 @@ export default function LandingPage() {
                      <div className="absolute top-3 left-3 sm:top-5 sm:left-5 h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-red-600/20 flex items-center justify-center text-red-500"><Zap size={12} className="sm:hidden" /><Zap size={14} className="hidden sm:block" /></div>
                      <p className="text-[8px] sm:text-[10px] font-bold text-red-500/80 uppercase tracking-wider mb-0.5 sm:mb-1">Active Orders</p>
                      <p className="text-xl sm:text-3xl font-black text-white">402</p>
-                     <p className="text-[8px] sm:text-[10px] font-bold text-white/40 mt-1 sm:mt-2">Delivering currently</p>
+                     <p className="text-[8px] sm:text-[10px] font-bold text-white/70 mt-1 sm:mt-2">Delivering currently</p>
                    </div>
                    {/* Card 3 */}
                    <div className="w-1/3 h-full max-h-[140px] bg-white/[0.02] border border-white/[0.05] rounded-xl sm:rounded-2xl flex flex-col justify-end p-3 sm:p-5 relative overflow-hidden group hover:border-red-600/30 transition-colors hidden sm:flex">
-                     <div className="absolute top-5 left-5 h-8 w-8 rounded-full bg-white/[0.05] flex items-center justify-center text-white/30"><Wallet size={14} /></div>
-                     <p className="text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">Spent Today</p>
+                     <div className="absolute top-5 left-5 h-8 w-8 rounded-full bg-white/[0.05] flex items-center justify-center text-white/60"><Wallet size={14} /></div>
+                     <p className="text-[10px] font-bold text-white/70 uppercase tracking-wider mb-1">Spent Today</p>
                      <p className="text-2xl font-black text-white">$84.50</p>
-                     <p className="text-[10px] font-bold text-white/30 mt-2">API Balance</p>
+                     <p className="text-[10px] font-bold text-white/60 mt-2">API Balance</p>
                    </div>
                  </div>
                  
@@ -123,7 +123,7 @@ export default function LandingPage() {
             {/* Marquee Row 1 — scrolls left */}
             <div className="absolute top-[15%] sm:top-[18%] left-0 w-full flex whitespace-nowrap animate-marquee">
               {[...Array(2)].map((_, i) => (
-                <span key={i} className="flex items-center gap-4 sm:gap-6 mr-4 sm:mr-6 text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-[0.25em] text-white/[0.06]">
+                <span key={i} className="flex items-center gap-4 sm:gap-6 mr-4 sm:mr-6 text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-[0.25em] text-white/30">
                   {['Followers', 'Likes', 'Views', 'Subscribers', 'Comments', 'Shares', 'Retweets', 'Saves', 'Impressions', 'Reach', 'Engagement', 'Growth'].map((w) => (
                     <span key={w} className="flex items-center gap-4 sm:gap-6">
                       {w}
@@ -137,7 +137,7 @@ export default function LandingPage() {
             {/* Marquee Row 2 — scrolls right */}
             <div className="absolute bottom-[15%] sm:bottom-[18%] left-0 w-full flex whitespace-nowrap animate-marquee-reverse">
               {[...Array(2)].map((_, i) => (
-                <span key={i} className="flex items-center gap-4 sm:gap-6 mr-4 sm:mr-6 text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-[0.25em] text-white/[0.06]">
+                <span key={i} className="flex items-center gap-4 sm:gap-6 mr-4 sm:mr-6 text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-[0.25em] text-white/30">
                   {['Instagram', 'TikTok', 'YouTube', 'Facebook', 'Twitter / X', 'Spotify', 'Threads', 'Discord', 'Telegram', 'LinkedIn', 'Twitch', 'Snapchat'].map((w) => (
                     <span key={w} className="flex items-center gap-4 sm:gap-6">
                       {w}
@@ -160,7 +160,7 @@ export default function LandingPage() {
                   className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full backdrop-blur-xl text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] border shadow-lg
                     ${pill.accent
                       ? 'bg-red-600/15 border-red-600/30 text-red-400 shadow-red-600/10'
-                      : 'bg-white/[0.04] border-white/[0.08] text-white/60'
+                      : 'bg-white/[0.04] border-white/[0.08] text-white/90'
                     }`}
                 >
                   {pill.label}
@@ -180,7 +180,7 @@ export default function LandingPage() {
             <div className="mb-16 sm:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div className="max-w-xl">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 tracking-tight uppercase italic underline decoration-red-600 decoration-4 underline-offset-8">Social Boosting</h2>
-                <p className="text-white/40 font-medium leading-relaxed">
+                <p className="text-white/70 font-medium leading-relaxed">
                   Professional Social Boosting. Accelerate your reach with real engagement and algorithmic impact. Instantly delivered across all major platforms.
                 </p>
               </div>
@@ -210,7 +210,7 @@ export default function LandingPage() {
                        )}
                      </div>
                      <h4 className="text-lg sm:text-2xl font-black mb-3 sm:mb-4 uppercase tracking-tight italic">{item.title}</h4>
-                     <p className="text-sm text-white/40 font-medium leading-relaxed mb-6 flex-grow">{item.desc}</p>
+                     <p className="text-sm text-white/70 font-medium leading-relaxed mb-6 flex-grow">{item.desc}</p>
                      
                      <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-red-600/5 blur-3xl rounded-full group-hover:bg-red-600/10 transition-all pointer-events-none" />
                   </div>

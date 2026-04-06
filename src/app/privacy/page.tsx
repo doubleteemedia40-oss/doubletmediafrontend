@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
             <h1 className="text-4xl sm:text-6xl font-black mb-6 uppercase italic tracking-tighter italic">
               Privacy <span className="text-red-600">Policy</span>
             </h1>
-            <p className="text-white/40 font-medium">Last Updated: April 5, 2026</p>
+            <p className="text-white/70 font-medium">Last Updated: April 5, 2026</p>
           </motion.div>
 
           {/* Content Grid */}
@@ -71,7 +71,7 @@ export default function PrivacyPolicy() {
                 </div>
                 <div>
                   <h2 className="text-xl font-black mb-4 uppercase italic tracking-tight">{section.title}</h2>
-                  <p className="text-white/40 leading-relaxed font-medium">{section.content}</p>
+                  <p className="text-white/70 leading-relaxed font-medium">{section.content}</p>
                 </div>
               </motion.section>
             ))}
@@ -84,7 +84,7 @@ export default function PrivacyPolicy() {
             viewport={{ once: true }}
             className="mt-20 p-8 rounded-3xl bg-red-600/5 border border-red-600/10 text-center"
           >
-            <p className="text-sm text-white/60 font-medium">
+            <p className="text-sm text-white/90 font-medium">
               By using DoubleTmedia, you agree to the collection and use of information in accordance with this policy. For any questions, please contact us at <span className="text-red-600">support@doubletmedia.com</span>
             </p>
           </motion.div>

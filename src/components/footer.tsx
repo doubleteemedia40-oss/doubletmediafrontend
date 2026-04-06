@@ -11,7 +11,7 @@ export default function Footer() {
             <Link href="/" className="text-3xl font-black tracking-tighter text-red-600">
               DoubleTmedia
             </Link>
-            <p className="text-white/40 text-sm font-medium leading-relaxed max-w-sm">
+            <p className="text-white/70 text-sm font-medium leading-relaxed max-w-sm">
               Accelerate your social media growth with DoubleTmedia. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
             </p>
           </div>
@@ -20,7 +20,7 @@ export default function Footer() {
             <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-600">Platform</h4>
             <div className="flex flex-col gap-4">
               {['Services', 'API Docs', 'Status', 'Affiliates'].map(item => (
-                <Link key={item} href="#" className="text-sm font-bold text-white/30 hover:text-white transition-colors">{item}</Link>
+                <Link key={item} href="#" className="text-sm font-bold text-white/60 hover:text-white transition-colors">{item}</Link>
               ))}
             </div>
           </div>
@@ -34,14 +34,14 @@ export default function Footer() {
                 { name: 'Privacy', href: '/privacy' },
                 { name: 'Contact', href: '#' }
               ].map(item => (
-                <Link key={item.name} href={item.href} className="text-sm font-bold text-white/30 hover:text-white transition-colors">{item.name}</Link>
+                <Link key={item.name} href={item.href} className="text-sm font-bold text-white/60 hover:text-white transition-colors">{item.name}</Link>
               ))}
             </div>
           </div>
         </div>
         
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-white/20">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-white/50">
             &copy; 2026 DoubleTmedia. SECURED BY ENCRYPTION PROTOCOL 2.4.0
           </p>
           <div className="flex gap-8">

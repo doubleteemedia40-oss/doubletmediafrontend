@@ -101,7 +101,7 @@ export default function NewOrderPage() {
     <div className="max-w-3xl space-y-6 sm:space-y-8">
       <div>
         <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">New Order</h2>
-        <p className="text-white/40 text-sm font-medium mt-1">Choose a service and enter your target link to get started.</p>
+        <p className="text-white/70 text-sm font-medium mt-1">Choose a service and enter your target link to get started.</p>
       </div>
 
       <motion.div 
@@ -155,8 +155,8 @@ export default function NewOrderPage() {
                 <AlertCircle size={14} className="text-red-600" />
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600">Service Details</p>
               </div>
-              <p className="text-sm font-medium text-white/60 leading-relaxed mb-3">{selectedService.description}</p>
-              <div className="flex gap-6 text-[11px] font-black uppercase tracking-wider text-white/40">
+              <p className="text-sm font-medium text-white/90 leading-relaxed mb-3">{selectedService.description}</p>
+              <div className="flex gap-6 text-[11px] font-black uppercase tracking-wider text-white/70">
                 <p>Min: <span className="text-white">{selectedService.min.toLocaleString()}</span></p>
                 <p>Max: <span className="text-white">{selectedService.max.toLocaleString()}</span></p>
               </div>
@@ -190,7 +190,7 @@ export default function NewOrderPage() {
           </div>
 
           <div className="flex items-center justify-between p-5 rounded-2xl bg-white/[0.02] border border-white/10">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-white/40">Total Cost</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Total Cost</p>
             <p className="text-2xl font-black">${totalCost.toFixed(3)}</p>
           </div>
 

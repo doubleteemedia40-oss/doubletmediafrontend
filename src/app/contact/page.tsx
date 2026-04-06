@@ -23,7 +23,7 @@ export default function ContactPage() {
               <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 italic uppercase text-white">
                 Get in <span className="text-red-600">Touch.</span>
               </h1>
-              <p className="text-lg text-white/40 font-medium leading-relaxed mb-12 max-w-md">
+              <p className="text-lg text-white/70 font-medium leading-relaxed mb-12 max-w-md">
                 Have questions about our services or need custom volume pricing? Our support team is here to help you scale your social presence 24/7.
               </p>
 
@@ -33,7 +33,7 @@ export default function ContactPage() {
                     <Mail size={24} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-1">Email Support</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Email Support</p>
                     <p className="text-xl font-bold text-white">support@doubletmedia.com</p>
                   </div>
                 </div>
@@ -43,7 +43,7 @@ export default function ContactPage() {
                     <MessageSquare size={24} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-1">Live Telegram</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Live Telegram</p>
                     <p className="text-xl font-bold text-white">@DoubleTmediaSupport</p>
                   </div>
                 </div>
@@ -54,14 +54,14 @@ export default function ContactPage() {
                   <ShieldCheck className="text-red-600 shrink-0 mt-1" size={20} />
                   <div>
                     <p className="font-bold text-white text-sm mb-1">Secure Communication</p>
-                    <p className="text-white/30 text-xs leading-relaxed">All messages are encrypted and handled with strict confidentiality by our account managers.</p>
+                    <p className="text-white/60 text-xs leading-relaxed">All messages are encrypted and handled with strict confidentiality by our account managers.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Globe className="text-red-600 shrink-0 mt-1" size={20} />
                   <div>
                     <p className="font-bold text-white text-sm mb-1">Global Support</p>
-                    <p className="text-white/30 text-xs leading-relaxed">We provide multi-language assistance for our clients in over 120 countries.</p>
+                    <p className="text-white/60 text-xs leading-relaxed">We provide multi-language assistance for our clients in over 120 countries.</p>
                   </div>
                 </div>
               </div>
@@ -78,23 +78,23 @@ export default function ContactPage() {
               <div className="relative p-8 sm:p-12 rounded-[2.5rem] bg-[#050505] border border-white/10 shadow-2xl">
                 <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Full Name</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-white/70 ml-1">Full Name</label>
                     <input 
                       type="text" 
                       placeholder="John Doe"
-                      className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-white focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium placeholder:text-white/10"
+                      className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-white focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium placeholder:text-white/40"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Email Address</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-white/70 ml-1">Email Address</label>
                     <input 
                       type="email" 
                       placeholder="john@example.com"
-                      className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-white focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium placeholder:text-white/10"
+                      className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-white focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium placeholder:text-white/40"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Subject</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-white/70 ml-1">Subject</label>
                     <select className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-white focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium appearance-none cursor-pointer">
                       <option className="bg-black">General Inquiry</option>
                       <option className="bg-black">Volume Pricing</option>
@@ -103,11 +103,11 @@ export default function ContactPage() {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Message</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-white/70 ml-1">Message</label>
                     <textarea 
                       rows={4}
                       placeholder="Tell us how we can help..."
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-white focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium placeholder:text-white/10 resize-none"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-white focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium placeholder:text-white/40 resize-none"
                     ></textarea>
                   </div>
 

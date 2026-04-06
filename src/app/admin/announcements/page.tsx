@@ -71,7 +71,7 @@ export default function AdminAnnouncementsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">Announcements</h2>
-          <p className="text-white/40 text-sm font-medium mt-1">Broadcast messages to all users on their dashboard.</p>
+          <p className="text-white/70 text-sm font-medium mt-1">Broadcast messages to all users on their dashboard.</p>
         </div>
       </div>
 
@@ -80,7 +80,7 @@ export default function AdminAnnouncementsPage() {
         animate={{ opacity: 1, y: 0 }}
         className="rounded-2xl sm:rounded-3xl bg-black border border-white/10 p-6 sm:p-8 mb-8"
       >
-        <h3 className="text-sm font-black uppercase tracking-widest text-white/40 mb-6">Create New Broadcast</h3>
+        <h3 className="text-sm font-black uppercase tracking-widest text-white/70 mb-6">Create New Broadcast</h3>
         <div className="flex flex-col sm:flex-row gap-4">
           <input 
             type="text"
@@ -116,8 +116,8 @@ export default function AdminAnnouncementsPage() {
           </div>
         ) : announcements.length === 0 ? (
           <div className="text-center py-10 bg-white/[0.02] rounded-2xl border border-white/5">
-            <Megaphone size={32} className="mx-auto text-white/20 mb-4" />
-            <p className="text-sm font-bold text-white/40">No announcements created yet.</p>
+            <Megaphone size={32} className="mx-auto text-white/50 mb-4" />
+            <p className="text-sm font-bold text-white/70">No announcements created yet.</p>
           </div>
         ) : (
           announcements.map(ann => (
@@ -133,14 +133,14 @@ export default function AdminAnnouncementsPage() {
                   ann.type === 'warning' ? 'text-yellow-500' :
                   ann.type === 'success' ? 'text-green-500' : 'text-blue-400'
                 }`}>{ann.message}</p>
-                <p className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-bold">
+                <p className="text-[10px] uppercase tracking-widest text-white/70 mt-1 font-bold">
                   {new Date(ann.createdAt).toLocaleString()} • {ann.type}
                 </p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <button 
                   onClick={() => toggleStatus(ann.id, ann.active)}
-                  className={`p-2.5 rounded-lg text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all ${ann.active ? 'bg-white/5 text-white/60 hover:text-white' : 'bg-green-500/10 text-green-500 border border-green-500/20'}`}
+                  className={`p-2.5 rounded-lg text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all ${ann.active ? 'bg-white/5 text-white/90 hover:text-white' : 'bg-green-500/10 text-green-500 border border-green-500/20'}`}
                 >
                   <Power size={14} /> {ann.active ? 'Deactivate' : 'Activate'}
                 </button>

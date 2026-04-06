@@ -74,7 +74,7 @@ function AddFundsContent() {
     <div className="max-w-2xl space-y-6 sm:space-y-8">
       <div>
         <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">Add Funds</h2>
-        <p className="text-white/40 text-sm font-medium mt-1">Top up your account balance to launch new social growth campaigns.</p>
+        <p className="text-white/70 text-sm font-medium mt-1">Top up your account balance to launch new social growth campaigns.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
@@ -85,7 +85,7 @@ function AddFundsContent() {
         >
           <div className="flex items-center gap-3 mb-2">
             <Wallet size={16} className="text-red-600" />
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-white/60">Current Balance</h3>
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-white/90">Current Balance</h3>
           </div>
           <p className="text-3xl sm:text-4xl font-black">₦{user?.walletBalance?.toFixed(2) || '0.00'}</p>
         </motion.div>
@@ -144,7 +144,7 @@ function AddFundsContent() {
                    className={`h-12 rounded-xl text-xs font-black uppercase transition-all ${
                      amount === val 
                      ? 'bg-red-600 text-white shadow-[0_0_20px_-5px_rgba(220,38,38,0.5)]' 
-                     : 'bg-white/[0.02] border border-white/10 text-white/60 hover:bg-white/5 hover:text-white'
+                     : 'bg-white/[0.02] border border-white/10 text-white/90 hover:bg-white/5 hover:text-white'
                    }`}
                  >
                    ₦{val.toLocaleString()}
@@ -157,7 +157,7 @@ function AddFundsContent() {
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 ml-1 sm:ml-2">Custom Amount (NGN)</label>
             <div className="relative">
                <div className="absolute inset-y-0 left-0 pl-5 sm:pl-6 flex items-center pointer-events-none">
-                 <span className="text-white/40 font-black">₦</span>
+                 <span className="text-white/70 font-black">₦</span>
                </div>
                <input 
                  type="number" 

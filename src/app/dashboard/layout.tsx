@@ -93,7 +93,7 @@ export default function DashboardLayout({
           <h2 className="text-xl font-black italic uppercase tracking-tight">
             Double<span className="text-red-600">t</span>media
           </h2>
-          <p className="text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold mt-1">Growth Dashboard</p>
+          <p className="text-[10px] text-white/70 tracking-[0.2em] uppercase font-bold mt-1">Growth Dashboard</p>
         </div>
         
         <nav className="mt-4 px-3 sm:px-4 space-y-1">
@@ -106,7 +106,7 @@ export default function DashboardLayout({
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all ${
                   isActive
                     ? 'bg-red-600/10 border border-red-600/20 text-red-600'
-                    : 'text-white/50 hover:bg-white/[0.04] hover:text-white'
+                    : 'text-white/80 hover:bg-white/[0.04] hover:text-white'
                 }`}
               >
                 <Icon size={17} className={isActive ? 'text-red-600' : 'text-red-600/50'} />
@@ -128,7 +128,7 @@ export default function DashboardLayout({
         
         <button
           onClick={handleLogout}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl hover:bg-white/[0.03] text-sm font-bold text-white/40 hover:text-red-600 transition-colors"
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl hover:bg-white/[0.03] text-sm font-bold text-white/70 hover:text-red-600 transition-colors"
         >
           <LogOut size={15} />
           Logout
@@ -166,7 +166,7 @@ export default function DashboardLayout({
               <div className="absolute top-4 right-4">
                 <button
                   onClick={() => setSidebarOpen(false)}
-                  className="p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-all"
+                  className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-all"
                 >
                   <X size={18} />
                 </button>
@@ -183,7 +183,7 @@ export default function DashboardLayout({
           <div className="flex items-center gap-3 sm:gap-4">
             {/* Mobile hamburger */}
             <button
-              className="lg:hidden p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/5 transition-all"
+              className="lg:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 transition-all"
               onClick={() => setSidebarOpen(true)}
             >
               <Menu size={20} />
@@ -191,7 +191,7 @@ export default function DashboardLayout({
             <h1 className="text-base sm:text-lg font-black italic uppercase tracking-wider">{pageTitle}</h1>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
-            <p className="hidden sm:block text-xs font-bold text-white/50 truncate max-w-[180px]">{user.email}</p>
+            <p className="hidden sm:block text-xs font-bold text-white/80 truncate max-w-[180px]">{user.email}</p>
             <div className="h-8 w-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
               <UserIcon size={14} />
             </div>

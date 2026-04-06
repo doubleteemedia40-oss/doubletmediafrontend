@@ -44,7 +44,7 @@ export default function OrdersPage() {
       case 'pending': return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/20';
       case 'canceled':
       case 'partial': return 'text-red-500 bg-red-500/10 border-red-500/20';
-      default: return 'text-white/60 bg-white/5 border-white/10';
+      default: return 'text-white/90 bg-white/5 border-white/10';
     }
   };
 
@@ -53,11 +53,11 @@ export default function OrdersPage() {
       <div className="flex items-start sm:items-center justify-between flex-col sm:flex-row gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">Order History</h2>
-          <p className="text-white/40 text-sm font-medium mt-1">Track the status of all your campaigns.</p>
+          <p className="text-white/70 text-sm font-medium mt-1">Track the status of all your campaigns.</p>
         </div>
         <button 
           onClick={fetchOrders}
-          className="h-10 px-4 flex items-center justify-center gap-2 rounded-xl bg-white/[0.02] border border-white/10 text-white/60 hover:text-white hover:bg-white/[0.05] transition-all text-xs font-bold shrink-0 shadow-sm"
+          className="h-10 px-4 flex items-center justify-center gap-2 rounded-xl bg-white/[0.02] border border-white/10 text-white/90 hover:text-white hover:bg-white/[0.05] transition-all text-xs font-bold shrink-0 shadow-sm"
         >
            <Clock size={14} className={loading ? "animate-spin" : ""} />
            Refresh List
@@ -73,12 +73,12 @@ export default function OrdersPage() {
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
               <tr className="border-b border-white/5 bg-[#050505]">
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Order ID</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Date & Time</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Service & Link</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Amount</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Cost</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Status</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Order ID</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Date & Time</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Service & Link</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Amount</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Cost</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -90,7 +90,7 @@ export default function OrdersPage() {
                 </tr>
               ) : orders.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-white/40">
+                  <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-white/70">
                     <Layers size={32} className="mx-auto mb-3 opacity-30" />
                     No orders found. Support campaigns to see data here.
                   </td>
@@ -99,11 +99,11 @@ export default function OrdersPage() {
                 orders.map((order) => (
                   <tr key={order.id} className="border-b last:border-0 border-white/5 hover:bg-white/[0.02] transition-colors">
                     <td className="px-5 sm:px-6 py-4 align-top">
-                      <span className="text-xs font-bold font-mono text-white/60 bg-white/5 px-2 py-1 rounded-md">{order.id.slice(0,8)}</span>
+                      <span className="text-xs font-bold font-mono text-white/90 bg-white/5 px-2 py-1 rounded-md">{order.id.slice(0,8)}</span>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top">
                       <p className="text-sm font-bold">{new Date(order.createdAt).toLocaleDateString()}</p>
-                      <p className="text-xs text-white/40 font-medium mt-0.5">{new Date(order.createdAt).toLocaleTimeString()}</p>
+                      <p className="text-xs text-white/70 font-medium mt-0.5">{new Date(order.createdAt).toLocaleTimeString()}</p>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top max-w-[250px]">
                       <p className="text-sm font-bold truncate mb-1">{order.service?.name}</p>

@@ -48,7 +48,7 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-white transition-colors"
+                className="text-xs font-bold uppercase tracking-widest text-white/80 hover:text-white transition-colors"
               >
                 {item.label}
               </Link>
@@ -104,7 +104,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between p-6 border-b border-white/5">
                 <span className="text-lg font-black tracking-tighter text-red-600">DoubleTmedia</span>
                 <button
-                  className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/5 transition-all"
+                  className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 transition-all"
                   onClick={() => setOpen(false)}
                 >
                   <X size={20} />
@@ -118,7 +118,7 @@ export default function Navbar() {
                     key={item.label}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center px-4 py-3.5 rounded-xl text-sm font-bold text-white/60 hover:text-white hover:bg-white/[0.04] transition-all"
+                    className="flex items-center px-4 py-3.5 rounded-xl text-sm font-bold text-white/90 hover:text-white hover:bg-white/[0.04] transition-all"
                   >
                     {item.label}
                   </Link>
@@ -144,7 +144,7 @@ export default function Navbar() {
 
               {/* Footer tag */}
               <div className="p-6 border-t border-white/5">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-white/20">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-white/50">
                   Premium Social Growth Platform
                 </p>
               </div>

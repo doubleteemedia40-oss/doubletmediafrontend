@@ -79,7 +79,7 @@ export default function RegisterPage() {
                     </div>
                     <div>
                       <h4 className="font-black text-sm tracking-tight uppercase italic">{item.title}</h4>
-                      <p className="text-xs text-white/40 font-medium leading-relaxed mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-white/70 font-medium leading-relaxed mt-0.5">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -90,7 +90,7 @@ export default function RegisterPage() {
           <div className="relative z-10 w-full max-w-md pt-10 border-t border-white/5 mb-8">
              <div className="flex items-center gap-2">
                  <div className="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse" />
-                 <span className="text-[10px] font-black text-white/40 tracking-widest uppercase">Platform Fully Operational</span>
+                 <span className="text-[10px] font-black text-white/70 tracking-widest uppercase">Platform Fully Operational</span>
              </div>
           </div>
 
@@ -108,7 +108,7 @@ export default function RegisterPage() {
             <div>
               <h1 className="text-3xl sm:text-4xl font-black mb-3 tracking-tight uppercase italic">Create Account</h1>
               <div className="h-1 w-10 bg-red-600 mb-5" />
-              <p className="text-white/40 text-sm font-medium">Join DoubleTmedia and skyrocket your social media presence today.</p>
+              <p className="text-white/70 text-sm font-medium">Join DoubleTmedia and skyrocket your social media presence today.</p>
             </div>
 
             {error && (
@@ -120,7 +120,7 @@ export default function RegisterPage() {
 
             <form onSubmit={handleSubmit} className="space-y-4 w-full flex flex-col">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ml-1">Email Address</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 ml-1">Email Address</label>
                 <input
                   type="email"
                   required
@@ -132,7 +132,7 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ml-1">Password</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 ml-1">Password</label>
                 <input
                   type="password"
                   required
@@ -144,7 +144,7 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ml-1">Confirm Password</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 ml-1">Confirm Password</label>
                 <input
                   type="password"
                   required
@@ -171,7 +171,7 @@ export default function RegisterPage() {
               </button>
             </form>
 
-            <p className="text-center w-full text-[10px] text-white/30 font-black uppercase tracking-[0.2em]">
+            <p className="text-center w-full text-[10px] text-white/60 font-black uppercase tracking-[0.2em]">
               Already have an account?{' '}
               <Link href="/login" className="text-red-600 hover:text-white transition-colors ml-1 underline decoration-white/10 underline-offset-4">Sign In</Link>
             </p>
