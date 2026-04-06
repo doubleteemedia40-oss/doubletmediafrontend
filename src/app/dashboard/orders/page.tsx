@@ -116,7 +116,7 @@ export default function OrdersPage() {
                       <p className="text-sm font-bold">{order.quantity.toLocaleString()}</p>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top">
-                      <p className="text-sm font-bold">${order.charge.toFixed(3)}</p>
+                      <p className="text-sm font-bold">${Number(order.charge || 0).toFixed(3)}</p>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top">
                       <span className={`px-2.5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest border ${getStatusColor(order.status)}`}>
