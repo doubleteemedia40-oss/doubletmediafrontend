@@ -37,6 +37,17 @@ export default function OrdersPage() {
     }
   };
 
+  const handleAction = async (id: string, action: 'refill' | 'cancel') => {
+    if (!window.confirm(`Are you sure you want to request a ${action} for this order?`)) return;
+    try {
+      await api.post(`/orders/${id}/${action}`);
+      alert(`Successfully requested ${action}.`);
+      fetchOrders();
+    } catch (err: any) {
+      alert(err.response?.data?.message || `Failed to ${action} order.`);
+    }
+  };
+
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case 'completed': return 'text-green-500 bg-green-500/10 border-green-500/20';
@@ -127,7 +138,25 @@ export default function OrdersPage() {
                       <p className="text-xs text-white/70 font-medium mt-0.5">{new Date(order.createdAt).toLocaleTimeString()}</p>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top text-right">
-                      <button className="text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors">Support</button>
+                      <div className="flex flex-col items-end gap-2">
+                        {order.service?.refill && order.status.toLowerCase() === 'completed' && (
+                          <button 
+                            onClick={() => handleAction(order.id, 'refill')}
+                            className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-blue-500/10 text-[9px] font-black uppercase tracking-widest text-white/70 hover:text-blue-400 transition-colors border border-transparent hover:border-blue-500/20"
+                          >
+                            Refill
+                          </button>
+                        )}
+                        {order.service?.cancel && ['pending', 'processing', 'in_progress'].includes(order.status.toLowerCase()) && (
+                          <button 
+                            onClick={() => handleAction(order.id, 'cancel')}
+                            className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-red-500/10 text-[9px] font-black uppercase tracking-widest text-white/70 hover:text-red-400 transition-colors border border-transparent hover:border-red-500/20"
+                          >
+                            Cancel
+                          </button>
+                        )}
+                        <button className="text-[9px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors mt-1">Support</button>
+                      </div>
                     </td>
                   </tr>
                 ))
