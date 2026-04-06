@@ -96,7 +96,7 @@ export default function DashboardPage() {
         >
           <h3 className="text-xs font-black uppercase tracking-[0.2em] text-red-600">Platform Status</h3>
           <div className="flex flex-col gap-2">
-            {['Order Processing', 'Payment Gateway', 'SMM API'].map((sys) => (
+            {['Order Processing', 'Payment Gateway'].map((sys) => (
               <div key={sys} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
                 <p className="text-sm font-bold text-white/70">{sys}</p>
                 <span className="text-[9px] font-black uppercase tracking-[0.2em] text-green-500 bg-green-500/10 px-2 py-1 rounded border border-green-500/20">Operational</span>
