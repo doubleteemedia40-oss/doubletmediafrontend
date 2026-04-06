@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { api } from '@/lib/api';
 import { motion } from 'framer-motion';
-import { ShoppingCart, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { ShoppingCart, AlertCircle, CheckCircle2, Search } from 'lucide-react';
 import { useAuth } from '@/context/auth-context';
 
 interface Service {
@@ -25,6 +25,7 @@ export default function NewOrderPage() {
   const [selectedServiceId, setSelectedServiceId] = useState<string>('');
   const [link, setLink] = useState('');
   const [quantity, setQuantity] = useState<number | ''>('');
+  const [searchQuery, setSearchQuery] = useState('');
   
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -50,8 +51,18 @@ export default function NewOrderPage() {
     }
   };
 
-  const categories = Array.from(new Set(services.map(s => s.category)));
-  const filteredServices = services.filter(s => s.category === selectedCategory);
+  const searchLower = searchQuery.toLowerCase();
+
+  const categories = Array.from(new Set(services.map(s => s.category)))
+    .filter(cat => 
+       cat.toLowerCase().includes(searchLower) || 
+       services.some(s => s.category === cat && s.name.toLowerCase().includes(searchLower))
+    );
+
+  const filteredServices = services
+    .filter(s => s.category === selectedCategory)
+    .filter(s => s.name.toLowerCase().includes(searchLower) || s.category.toLowerCase().includes(searchLower));
+
   const selectedService = services.find(s => s.id === selectedServiceId);
   const totalCost = selectedService && quantity 
     ? (Number(selectedService.userRate) / 1000) * Number(quantity) 
@@ -111,6 +122,17 @@ export default function NewOrderPage() {
       >
         <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
           
+          <div className="relative">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-white/40" size={18} />
+            <input 
+              type="text" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl pl-12 pr-5 py-4 outline-none focus:border-red-600/50 transition-all font-bold text-sm text-white"
+              placeholder="Search services or categories (e.g. Instagram Followers)..."
+            />
+          </div>
+
           <div className="space-y-2">
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 ml-1">Service Category</label>
             <select 
