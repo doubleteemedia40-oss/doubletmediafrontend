@@ -81,45 +81,43 @@ export default function AdminOrdersPage() {
           <table className="w-full text-left border-collapse min-w-[1000px]">
             <thead>
               <tr className="border-b border-white/5 bg-[#050505]">
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Order IDs</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">User</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Service & Link</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Volume</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Order ID / Service</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Username / URL</th>
                 <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Status</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Price</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Qty</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Created</th>
                 <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70 text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-20 text-center">
+                  <td colSpan={7} className="px-6 py-20 text-center">
                      <div className="inline-block h-6 w-6 border-2 border-white/20 border-t-red-600 rounded-full animate-spin" />
                   </td>
                 </tr>
               ) : orders.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-white/70">No orders in the system yet.</td>
+                  <td colSpan={7} className="px-6 py-20 text-center text-sm font-bold text-white/70">No orders in the system yet.</td>
                 </tr>
               ) : (
                 orders.map(order => (
                   <React.Fragment key={order.id}>
                     <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors cursor-pointer" onClick={() => setExpandedId(expandedId === order.id ? null : order.id)}>
-                      <td className="px-5 sm:px-6 py-4 align-top">
+                      <td className="px-5 sm:px-6 py-4 align-top max-w-[200px]">
                         <p className="inline-block text-xs font-mono font-bold text-white bg-white/5 px-2 py-1 rounded-md mb-1.5">{order.id.slice(0,8)}</p>
-                        <p className="text-[10px] font-mono text-white/70 uppercase tracking-widest flex items-center gap-1">EXT: <span className="text-white/90">{order.remoteOrderId || 'None'}</span></p>
+                        <p className="text-[10px] font-mono text-white/70 uppercase tracking-widest flex items-center gap-1 mb-2">EXT: <span className="text-white/90">{order.remoteOrderId || 'None'}</span></p>
+                        <p className="text-sm font-bold truncate group relative">
+                          {order.service?.name}
+                        </p>
                       </td>
-                      <td className="px-5 sm:px-6 py-4 align-top">
-                        <p className="text-xs font-bold text-white/90 truncate max-w-[150px]" title={order.user?.email}>{order.user?.email}</p>
-                      </td>
-                      <td className="px-5 sm:px-6 py-4 align-top max-w-[250px]">
-                        <p className="text-sm font-bold truncate mb-1">{order.service?.name}</p>
+                      <td className="px-5 sm:px-6 py-4 align-top max-w-[200px]">
+                        <p className="text-xs font-bold text-white/90 truncate mb-1" title={order.user?.email}>{order.user?.email}</p>
                         <a href={order.link} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} className="inline-flex items-center gap-1 text-xs font-medium text-red-500 hover:text-red-400 truncate max-w-full group">
                           {order.link}
                           <ExternalLink size={10} className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </a>
-                      </td>
-                      <td className="px-5 sm:px-6 py-4 align-top text-sm font-bold">
-                        {order.quantity.toLocaleString()}
                       </td>
                       <td className="px-5 sm:px-6 py-4 align-top">
                          <span className={`px-2.5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] border ${
@@ -129,6 +127,16 @@ export default function AdminOrdersPage() {
                          }`}>
                            {order.status}
                          </span>
+                      </td>
+                      <td className="px-5 sm:px-6 py-4 align-top font-bold text-sm">
+                        ${Number(order.charge || 0).toFixed(4)}
+                      </td>
+                      <td className="px-5 sm:px-6 py-4 align-top text-sm font-bold">
+                        {order.quantity.toLocaleString()}
+                      </td>
+                      <td className="px-5 sm:px-6 py-4 align-top">
+                        <p className="text-sm font-bold">{new Date(order.createdAt).toLocaleDateString()}</p>
+                        <p className="text-xs text-white/70">{new Date(order.createdAt).toLocaleTimeString()}</p>
                       </td>
                       <td className="px-5 sm:px-6 py-4 align-top text-right">
                          <div className="flex items-center justify-end gap-2">
@@ -164,7 +172,7 @@ export default function AdminOrdersPage() {
                     </tr>
                     {expandedId === order.id && (
                        <tr>
-                          <td colSpan={6} className="bg-[#080808] p-5 sm:p-8 border-b border-white/5">
+                          <td colSpan={7} className="bg-[#080808] p-5 sm:p-8 border-b border-white/5">
                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                                 <div>
                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 mb-3 ml-1">Raw Database Record</p>
