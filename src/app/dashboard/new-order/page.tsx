@@ -161,7 +161,7 @@ export default function NewOrderPage() {
               <option value="" disabled>Choose a specific service</option>
               {filteredServices.map((service) => (
                 <option key={service.id} value={service.id} className="bg-zinc-900 text-white">
-                  {service.name} — ${Number(service.userRate).toFixed(3)} / 1000
+                  {service.name} — ₦{Number(service.userRate).toFixed(2)} / 1000
                 </option>
               ))}
             </select>

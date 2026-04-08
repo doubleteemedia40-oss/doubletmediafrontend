@@ -11,7 +11,7 @@ export default function DashboardPage() {
   const stats = [
     {
       label: 'Account Balance',
-      value: `$${user?.walletBalance?.toFixed(2) || '0.00'}`,
+      value: `₦${user?.walletBalance?.toFixed(2) || '0.00'}`,
       icon: Wallet,
       color: 'text-red-600',
       bg: 'bg-red-600/10 border-red-600/20',
