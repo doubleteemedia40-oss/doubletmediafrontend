@@ -203,7 +203,10 @@ export default function NewOrderPage() {
               type="number" 
               required
               value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
+              onChange={(e) => {
+                const val = e.target.value;
+                setQuantity(val === '' ? '' : Number(val));
+              }}
               min={selectedService?.min || 1}
               max={selectedService?.max || 10000000}
               className="w-full bg-white/[0.02] border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 transition-all font-bold text-sm"
@@ -213,7 +216,7 @@ export default function NewOrderPage() {
 
           <div className="flex items-center justify-between p-5 rounded-2xl bg-white/[0.02] border border-white/10">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Total Cost</p>
-            <p className="text-2xl font-black">${totalCost.toFixed(3)}</p>
+            <p className="text-2xl font-black">₦{totalCost.toFixed(2)}</p>
           </div>
 
           {error && (
