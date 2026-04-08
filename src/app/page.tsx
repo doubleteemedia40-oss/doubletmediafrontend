@@ -13,7 +13,7 @@ export default function LandingPage() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-black flex flex-col items-center justify-center min-h-[100dvh] py-16 sm:py-32 gap-8 sm:gap-20">
+        <section className="relative overflow-hidden bg-black flex flex-col items-center justify-center min-h-[100dvh] pt-60 pb-16 sm:py-32 gap-8 sm:gap-20">
           {/* Advanced Dribbble Lighting & Grid */}
           <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
              {/* Center Glow */}
@@ -24,7 +24,7 @@ export default function LandingPage() {
              <div className="absolute bottom-0 left-0 w-full h-[80vh] bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_10%,#000_10%,transparent_70%)] [transform:perspective(1000px)_rotateX(60deg)_scale(2.5)] origin-top pointer-events-none" />
           </div>
 
-          <div className="container-custom relative z-20 flex flex-col items-center text-center w-full max-w-5xl mx-auto h-full flex-grow py-6 sm:py-12">
+          <div className="container-custom relative z-20 flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full flex-grow py-6 sm:py-12">
             
 
 
