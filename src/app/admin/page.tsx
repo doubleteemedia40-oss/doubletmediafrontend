@@ -59,7 +59,7 @@ export default function AdminDashboardPage() {
         {[
           { label: 'Total Users', value: stats.totalUsers, icon: Users, color: 'text-white' },
           { label: 'Orders Processed', value: stats.totalOrders.toLocaleString(), icon: Terminal, color: 'text-blue-500' },
-          { label: 'Platform Yield', value: `$${stats.totalProfit.toFixed(2)}`, icon: Banknote, color: 'text-green-500' },
+          { label: 'Platform Yield', value: `₦${stats.totalProfit.toFixed(2)}`, icon: Banknote, color: 'text-green-500' },
           { label: 'Active Providers', value: stats.activeAutomations, icon: Activity, color: 'text-red-600' }
         ].map((stat, i) => (
           <motion.div 
@@ -104,7 +104,7 @@ export default function AdminDashboardPage() {
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
                   <XAxis dataKey="name" stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} />
-                  <YAxis stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(v) => `$${v}`} width={40} />
+                  <YAxis stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(v) => `₦${v}`} width={40} />
                   <Tooltip 
                     contentStyle={{ backgroundColor: '#000', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
                     itemStyle={{ color: '#22c55e', fontWeight: 900, fontSize: '14px' }}

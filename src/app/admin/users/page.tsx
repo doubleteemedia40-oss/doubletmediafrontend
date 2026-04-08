@@ -118,7 +118,7 @@ export default function AdminUsersPage() {
                       {editBalanceId === user.id ? (
                         <div className="flex items-center gap-2">
                            <div className="relative w-28">
-                              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-white/70 text-xs">$</span>
+                              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-white/70 text-xs">₦</span>
                               <input 
                                 type="number" 
                                 value={newBalance} 
@@ -133,7 +133,7 @@ export default function AdminUsersPage() {
                         </div>
                       ) : (
                         <div className="flex items-center gap-3">
-                           <p className="text-sm font-bold">${Number(user.balance || 0).toFixed(2)}</p>
+                           <p className="text-sm font-bold">₦{Number(user.balance || 0).toFixed(2)}</p>
                            <button onClick={() => { setEditBalanceId(user.id); setNewBalance(Number(user.balance || 0)); }} className="text-white/60 hover:text-white transition-colors">
                              <Edit2 size={12} />
                            </button>

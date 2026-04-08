@@ -129,7 +129,7 @@ export default function AdminOrdersPage() {
                          </span>
                       </td>
                       <td className="px-5 sm:px-6 py-4 align-top font-bold text-sm">
-                        ${Number(order.charge || 0).toFixed(4)}
+                        ₦{Number(order.charge || 0).toFixed(2)}
                       </td>
                       <td className="px-5 sm:px-6 py-4 align-top text-sm font-bold">
                         {order.quantity.toLocaleString()}
@@ -185,7 +185,7 @@ export default function AdminOrdersPage() {
                                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 mb-3 ml-1">Financials</p>
                                      <div className="bg-black border border-white/10 p-5 rounded-2xl">
                                         <p className="text-[10px] text-white/70 uppercase tracking-widest font-bold">Total Cost</p>
-                                        <p className="text-xl sm:text-2xl font-black text-green-500 mt-1">${Number(order.charge).toFixed(4)}</p>
+                                        <p className="text-xl sm:text-2xl font-black text-green-500 mt-1">₦{Number(order.charge).toFixed(2)}</p>
                                      </div>
                                    </div>
                                    <div>
