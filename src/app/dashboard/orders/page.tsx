@@ -14,6 +14,8 @@ interface Order {
   createdAt: string;
   service: {
     name: string;
+    refill?: boolean;
+    cancel?: boolean;
   };
 }
 
@@ -128,7 +130,7 @@ export default function OrdersPage() {
                       </span>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top">
-                      <p className="text-sm font-bold">${Number(order.charge || 0).toFixed(4)}</p>
+                      <p className="text-sm font-bold">₦{Number(order.charge || 0).toFixed(2)}</p>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top">
                       <p className="text-sm font-bold">{order.quantity.toLocaleString()}</p>

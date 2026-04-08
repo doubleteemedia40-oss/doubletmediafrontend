@@ -24,6 +24,7 @@ export default function AdminServicesPage() {
   const [providers, setProviders] = useState<ProviderOption[]>([]);
   const [selectedProviderId, setSelectedProviderId] = useState<string>('');
   const [globalMarkup, setGlobalMarkup] = useState('50');
+  const [usdToNgnRate, setUsdToNgnRate] = useState('1500');
   const [bulkUpdating, setBulkUpdating] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editRate, setEditRate] = useState<string>('');
@@ -48,6 +49,7 @@ export default function AdminServicesPage() {
      try {
        const { data } = await api.get('/services/admin/settings');
        if (data.globalMarkup) setGlobalMarkup(data.globalMarkup.toString());
+       if (data.usdToNgnRate) setUsdToNgnRate(data.usdToNgnRate.toString());
      } catch (err) {
        console.error('Failed to fetch settings', err);
      }
@@ -98,10 +100,13 @@ export default function AdminServicesPage() {
   };
 
   const applyGlobalMarkup = async () => {
-     if(!confirm(`Apply a global +${globalMarkup}% markup to all services based on their origin provider rate?`)) return;
+     if(!confirm(`Apply a global +${globalMarkup}% markup and ₦${usdToNgnRate}/$ exchange rate to all services?`)) return;
      try {
        setBulkUpdating(true);
-       await api.patch('/services/admin/markup', { markup: parseFloat(globalMarkup) });
+       await api.patch('/services/admin/markup', { 
+         markup: parseFloat(globalMarkup),
+         usdToNgnRate: parseFloat(usdToNgnRate)
+       });
        fetchServices();
      } catch (err) {
        console.error(err);
@@ -120,9 +125,11 @@ export default function AdminServicesPage() {
         
         <div className="flex items-center gap-4 flex-wrap">
            <div className="flex items-center bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden p-1">
-             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/70">Global Markup (%)</span>
+             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/70">NGN Rate/$</span>
+             <input type="number" step="1" value={usdToNgnRate} onChange={e => setUsdToNgnRate(e.target.value)} className="w-20 bg-transparent text-sm font-bold text-center outline-none border-r border-white/10 mr-1" />
+             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/70">Markup (%)</span>
              <input type="number" step="1" value={globalMarkup} onChange={e => setGlobalMarkup(e.target.value)} className="w-16 bg-transparent text-sm font-bold text-center outline-none" />
-             <button onClick={applyGlobalMarkup} disabled={bulkUpdating} className="px-3 py-2 bg-red-600/20 text-red-600 hover:bg-red-600 hover:text-white rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors disabled:opacity-50">
+             <button onClick={applyGlobalMarkup} disabled={bulkUpdating} className="px-3 py-2 bg-red-600/20 text-red-600 hover:bg-red-600 hover:text-white rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors disabled:opacity-50 ml-1">
                 {bulkUpdating ? '...' : 'Apply'}
              </button>
            </div>
@@ -194,7 +201,7 @@ export default function AdminServicesPage() {
                            </div>
                         ) : (
                            <button onClick={() => { setEditingId(srv.id); setEditRate(srv.userRate.toString()); }} className="text-sm font-black text-green-400 hover:text-green-300 transition-colors border-b border-transparent hover:border-green-300 pb-0.5">
-                             ${Number(srv.userRate).toFixed(3)}
+                             ₦{Number(srv.userRate).toFixed(2)}
                            </button>
                         )}
                       </td>
