@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { api } from '@/lib/api';
-import { motion } from 'framer-motion';
-import { ShoppingCart, AlertCircle, CheckCircle2, Search } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ShoppingCart, AlertCircle, CheckCircle2, Search, ChevronDown } from 'lucide-react';
 import { useAuth } from '@/context/auth-context';
 
 interface Service {
@@ -16,6 +16,95 @@ interface Service {
   description: string;
 }
 
+// Custom Searchable Select Component
+function SearchableSelect({ 
+  options, 
+  value, 
+  onChange, 
+  placeholder, 
+  label 
+}: { 
+  options: { label: string; value: string; }[], 
+  value: string, 
+  onChange: (val: string) => void, 
+  placeholder: string,
+  label: string
+}) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selectedOption = options.find(o => o.value === value);
+  const filteredOptions = options.filter(o => o.label.toLowerCase().includes(search.toLowerCase()));
+
+  return (
+    <div className="space-y-2 relative" ref={wrapperRef}>
+      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 ml-1">{label}</label>
+      <div 
+        onClick={() => { setOpen(!open); setSearch(''); }}
+        className="w-full bg-white/[0.02] border border-white/10 rounded-2xl px-5 py-4 flex items-center justify-between cursor-pointer hover:border-red-600/30 transition-all"
+      >
+        <span className={`font-bold text-sm truncate ${!selectedOption ? 'text-white/40' : 'text-white'}`}>
+          {selectedOption ? selectedOption.label : placeholder}
+        </span>
+        <ChevronDown size={16} className={`text-white/40 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </div>
+
+      <AnimatePresence>
+        {open && (
+           <motion.div 
+             initial={{ opacity: 0, y: -10 }}
+             animate={{ opacity: 1, y: 0 }}
+             exit={{ opacity: 0, y: -10 }}
+             transition={{ duration: 0.15 }}
+             className="absolute z-50 w-full mt-2 bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+           >
+             <div className="p-3 border-b border-white/10 relative">
+               <Search size={14} className="absolute left-6 top-1/2 -translate-y-1/2 text-white/40" />
+               <input 
+                 autoFocus
+                 type="text" 
+                 value={search}
+                 onChange={(e) => setSearch(e.target.value)}
+                 placeholder="Type to search..."
+                 className="w-full bg-white/[0.05] rounded-xl pl-9 pr-3 py-2 text-sm font-bold text-white outline-none focus:bg-white/10 transition-colors"
+               />
+             </div>
+             <div className="max-h-60 overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+               {filteredOptions.length === 0 ? (
+                 <p className="text-center text-xs text-white/40 py-4 font-bold">No results found.</p>
+               ) : (
+                 filteredOptions.map((opt) => (
+                   <div 
+                     key={opt.value}
+                     onClick={() => {
+                       onChange(opt.value);
+                       setOpen(false);
+                     }}
+                     className={`px-4 py-3 rounded-xl text-sm font-bold cursor-pointer transition-colors ${value === opt.value ? 'bg-red-600/20 text-red-500' : 'text-white/80 hover:bg-white/5 hover:text-white'}`}
+                   >
+                     {opt.label}
+                   </div>
+                 ))
+               )}
+             </div>
+           </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function NewOrderPage() {
   const { user, refreshUser } = useAuth();
   const [services, setServices] = useState<Service[]>([]);
@@ -25,7 +114,6 @@ export default function NewOrderPage() {
   const [selectedServiceId, setSelectedServiceId] = useState<string>('');
   const [link, setLink] = useState('');
   const [quantity, setQuantity] = useState<number | ''>('');
-  const [searchQuery, setSearchQuery] = useState('');
   
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -51,17 +139,10 @@ export default function NewOrderPage() {
     }
   };
 
-  const searchLower = searchQuery.toLowerCase();
-
-  const categories = Array.from(new Set(services.map(s => s.category)))
-    .filter(cat => 
-       cat.toLowerCase().includes(searchLower) || 
-       services.some(s => s.category === cat && s.name.toLowerCase().includes(searchLower))
-    );
+  const categories = Array.from(new Set(services.map(s => s.category)));
 
   const filteredServices = services
-    .filter(s => s.category === selectedCategory)
-    .filter(s => s.name.toLowerCase().includes(searchLower) || s.category.toLowerCase().includes(searchLower));
+    .filter(s => s.category === selectedCategory);
 
   const selectedService = services.find(s => s.id === selectedServiceId);
   const totalCost = selectedService && quantity 
@@ -108,6 +189,13 @@ export default function NewOrderPage() {
     );
   }
 
+  // Pre-map options for the custom selects
+  const categoryOptions = categories.map(c => ({ label: c, value: c }));
+  const serviceOptions = filteredServices.map(s => ({
+    label: `${s.name} — ₦${Number(s.userRate).toFixed(2)} / 1000`,
+    value: s.id
+  }));
+
   return (
     <div className="max-w-3xl space-y-6 sm:space-y-8">
       <div>
@@ -122,50 +210,24 @@ export default function NewOrderPage() {
       >
         <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
           
-          <div className="relative">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-white/40" size={18} />
-            <input 
-              type="text" 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl pl-12 pr-5 py-4 outline-none focus:border-red-600/50 transition-all font-bold text-sm text-white"
-              placeholder="Search services or categories (e.g. Instagram Followers)..."
-            />
-          </div>
+          <SearchableSelect 
+            label="Service Category"
+            placeholder="Select a category..."
+            options={categoryOptions}
+            value={selectedCategory}
+            onChange={(val) => {
+              setSelectedCategory(val);
+              setSelectedServiceId('');
+            }}
+          />
 
-          <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 ml-1">Service Category</label>
-            <select 
-              value={selectedCategory}
-              onChange={(e) => {
-                setSelectedCategory(e.target.value);
-                setSelectedServiceId('');
-              }}
-              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 transition-all font-bold text-sm appearance-none cursor-pointer"
-            >
-              <option value="" disabled>Select a category</option>
-              {categories.map((cat) => (
-                <option key={cat} value={cat} className="bg-zinc-900 text-white">{cat}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 ml-1">Select Service</label>
-            <select 
-              value={selectedServiceId}
-              onChange={(e) => setSelectedServiceId(e.target.value)}
-              required
-              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 transition-all font-bold text-sm appearance-none cursor-pointer"
-            >
-              <option value="" disabled>Choose a specific service</option>
-              {filteredServices.map((service) => (
-                <option key={service.id} value={service.id} className="bg-zinc-900 text-white">
-                  {service.name} — ₦{Number(service.userRate).toFixed(2)} / 1000
-                </option>
-              ))}
-            </select>
-          </div>
+          <SearchableSelect 
+            label="Select Service"
+            placeholder="Choose a specific service..."
+            options={serviceOptions}
+            value={selectedServiceId}
+            onChange={(val) => setSelectedServiceId(val)}
+          />
 
           {selectedService && (
             <motion.div 
