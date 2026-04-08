@@ -10,6 +10,7 @@ interface Service {
   id: string;
   name: string;
   category: string;
+  providerServiceId: string;
   userRate: number;
   min: number;
   max: number;
@@ -192,7 +193,7 @@ export default function NewOrderPage() {
   // Pre-map options for the custom selects
   const categoryOptions = categories.map(c => ({ label: c, value: c }));
   const serviceOptions = filteredServices.map(s => ({
-    label: `${s.name} — ₦${Number(s.userRate).toFixed(2)} / 1000`,
+    label: `[${s.providerServiceId}] ${s.name} — ₦${Number(s.userRate).toFixed(2)} / 1000`,
     value: s.id
   }));
 
