@@ -192,9 +192,12 @@ export default function DashboardLayout({
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
             <p className="hidden sm:block text-xs font-bold text-white/80 truncate max-w-[180px]">{user.email}</p>
-            <div className="h-8 w-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
-              <UserIcon size={14} />
-            </div>
+            <Link 
+              href="/dashboard/profile"
+              className="h-8 w-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0 hover:bg-white/20 hover:border-red-600/50 transition-all group"
+            >
+              <UserIcon size={14} className="group-hover:text-red-600 transition-colors" />
+            </Link>
           </div>
         </header>
         

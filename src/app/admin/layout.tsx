@@ -185,9 +185,12 @@ export default function AdminLayout({
           </div>
           <div className="flex items-center gap-3">
             <p className="hidden sm:block text-xs font-bold text-red-600 truncate max-w-[180px]">{user.email}</p>
-            <div className="h-8 w-8 rounded-full bg-red-600/20 border border-red-600/40 flex items-center justify-center shrink-0">
+            <Link 
+              href="/admin/settings"
+              className="h-8 w-8 rounded-full bg-red-600/20 border border-red-600/40 flex items-center justify-center shrink-0 hover:bg-red-600/30 transition-all group"
+            >
               <ShieldAlert size={14} className="text-red-600" />
-            </div>
+            </Link>
           </div>
         </header>
         
