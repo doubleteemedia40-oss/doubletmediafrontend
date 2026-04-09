@@ -1,11 +1,31 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { motion } from 'framer-motion';
-import { Mail, MessageSquare, Send, Globe, ShieldCheck } from 'lucide-react';
+import { Mail, MessageSquare, Send, Globe, ShieldCheck, Users } from 'lucide-react';
+import { api } from '@/lib/api';
 
 export default function ContactPage() {
+  const [settings, setSettings] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const { data } = await api.get('/settings');
+        const map: Record<string, string> = {};
+        if (Array.isArray(data)) {
+          data.forEach((s: any) => { map[s.key] = s.value; });
+        }
+        setSettings(map);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchSettings();
+  }, []);
+
   return (
     <div className="min-h-screen bg-black flex flex-col">
       <Navbar />
@@ -34,20 +54,47 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Email Support</p>
-                    <p className="text-xl font-bold text-white">support@doubletmedia.com</p>
+                    <p className="text-xl font-bold text-white">{settings['support_email'] || 'support@doubletmedia.com'}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-6 group">
-                  <div className="h-14 w-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all">
-                    <MessageSquare size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Live Telegram</p>
-                    <p className="text-xl font-bold text-white">@DoubleTmediaSupport</p>
+                {settings['community_telegram_direct'] && (
+                  <a href={settings['community_telegram_direct']} target="_blank" rel="noreferrer" className="flex items-center gap-6 group cursor-pointer">
+                    <div className="h-14 w-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#0088cc] group-hover:bg-[#0088cc] group-hover:text-white transition-all">
+                      <MessageSquare size={24} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Direct Chat</p>
+                      <p className="text-xl font-bold text-white hover:text-[#0088cc] transition-colors">Telegram Support</p>
+                    </div>
+                  </a>
+                )}
+              </div>
+
+              {/* Community Section */}
+              {(settings['community_whatsapp_group'] || settings['community_telegram_channel']) && (
+                <div className="mt-12">
+                  <h2 className="text-[10px] font-black uppercase tracking-widest text-white/50 mb-4">Join our Community</h2>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    {settings['community_whatsapp_group'] && (
+                      <a href={settings['community_whatsapp_group']} target="_blank" rel="noreferrer" className="flex-1 p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#25D366] hover:bg-[#25D366]/10 transition-all flex items-center gap-4 group">
+                        <div className="h-10 w-10 rounded-xl bg-[#25D366]/10 text-[#25D366] flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Users size={18} />
+                        </div>
+                        <span className="text-sm font-bold text-white group-hover:text-[#25D366] transition-colors">WhatsApp Group</span>
+                      </a>
+                    )}
+                    {settings['community_telegram_channel'] && (
+                      <a href={settings['community_telegram_channel']} target="_blank" rel="noreferrer" className="flex-1 p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#0088cc] hover:bg-[#0088cc]/10 transition-all flex items-center gap-4 group">
+                        <div className="h-10 w-10 rounded-xl bg-[#0088cc]/10 text-[#0088cc] flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Users size={18} />
+                        </div>
+                        <span className="text-sm font-bold text-white group-hover:text-[#0088cc] transition-colors">Telegram Channel</span>
+                      </a>
+                    )}
                   </div>
                 </div>
-              </div>
+              )}
 
               <div className="mt-16 p-8 rounded-3xl bg-white/[0.02] border border-white/5 space-y-6">
                 <div className="flex items-start gap-4">

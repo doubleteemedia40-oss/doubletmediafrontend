@@ -98,6 +98,39 @@ export default function AdminSettingsPage() {
                   className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3 text-sm font-bold outline-none focus:border-red-600/50 transition-all"
                 />
               </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-white/70">WhatsApp Group Link</label>
+                <input 
+                  type="url"
+                  value={settings['community_whatsapp_group'] || ''} 
+                  onChange={(e) => handleChange('community_whatsapp_group', e.target.value)}
+                  placeholder="https://chat.whatsapp.com/..."
+                  className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3 text-sm font-bold outline-none focus:border-red-600/50 transition-all"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-white/70">Telegram Channel Link</label>
+                <input 
+                  type="url"
+                  value={settings['community_telegram_channel'] || ''} 
+                  onChange={(e) => handleChange('community_telegram_channel', e.target.value)}
+                  placeholder="https://t.me/yourchannel"
+                  className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3 text-sm font-bold outline-none focus:border-red-600/50 transition-all"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-white/70">Telegram Direct Chat Link</label>
+                <input 
+                  type="url"
+                  value={settings['community_telegram_direct'] || ''} 
+                  onChange={(e) => handleChange('community_telegram_direct', e.target.value)}
+                  placeholder="https://t.me/yourusername"
+                  className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3 text-sm font-bold outline-none focus:border-red-600/50 transition-all"
+                />
+              </div>
             </div>
 
             <div className="pt-6 border-t border-white/10 flex justify-end">
