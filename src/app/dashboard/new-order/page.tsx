@@ -151,7 +151,7 @@ export default function NewOrderPage() {
     setMassResults(null);
     setMassLinesProcessing(true);
 
-    let successCount = 0;
+    const ordersToSubmit = [];
     let failCount = 0;
 
     for (const line of lines) {
@@ -162,47 +162,52 @@ export default function NewOrderPage() {
 
         if (massFormat === 'id_link_qty') {
            const parts = line.split(/[|\s,]+/).filter(Boolean);
-           if (parts.length < 3) throw new Error("Invalid format on line: " + line);
-           // Try to find the service by providerServiceId because users paste provider IDs usually, not the DB uuid
+           if (parts.length < 3) throw new Error("Invalid format");
            const dbService = services.find(s => s.providerServiceId === parts[0]);
-           if (!dbService) throw new Error("Service ID not found: " + parts[0]);
+           if (!dbService) throw new Error("Service ID not found");
            sid = dbService.id;
            l = parts[1];
            q = parseInt(parts[2]);
         } else if (massFormat === 'link_qty') {
            const parts = line.split(/[|\s,]+/).filter(Boolean);
-           if (parts.length < 2) throw new Error("Invalid format on line: " + line);
+           if (parts.length < 2) throw new Error("Invalid format");
            l = parts[0];
            q = parseInt(parts[1]);
         } else if (massFormat === 'one_service_many_urls') {
            l = line;
-           q = Number(quantity); // Use quantity state for all
-           if (!q) throw new Error("Please specify quantity per URL in the right panel.");
+           q = Number(quantity);
+           if (!q) throw new Error("Missing quantity");
         }
 
-        if (!sid || !l || !q || isNaN(q)) throw new Error("Missing data on line: " + line);
-
-        await api.post('/orders', { serviceId: sid, link: l, quantity: q });
-        successCount++;
-      } catch (err: any) {
-        console.error("Mass order line failed:", line, err);
+        if (!sid || !l || !q || isNaN(q)) throw new Error("Incomplete data");
+        ordersToSubmit.push({ serviceId: sid, link: l, quantity: q });
+      } catch (err) {
         failCount++;
       }
     }
 
-    await refreshUser();
-    
-    if (successCount > 0 && failCount === 0) {
-      setSuccess(`Successfully placed ${successCount} orders!`);
-      setMassData('');
-    } else if (successCount > 0 && failCount > 0) {
-       setError(`Placed ${successCount} orders successfully, but ${failCount} failed. Check your balance or format.`);
-    } else {
-       setError("All orders failed to place. Please check your data format, service IDs, and balance.");
+    if (ordersToSubmit.length === 0) {
+      setError(`All lines failed validation. Check your format.`);
+      setMassLinesProcessing(false);
+      return;
     }
-    
-    setMassResults({ total: lines.length, success: successCount, failed: failCount });
-    setMassLinesProcessing(false);
+
+    try {
+      await api.post('/orders/bulk', { orders: ordersToSubmit });
+      await refreshUser();
+      
+      if (failCount === 0) {
+        setSuccess(`Successfully placed all ${ordersToSubmit.length} orders!`);
+        setMassData('');
+      } else {
+        setError(`Placed ${ordersToSubmit.length} orders, but ${failCount} lines had formatting issues.`);
+      }
+    } catch (err: any) {
+      const msg = err.response?.data?.message || 'Failed to place bulk orders.';
+      setError(typeof msg === 'string' ? msg : msg[0]);
+    } finally {
+      setMassLinesProcessing(false);
+    }
   };
 
   return (
