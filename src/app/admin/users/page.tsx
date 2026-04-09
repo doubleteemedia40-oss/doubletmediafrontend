@@ -68,7 +68,7 @@ export default function AdminUsersPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">User Management</h2>
-          <p className="text-white/70 text-sm font-medium mt-1">Manage platform users and account balances.</p>
+          <p className="text-black/70 dark:text-white/70 text-sm font-medium mt-1">Manage platform users and account balances.</p>
         </div>
         <div className="w-fit px-4 py-2 rounded-xl bg-red-600/10 text-red-600 border border-red-600/20 text-xs font-black uppercase tracking-widest flex items-center gap-2">
           <Users size={14} /> Total Users: {users.length}
@@ -78,39 +78,39 @@ export default function AdminUsersPage() {
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl sm:rounded-3xl bg-black border border-white/10 overflow-hidden"
+        className="rounded-2xl sm:rounded-3xl bg-white dark:bg-black border border-black/10 dark:border-white/10 overflow-hidden"
       >
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
-              <tr className="border-b border-white/5 bg-[#050505]">
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">User Info</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Access Level</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Wallet Balance</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Status</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70 text-right">Actions</th>
+              <tr className="border-b border-black/5 dark:border-white/5 bg-slate-50 dark:bg-[#050505]">
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">User Info</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Access Level</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Wallet Balance</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Status</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70 text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-20 text-center">
-                     <div className="inline-block h-6 w-6 border-2 border-white/20 border-t-red-600 rounded-full animate-spin" />
+                     <div className="inline-block h-6 w-6 border-2 border-black/20 dark:border-white/20 border-t-red-600 rounded-full animate-spin" />
                   </td>
                 </tr>
               ) : users.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-20 text-center text-sm font-bold text-white/70">No users found on the platform.</td>
+                  <td colSpan={5} className="px-6 py-20 text-center text-sm font-bold text-black/70 dark:text-white/70">No users found on the platform.</td>
                 </tr>
               ) : (
                 users.map(user => (
-                  <tr key={user.id} className="border-b last:border-0 border-white/5 hover:bg-white/[0.02] transition-colors">
+                  <tr key={user.id} className="border-b last:border-0 border-black/5 dark:border-white/5 hover:bg-black/[0.02] dark:bg-white/[0.02] transition-colors">
                     <td className="px-5 sm:px-6 py-4 align-middle">
                       <p className="text-sm font-bold truncate max-w-[200px]">{user.name || 'Unnamed User'}</p>
-                      <p className="text-xs text-white/70 font-medium mt-0.5 truncate max-w-[200px]">{user.email}</p>
+                      <p className="text-xs text-black/70 dark:text-white/70 font-medium mt-0.5 truncate max-w-[200px]">{user.email}</p>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-middle">
-                      <span className={`px-2.5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] ${user.role === 'ADMIN' ? 'bg-red-600/10 text-red-600 border border-red-600/20' : 'bg-white/5 text-white/90 border border-white/10'}`}>
+                      <span className={`px-2.5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] ${user.role === 'ADMIN' ? 'bg-red-600/10 text-red-600 border border-red-600/20' : 'bg-black/5 dark:bg-white/5 text-black/90 dark:text-white/90 border border-black/10 dark:border-white/10'}`}>
                         {user.role}
                       </span>
                     </td>
@@ -118,23 +118,23 @@ export default function AdminUsersPage() {
                       {editBalanceId === user.id ? (
                         <div className="flex items-center gap-2">
                            <div className="relative w-28">
-                              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-white/70 text-xs">₦</span>
+                              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-black/70 dark:text-white/70 text-xs">₦</span>
                               <input 
                                 type="number" 
                                 value={newBalance} 
                                 onChange={(e) => setNewBalance(Number(e.target.value))}
-                                className="w-full bg-white/[0.05] border border-white/20 rounded-lg pl-6 pr-2 py-1.5 outline-none font-bold text-sm"
+                                className="w-full bg-black/[0.05] dark:bg-white/[0.05] border border-black/20 dark:border-white/20 rounded-lg pl-6 pr-2 py-1.5 outline-none font-bold text-sm"
                               />
                            </div>
-                           <button onClick={() => updateBalance(user.id)} className="p-1.5 bg-green-500 rounded text-black hover:bg-green-400">
+                           <button onClick={() => updateBalance(user.id)} className="p-1.5 bg-green-500 rounded text-white dark:text-black hover:bg-green-400">
                              <DollarSign size={14} />
                            </button>
-                           <button onClick={() => setEditBalanceId(null)} className="text-[10px] font-black uppercase tracking-wider text-white/70 hover:text-white px-2">Cancel</button>
+                           <button onClick={() => setEditBalanceId(null)} className="text-[10px] font-black uppercase tracking-wider text-black/70 dark:text-white/70 hover:text-black dark:text-white px-2">Cancel</button>
                         </div>
                       ) : (
                         <div className="flex items-center gap-3">
                            <p className="text-sm font-bold">₦{Number(user.balance || 0).toFixed(2)}</p>
-                           <button onClick={() => { setEditBalanceId(user.id); setNewBalance(Number(user.balance || 0)); }} className="text-white/60 hover:text-white transition-colors">
+                           <button onClick={() => { setEditBalanceId(user.id); setNewBalance(Number(user.balance || 0)); }} className="text-black/60 dark:text-white/60 hover:text-black dark:text-white transition-colors">
                              <Edit2 size={12} />
                            </button>
                         </div>
@@ -149,7 +149,7 @@ export default function AdminUsersPage() {
                     <td className="px-5 sm:px-6 py-4 align-middle text-right">
                        <button 
                          onClick={() => toggleBan(user.id, user.isSuspended || false)}
-                         className={`text-[9px] font-black uppercase tracking-[0.1em] px-3 py-2 rounded-xl bg-white/5 border border-transparent transition-all font-medium flex items-center gap-1.5 ml-auto ${user.isSuspended ? 'hover:bg-green-500/20 hover:border-green-500/30 text-white/90 hover:text-green-500' : 'hover:bg-red-600/20 hover:border-red-600/30 text-white/90 hover:text-red-500'}`}
+                         className={`text-[9px] font-black uppercase tracking-[0.1em] px-3 py-2 rounded-xl bg-black/5 dark:bg-white/5 border border-transparent transition-all font-medium flex items-center gap-1.5 ml-auto ${user.isSuspended ? 'hover:bg-green-500/20 hover:border-green-500/30 text-black/90 dark:text-white/90 hover:text-green-500' : 'hover:bg-red-600/20 hover:border-red-600/30 text-black/90 dark:text-white/90 hover:text-red-500'}`}
                        >
                          {user.isSuspended ? <ShieldCheck size={12} /> : <ShieldBan size={12} />}
                          {user.isSuspended ? 'Unsuspend' : 'Suspend'}

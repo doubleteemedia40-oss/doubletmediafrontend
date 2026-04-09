@@ -15,17 +15,21 @@ export const metadata: Metadata = {
 
 import { AuthProvider } from "@/context/auth-context";
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" data-scroll-behavior="smooth">
-      <body className={`${manrope.variable} font-manrope antialiased`}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+      <body className={`${manrope.variable} font-manrope antialiased transition-colors duration-300 bg-white dark:bg-black text-black dark:text-white`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

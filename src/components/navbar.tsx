@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { ThemeToggle } from './theme-toggle';
 
 const NAV_LINKS = [
   { label: 'Services', href: '#services' },
@@ -57,12 +58,13 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
+            <ThemeToggle />
             <Link href="/login" className="text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
               Login
             </Link>
             <Link
               href="/register"
-              className="px-5 py-2.5 rounded-xl bg-red-600 text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-[0_0_20px_-5px_rgba(220,38,38,0.4)]"
+              className="px-5 py-2.5 rounded-xl bg-red-600 text-white text-xs font-bold uppercase tracking-widest hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all shadow-[0_0_20px_-5px_rgba(220,38,38,0.4)]"
             >
               Get Started
             </Link>
@@ -101,14 +103,17 @@ export default function Navbar() {
               className="fixed top-0 right-0 bottom-0 z-50 w-72 bg-[#0a0a0a] border-l border-white/10 flex flex-col md:hidden"
             >
               {/* Drawer header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/5">
+              <div className="flex items-center justify-between p-6 border-b border-black/10 dark:border-white/10 text-black dark:text-white">
                 <span className="text-lg font-black tracking-tighter text-red-600">DoubleTmedia</span>
-                <button
-                  className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/5 transition-all"
-                  onClick={() => setOpen(false)}
-                >
-                  <X size={20} />
-                </button>
+                <div className="flex items-center gap-3">
+                  <ThemeToggle />
+                  <button
+                    className="p-2 rounded-lg text-black/80 dark:text-white/80 hover:text-white dark:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all"
+                    onClick={() => setOpen(false)}
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
               </div>
 
               {/* Nav links */}

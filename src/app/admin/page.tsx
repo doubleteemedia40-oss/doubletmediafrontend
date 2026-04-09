@@ -52,12 +52,12 @@ export default function AdminDashboardPage() {
     <div className="max-w-6xl space-y-6 sm:space-y-8 relative z-10 w-full overflow-hidden">
       <div>
         <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">System Overview</h2>
-        <p className="text-white/70 text-sm font-medium mt-1">Real-time SMM platform statistics.</p>
+        <p className="text-black/70 dark:text-white/70 text-sm font-medium mt-1">Real-time SMM platform statistics.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {[
-          { label: 'Total Users', value: stats.totalUsers, icon: Users, color: 'text-white' },
+          { label: 'Total Users', value: stats.totalUsers, icon: Users, color: 'text-black dark:text-white' },
           { label: 'Orders Processed', value: stats.totalOrders.toLocaleString(), icon: Terminal, color: 'text-blue-500' },
           { label: 'Platform Yield', value: `₦${stats.totalProfit.toFixed(2)}`, icon: Banknote, color: 'text-green-500' },
           { label: 'Active Providers', value: stats.activeAutomations, icon: Activity, color: 'text-red-600' }
@@ -67,14 +67,14 @@ export default function AdminDashboardPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="p-5 sm:p-6 rounded-2xl bg-black border border-white/10 relative overflow-hidden group hover:border-red-600/30 transition-all duration-300"
+            className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-black border border-black/10 dark:border-white/10 relative overflow-hidden group hover:border-red-600/30 transition-all duration-300"
           >
             <div className="flex items-end justify-between relative z-10">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 mb-2">{stat.label}</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70 mb-2">{stat.label}</p>
                 <h3 className="text-2xl sm:text-3xl font-black">{stat.value}</h3>
               </div>
-              <div className={`p-3 rounded-xl bg-white/[0.03] border border-white/5 ${stat.color}`}>
+              <div className={`p-3 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 ${stat.color}`}>
                  <stat.icon size={18} className="sm:w-5 sm:h-5" />
               </div>
             </div>
@@ -87,9 +87,9 @@ export default function AdminDashboardPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="col-span-1 lg:col-span-2 p-6 sm:p-8 rounded-3xl bg-black border border-white/10 flex flex-col"
+            className="col-span-1 lg:col-span-2 p-6 sm:p-8 rounded-3xl bg-white dark:bg-black border border-black/10 dark:border-white/10 flex flex-col"
          >
-            <h3 className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-white/70 mb-6 flex items-center gap-2">
+            <h3 className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70 mb-6 flex items-center gap-2">
                <TrendingUp size={14} className="text-blue-500" />
                7-Day Revenue
             </h3>
@@ -119,17 +119,17 @@ export default function AdminDashboardPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="col-span-1 p-6 sm:p-8 rounded-3xl bg-[#0a0a0a] border border-white/5 flex flex-col"
+            className="col-span-1 p-6 sm:p-8 rounded-3xl bg-slate-100 dark:bg-[#0a0a0a] border border-black/5 dark:border-white/5 flex flex-col"
          >
-            <h3 className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-white/70 mb-6 flex items-center gap-2">
+            <h3 className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70 mb-6 flex items-center gap-2">
                <Activity size={14} className="text-red-600" />
                Platform Health
             </h3>
             
             <div className="space-y-4 sm:space-y-6 flex-1">
                {['SMM API Providers', 'Payment Gateway', 'Database Service', 'Order Queue'].map((sys, idx) => (
-                  <div key={idx} className="flex items-center justify-between pb-4 sm:pb-0 border-b sm:border-0 border-white/5 last:border-0">
-                     <p className="text-xs font-bold text-white/90 uppercase tracking-wider">{sys}</p>
+                  <div key={idx} className="flex items-center justify-between pb-4 sm:pb-0 border-b sm:border-0 border-black/5 dark:border-white/5 last:border-0">
+                     <p className="text-xs font-bold text-black/90 dark:text-white/90 uppercase tracking-wider">{sys}</p>
                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-green-500 bg-green-500/10 px-2 py-1 rounded">Online</span>
                   </div>
                ))}

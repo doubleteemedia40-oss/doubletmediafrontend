@@ -42,12 +42,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-black flex flex-col">
       <Navbar />
       
       <main className="flex-1 flex flex-col lg:flex-row pt-16 sm:pt-20 min-h-[calc(100dvh-4rem)] sm:min-h-[calc(100dvh-5rem)]">
         {/* Left marketing panel — desktop only */}
-        <div className="hidden lg:flex lg:w-1/2 flex-col justify-between px-12 xl:px-20 py-16 relative overflow-hidden bg-[#050505] border-r border-white/5">
+        <div className="hidden lg:flex lg:w-1/2 flex-col justify-between px-12 xl:px-20 py-16 relative overflow-hidden bg-slate-50 dark:bg-[#050505] border-r border-black/5 dark:border-white/5">
           <div className="relative z-10 mt-8 max-w-md w-full">
             <div className="space-y-10">
               <motion.h2 
@@ -79,7 +79,7 @@ export default function RegisterPage() {
                     </div>
                     <div>
                       <h4 className="font-black text-sm tracking-tight uppercase italic">{item.title}</h4>
-                      <p className="text-xs text-white/70 font-medium leading-relaxed mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-black/70 dark:text-white/70 font-medium leading-relaxed mt-0.5">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -87,10 +87,10 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <div className="relative z-10 w-full max-w-md pt-10 border-t border-white/5 mb-8">
+          <div className="relative z-10 w-full max-w-md pt-10 border-t border-black/5 dark:border-white/5 mb-8">
              <div className="flex items-center gap-2">
                  <div className="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse" />
-                 <span className="text-[10px] font-black text-white/70 tracking-widest uppercase">Platform Fully Operational</span>
+                 <span className="text-[10px] font-black text-black/70 dark:text-white/70 tracking-widest uppercase">Platform Fully Operational</span>
              </div>
           </div>
 
@@ -99,7 +99,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Right side: Form */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-6 sm:px-12 xl:px-20 py-12 bg-black flex-1">
+        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-6 sm:px-12 xl:px-20 py-12 bg-white dark:bg-black flex-1">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ export default function RegisterPage() {
             <div>
               <h1 className="text-3xl sm:text-4xl font-black mb-3 tracking-tight uppercase italic">Create Account</h1>
               <div className="h-1 w-10 bg-red-600 mb-5" />
-              <p className="text-white/70 text-sm font-medium">Join DoubleTmedia and skyrocket your social media presence today.</p>
+              <p className="text-black/70 dark:text-white/70 text-sm font-medium">Join DoubleTmedia and skyrocket your social media presence today.</p>
             </div>
 
             {error && (
@@ -120,37 +120,37 @@ export default function RegisterPage() {
 
             <form onSubmit={handleSubmit} className="space-y-4 w-full flex flex-col">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 ml-1">Email Address</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-black/60 dark:text-white/60 ml-1">Email Address</label>
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 focus:bg-white/[0.05] transition-all font-bold text-sm"
+                  className="w-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 focus:bg-black/[0.05] dark:bg-white/[0.05] transition-all font-bold text-sm"
                   placeholder="you@example.com"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 ml-1">Password</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-black/60 dark:text-white/60 ml-1">Password</label>
                 <input
                   type="password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 focus:bg-white/[0.05] transition-all font-bold text-sm"
+                  className="w-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 focus:bg-black/[0.05] dark:bg-white/[0.05] transition-all font-bold text-sm"
                   placeholder="••••••••"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 ml-1">Confirm Password</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-black/60 dark:text-white/60 ml-1">Confirm Password</label>
                 <input
                   type="password"
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 focus:bg-white/[0.05] transition-all font-bold text-sm"
+                  className="w-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-red-600/50 focus:bg-black/[0.05] dark:bg-white/[0.05] transition-all font-bold text-sm"
                   placeholder="••••••••"
                 />
               </div>
@@ -158,10 +158,10 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-2xl bg-red-600 font-black uppercase tracking-[0.2em] text-[11px] text-white shadow-[0_0_40px_-15px_rgba(220,38,38,0.6)] hover:bg-white hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 mt-2"
+                className="w-full py-4 rounded-2xl bg-red-600 font-black uppercase tracking-[0.2em] text-[11px] text-black dark:text-white shadow-[0_0_40px_-15px_rgba(220,38,38,0.6)] hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 mt-2"
               >
                 {loading ? (
-                  <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="h-5 w-5 border-2 border-black/30 dark:border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
                   <>
                     Create My Account
@@ -171,9 +171,9 @@ export default function RegisterPage() {
               </button>
             </form>
 
-            <p className="text-center w-full text-[10px] text-white/60 font-black uppercase tracking-[0.2em]">
+            <p className="text-center w-full text-[10px] text-black/60 dark:text-white/60 font-black uppercase tracking-[0.2em]">
               Already have an account?{' '}
-              <Link href="/login" className="text-red-600 hover:text-white transition-colors ml-1 underline decoration-white/10 underline-offset-4">Sign In</Link>
+              <Link href="/login" className="text-red-600 hover:text-black dark:text-white transition-colors ml-1 underline decoration-white/10 underline-offset-4">Sign In</Link>
             </p>
           </motion.div>
         </div>

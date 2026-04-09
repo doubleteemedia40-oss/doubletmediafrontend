@@ -214,16 +214,16 @@ export default function NewOrderPage() {
     <div className="max-w-[1200px] w-full mx-auto pb-20">
       
       {/* Top Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-8 p-1 bg-black/40 border border-white/10 rounded-2xl w-fit">
+      <div className="flex flex-wrap items-center gap-2 mb-8 p-1 bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl w-fit">
         <button 
           onClick={() => { setActiveTab('single'); setError(null); setSuccess(null); }}
-          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'single' ? 'bg-[#ff4e4e] text-white shadow-lg' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
+          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'single' ? 'bg-[#ff4e4e] text-black dark:text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:text-white hover:bg-black/5 dark:bg-white/5'}`}
         >
           Single order
         </button>
         <button 
           onClick={() => { setActiveTab('mass'); setError(null); setSuccess(null); }}
-          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'mass' ? 'bg-[#ff4e4e] text-white shadow-lg' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
+          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'mass' ? 'bg-[#ff4e4e] text-black dark:text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:text-white hover:bg-black/5 dark:bg-white/5'}`}
         >
           Mass order
         </button>
@@ -241,19 +241,19 @@ export default function NewOrderPage() {
         <div className="flex-1 w-full space-y-6">
           
           {activeTab === 'mass' && (
-            <div className="bg-[#18181A] border border-white/5 rounded-[24px] p-6 lg:p-8">
+            <div className="bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] p-6 lg:p-8">
               <div className="flex items-center gap-4 mb-4">
                  <div className="h-12 w-12 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/20 shrink-0">
                     <ListCollapse className="text-red-500" />
                  </div>
                  <div>
-                   <h2 className="text-xl font-bold text-white">Mass order</h2>
-                   <p className="text-white/60 text-sm mt-1">Place many orders at once — pick a format and paste your data</p>
+                   <h2 className="text-xl font-bold text-black dark:text-white">Mass order</h2>
+                   <p className="text-black/60 dark:text-white/60 text-sm mt-1">Place many orders at once — pick a format and paste your data</p>
                  </div>
               </div>
               
               <div className="mt-8">
-                 <p className="text-[10px] font-black uppercase tracking-[0.1em] text-white/50 mb-3 ml-2">FORMAT</p>
+                 <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 mb-3 ml-2">FORMAT</p>
                  <div className="flex flex-wrap gap-3">
                    {[
                      { id: 'id_link_qty', label: 'ID · Link · Qty per line' },
@@ -265,8 +265,8 @@ export default function NewOrderPage() {
                        onClick={() => setMassFormat(fmt.id as any)}
                        className={`px-5 py-3 rounded-[16px] text-sm font-bold transition-all border ${
                          massFormat === fmt.id 
-                         ? 'bg-[#ff4e4e] text-white border-[#ff4e4e] shadow-lg shadow-red-500/20' 
-                         : 'bg-[#222224] text-white/70 border-white/5 hover:border-white/20'
+                         ? 'bg-[#ff4e4e] text-black dark:text-white border-[#ff4e4e] shadow-lg shadow-red-500/20' 
+                         : 'bg-[#222224] text-black/70 dark:text-white/70 border-black/5 dark:border-white/5 hover:border-black/20 dark:border-white/20'
                        }`}
                      >
                        {fmt.label}
@@ -277,9 +277,9 @@ export default function NewOrderPage() {
             </div>
           )}
 
-          <div className="bg-[#18181A] border border-white/5 rounded-[24px] p-4 sm:p-6 lg:p-8 overflow-hidden">
+          <div className="bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] p-4 sm:p-6 lg:p-8 overflow-hidden">
             <div className="flex items-center justify-between mb-4">
-              <p className="text-[10px] font-black uppercase tracking-[0.1em] text-white/50 ml-2">SERVICE</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 ml-2">SERVICE</p>
               <button onClick={clearFilters} className="text-xs font-bold text-[#ff4e4e] hover:text-[#ff3030]">Clear filters</button>
             </div>
 
@@ -291,7 +291,7 @@ export default function NewOrderPage() {
                 placeholder="Search by ID, name, category or geo..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full bg-black/40 border border-white/10 rounded-[20px] pl-14 pr-6 py-4 text-sm font-bold text-white outline-none focus:border-red-500/50 transition-colors"
+                className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[20px] pl-14 pr-6 py-4 text-sm font-bold text-black dark:text-white outline-none focus:border-red-500/50 transition-colors"
                />
             </div>
 
@@ -299,25 +299,25 @@ export default function NewOrderPage() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
                <div className="min-w-0">
                  <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Platform</label>
-                 <select value={platform} onChange={e => setPlatform(e.target.value)} className="w-full bg-[#18181A] border-b border-white/10 pb-2 text-sm text-white/80 outline-none hover:text-white cursor-pointer appearance-none">
+                 <select value={platform} onChange={e => setPlatform(e.target.value)} className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
                    {platforms.map(p => <option key={p} value={p}>{p}</option>)}
                  </select>
                </div>
                <div className="min-w-0">
                  <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Type</label>
-                 <select className="w-full bg-[#18181A] border-b border-white/10 pb-2 text-sm text-white/80 outline-none hover:text-white cursor-pointer appearance-none">
+                 <select className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
                    <option>All</option>
                  </select>
                </div>
                <div className="min-w-0">
                  <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Category</label>
-                 <select value={category} onChange={e => setCategory(e.target.value)} className="w-full bg-[#18181A] border-b border-white/10 pb-2 text-sm text-white/80 outline-none hover:text-white cursor-pointer appearance-none truncate">
+                 <select value={category} onChange={e => setCategory(e.target.value)} className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none truncate">
                    {categories.map(c => <option key={c} value={c}>{c}</option>)}
                  </select>
                </div>
                <div className="min-w-0">
                  <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Budget</label>
-                 <select value={budget} onChange={e => setBudget(e.target.value)} className="w-full bg-[#18181A] border-b border-white/10 pb-2 text-sm text-white/80 outline-none hover:text-white cursor-pointer appearance-none">
+                 <select value={budget} onChange={e => setBudget(e.target.value)} className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
                    <option>No limit</option>
                    <option>&lt; ₦500</option>
                    <option>₦500 - ₦2000</option>
@@ -326,7 +326,7 @@ export default function NewOrderPage() {
                </div>
                <div className="min-w-0">
                  <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Sort by</label>
-                 <select value={sort} onChange={e => setSort(e.target.value)} className="w-full bg-[#18181A] border-b border-white/10 pb-2 text-sm text-white/80 outline-none hover:text-white cursor-pointer appearance-none">
+                 <select value={sort} onChange={e => setSort(e.target.value)} className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
                    <option>Relevance</option>
                    <option>Price: Low to High</option>
                    <option>Price: High to Low</option>
@@ -335,9 +335,9 @@ export default function NewOrderPage() {
             </div>
 
             {/* Services List Box */}
-            <div className="border border-white/5 rounded-2xl bg-[#111112] overflow-hidden flex flex-col h-[500px]">
-               <div className="px-5 py-3 border-b border-white/5 bg-[#18181A] flex items-center justify-between shadow-sm">
-                 <p className="text-xs font-semibold text-white/60">Showing {filteredServices.length} of {services.length} services</p>
+            <div className="border border-black/5 dark:border-white/5 rounded-2xl bg-[#111112] overflow-hidden flex flex-col h-[500px]">
+               <div className="px-5 py-3 border-b border-black/5 dark:border-white/5 bg-[#18181A] flex items-center justify-between shadow-sm">
+                 <p className="text-xs font-semibold text-black/60 dark:text-white/60">Showing {filteredServices.length} of {services.length} services</p>
                </div>
                <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
                   {loading ? (
@@ -350,11 +350,11 @@ export default function NewOrderPage() {
                            <div 
                              key={service.id}
                              onClick={() => setSelectedServiceId(service.id)}
-                             className={`p-5 border-b border-white/5 cursor-pointer transition-all hover:bg-white/[0.02] ${selectedServiceId === service.id ? 'bg-red-500/5 hover:bg-red-500/10 relative z-10' : ''}`}
+                             className={`p-5 border-b border-black/5 dark:border-white/5 cursor-pointer transition-all hover:bg-black/[0.02] dark:bg-white/[0.02] ${selectedServiceId === service.id ? 'bg-red-500/5 hover:bg-red-500/10 relative z-10' : ''}`}
                            >
                              <div className="flex items-start gap-3">
                                <div className="flex-1">
-                                 <h4 className="text-[14px] font-bold text-white/90 leading-snug tracking-tight mb-2">
+                                 <h4 className="text-[14px] font-bold text-black/90 dark:text-white/90 leading-snug tracking-tight mb-2">
                                     {service.name}
                                  </h4>
                                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium">
@@ -362,9 +362,9 @@ export default function NewOrderPage() {
                                    <span className="text-white/20">&bull;</span>
                                    <span className="text-[#ff4e4e] font-bold">₦{Number(service.userRate).toFixed(2)}<span className="text-[#ff4e4e]/60 font-medium">/1k</span></span>
                                    <span className="text-white/20">&bull;</span>
-                                   <span className="text-white/60 hidden sm:inline">{service.category}</span>
+                                   <span className="text-black/60 dark:text-white/60 hidden sm:inline">{service.category}</span>
                                    <span className="text-white/20 hidden sm:inline">&bull;</span>
-                                   <span className="text-white/50">{service.min.toLocaleString()} - {service.max.toLocaleString()}</span>
+                                   <span className="text-black/50 dark:text-white/50">{service.min.toLocaleString()} - {service.max.toLocaleString()}</span>
                                  </div>
                                </div>
                                {selectedServiceId === service.id && (
@@ -381,13 +381,13 @@ export default function NewOrderPage() {
             {/* MASS ORDER DATA TEXTAREA */}
             {activeTab === 'mass' && (
               <div className="mt-8 space-y-3">
-                <p className="text-[10px] font-black uppercase tracking-[0.1em] text-white/50 ml-2">DATA</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 ml-2">DATA</p>
                 <textarea 
                   value={massData}
                   onChange={e => setMassData(e.target.value)}
                   disabled={massLinesProcessing}
                   placeholder={`Paste your orders here... ${massFormat === 'id_link_qty' ? '\nExample:\n3214 https://instagram.com/p/123 100\n3214 https://instagram.com/p/456 500' : ''}`}
-                  className="w-full h-[200px] bg-black/40 border border-white/10 rounded-2xl p-5 text-sm font-medium text-white/90 outline-none focus:border-red-500/50 resize-y font-mono whitespace-nowrap overflow-x-auto scrollbar-thin disabled:opacity-50"
+                  className="w-full h-[200px] bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl p-5 text-sm font-medium text-black/90 dark:text-white/90 outline-none focus:border-red-500/50 resize-y font-mono whitespace-nowrap overflow-x-auto scrollbar-thin disabled:opacity-50"
                   spellCheck="false"
                 />
               </div>
@@ -399,59 +399,59 @@ export default function NewOrderPage() {
         {/* RIGHT COMPONENT */}
         <div className="w-full xl:w-[400px] shrink-0 sticky top-6 space-y-6">
           
-          <div className="bg-[#18181A] border border-white/5 rounded-[24px] overflow-hidden flex flex-col">
-            <div className="p-6 border-b border-white/5">
-              <p className="text-[10px] font-black uppercase tracking-[0.1em] text-white/50 text-center">SERVICE DETAILS</p>
+          <div className="bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] overflow-hidden flex flex-col">
+            <div className="p-6 border-b border-black/5 dark:border-white/5">
+              <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 text-center">SERVICE DETAILS</p>
             </div>
             
             {!selectedService ? (
                <div className="p-10 flex flex-col items-center justify-center text-center">
-                  <div className="h-16 w-16 mb-4 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
+                  <div className="h-16 w-16 mb-4 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/5 dark:border-white/5">
                      <ListCollapse className="text-white/20" size={24} />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">Select a service</h3>
+                  <h3 className="text-lg font-bold text-black dark:text-white mb-2">Select a service</h3>
                   <p className="text-sm text-white/40">Pick one from the list to review details and place your order.</p>
                </div>
             ) : (
                <div className="p-6 space-y-6">
                   
                   <div>
-                    <h3 className="text-base font-bold text-white leading-snug mb-3">{selectedService.name}</h3>
-                    <div className="p-4 bg-black/30 rounded-xl border border-white/5 text-sm text-white/70 leading-relaxed font-medium">
+                    <h3 className="text-base font-bold text-black dark:text-white leading-snug mb-3">{selectedService.name}</h3>
+                    <div className="p-4 bg-white dark:bg-black/30 rounded-xl border border-black/5 dark:border-white/5 text-sm text-black/70 dark:text-white/70 leading-relaxed font-medium">
                        {selectedService.description || "No description provided for this service."}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
-                     <div className="p-4 bg-black/30 rounded-xl border border-white/5">
+                     <div className="p-4 bg-white dark:bg-black/30 rounded-xl border border-black/5 dark:border-white/5">
                        <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">MIN ORDER</p>
-                       <p className="text-lg font-bold text-white">{selectedService.min.toLocaleString()}</p>
+                       <p className="text-lg font-bold text-black dark:text-white">{selectedService.min.toLocaleString()}</p>
                      </div>
-                     <div className="p-4 bg-black/30 rounded-xl border border-white/5">
+                     <div className="p-4 bg-white dark:bg-black/30 rounded-xl border border-black/5 dark:border-white/5">
                        <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">MAX ORDER</p>
-                       <p className="text-lg font-bold text-white">{selectedService.max.toLocaleString()}</p>
+                       <p className="text-lg font-bold text-black dark:text-white">{selectedService.max.toLocaleString()}</p>
                      </div>
                   </div>
 
-                  <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/10 to-transparent my-6" />
+                  <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent my-6" />
 
                   {/* FORM RENDERED BASED ON TAB AND LOGIC */}
                   
                   {(activeTab === 'single') && (
                      <div className="space-y-5">
                        <div className="space-y-2">
-                         <label className="text-[10px] font-black uppercase tracking-widest text-white/50 ml-1">Link</label>
+                         <label className="text-[10px] font-black uppercase tracking-widest text-black/50 dark:text-white/50 ml-1">Link</label>
                          <input 
                            type="text" 
                            value={link}
                            onChange={e => setLink(e.target.value)}
-                           className="w-full bg-black/40 border border-white/10 rounded-[16px] px-5 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-white/20 hover:bg-black/60 transition-colors"
+                           className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] px-5 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-white/20 hover:bg-white dark:bg-black/60 transition-colors"
                            placeholder="https://..."
                          />
                        </div>
 
                        <div className="space-y-2">
-                         <label className="text-[10px] font-black uppercase tracking-widest text-white/50 ml-1">Quantity</label>
+                         <label className="text-[10px] font-black uppercase tracking-widest text-black/50 dark:text-white/50 ml-1">Quantity</label>
                          <div className="relative">
                            <input 
                              type="number" 
@@ -459,7 +459,7 @@ export default function NewOrderPage() {
                              min={selectedService.min}
                              max={selectedService.max}
                              onChange={(e) => setQuantity(e.target.value ? Number(e.target.value) : '')}
-                             className="w-full bg-black/40 border border-white/10 rounded-[16px] pl-5 pr-12 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-white/20 hover:bg-black/60 transition-colors"
+                             className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] pl-5 pr-12 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-white/20 hover:bg-white dark:bg-black/60 transition-colors"
                              placeholder={`Min: ${selectedService.min}`}
                            />
                          </div>
@@ -480,17 +480,17 @@ export default function NewOrderPage() {
                            type="number" 
                            value={quantity}
                            onChange={(e) => setQuantity(e.target.value ? Number(e.target.value) : '')}
-                           className="w-full bg-black/40 border border-white/10 rounded-[16px] px-5 py-4 outline-none focus:border-[#00e1ff]/50 text-sm font-bold placeholder:text-white/20 transition-colors shadow-[0_0_15px_-3px_rgba(0,225,255,0.1)]"
+                           className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] px-5 py-4 outline-none focus:border-[#00e1ff]/50 text-sm font-bold placeholder:text-white/20 transition-colors shadow-[0_0_15px_-3px_rgba(0,225,255,0.1)]"
                            placeholder={`Quantity applied to each link`}
                          />
                        </div>
-                       <p className="text-xs text-white/40 leading-relaxed bg-white/5 p-4 rounded-xl">In <strong className="text-white">"One service, many URLs"</strong> format, just paste links in the Data textbox. We will apply this service and quantity to every link automatically.</p>
+                       <p className="text-xs text-white/40 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl">In <strong className="text-black dark:text-white">"One service, many URLs"</strong> format, just paste links in the Data textbox. We will apply this service and quantity to every link automatically.</p>
                      </div>
                   )}
                   
                   {activeTab === 'mass' && massFormat === 'link_qty' && (
                      <div className="space-y-5">
-                       <p className="text-xs text-white/40 leading-relaxed bg-white/5 p-4 rounded-xl">In <strong className="text-white">"Link · Qty per line"</strong> format, parse your text as `link quantity` on each line. This chosen service will apply to all of them.</p>
+                       <p className="text-xs text-white/40 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl">In <strong className="text-black dark:text-white">"Link · Qty per line"</strong> format, parse your text as `link quantity` on each line. This chosen service will apply to all of them.</p>
                      </div>
                   )}
                   
@@ -520,15 +520,15 @@ export default function NewOrderPage() {
                 <button 
                   onClick={handleSingleSubmit}
                   disabled={submitting || !selectedService || !quantity || !link}
-                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
+                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-black dark:text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
                 >
-                  {submitting ? <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : 'Submit Order'}
+                  {submitting ? <div className="h-5 w-5 border-2 border-black/30 dark:border-white/30 border-t-white rounded-full animate-spin" /> : 'Submit Order'}
                 </button>
              ) : (
                 <button 
                   onClick={handleMassSubmit}
                   disabled={massLinesProcessing}
-                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
+                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-black dark:text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
                 >
                   {massLinesProcessing ? 'Processing mass order...' : 'Submit Mass Order'}
                 </button>

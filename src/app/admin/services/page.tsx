@@ -120,35 +120,35 @@ export default function AdminServicesPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h2 className="text-3xl font-black italic uppercase tracking-tight">Service Directory</h2>
-          <p className="text-white/70 text-sm font-medium mt-1">Regulate active services and internal markup margins.</p>
+          <p className="text-black/70 dark:text-white/70 text-sm font-medium mt-1">Regulate active services and internal markup margins.</p>
         </div>
         
         <div className="flex items-center gap-4 flex-wrap">
-           <div className="flex items-center bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden p-1">
-             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/70">NGN Rate/$</span>
-             <input type="number" step="1" value={usdToNgnRate} onChange={e => setUsdToNgnRate(e.target.value)} className="w-20 bg-transparent text-sm font-bold text-center outline-none border-r border-white/10 mr-1" />
-             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/70">Markup (%)</span>
+           <div className="flex items-center bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 rounded-xl overflow-hidden p-1">
+             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-black/70 dark:text-white/70">NGN Rate/$</span>
+             <input type="number" step="1" value={usdToNgnRate} onChange={e => setUsdToNgnRate(e.target.value)} className="w-20 bg-transparent text-sm font-bold text-center outline-none border-r border-black/10 dark:border-white/10 mr-1" />
+             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-black/70 dark:text-white/70">Markup (%)</span>
              <input type="number" step="1" value={globalMarkup} onChange={e => setGlobalMarkup(e.target.value)} className="w-16 bg-transparent text-sm font-bold text-center outline-none" />
-             <button onClick={applyGlobalMarkup} disabled={bulkUpdating} className="px-3 py-2 bg-red-600/20 text-red-600 hover:bg-red-600 hover:text-white rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors disabled:opacity-50 ml-1">
+             <button onClick={applyGlobalMarkup} disabled={bulkUpdating} className="px-3 py-2 bg-red-600/20 text-red-600 hover:bg-red-600 hover:text-black dark:text-white rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors disabled:opacity-50 ml-1">
                 {bulkUpdating ? '...' : 'Apply'}
              </button>
            </div>
            
-           <div className="flex items-center bg-white/[0.02] border border-white/10 rounded-xl overflow-hidden p-1">
-             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-white/70">From Provider</span>
+           <div className="flex items-center bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 rounded-xl overflow-hidden p-1">
+             <span className="px-3 text-[10px] font-black uppercase tracking-widest text-black/70 dark:text-white/70">From Provider</span>
              <select 
                value={selectedProviderId} 
                onChange={e => setSelectedProviderId(e.target.value)}
                className="bg-transparent text-sm font-bold outline-none px-2 py-1 max-w-[150px] italic"
              >
-               <option value="" disabled className="bg-black">Select Provider</option>
+               <option value="" disabled className="bg-white dark:bg-black">Select Provider</option>
                {providers.map(p => (
-                 <option key={p.id} value={p.id} className="bg-black">{p.name}</option>
+                 <option key={p.id} value={p.id} className="bg-white dark:bg-black">{p.name}</option>
                ))}
              </select>
              <button 
                 onClick={handleImport} disabled={importing || !selectedProviderId}
-                className="px-4 py-2 bg-red-600 text-white hover:bg-white hover:text-black rounded-lg text-[10px] font-black uppercase tracking-widest transition-all disabled:opacity-50 flex items-center gap-2"
+                className="px-4 py-2 bg-red-600 text-black dark:text-white hover:bg-black dark:bg-white hover:text-white dark:text-black rounded-lg text-[10px] font-black uppercase tracking-widest transition-all disabled:opacity-50 flex items-center gap-2"
              >
                 {importing ? '...' : <DownloadCloud size={14} />}
              </button>
@@ -156,47 +156,47 @@ export default function AdminServicesPage() {
         </div>
       </div>
 
-      <div className="rounded-3xl bg-black border border-white/10 overflow-hidden">
+      <div className="rounded-3xl bg-white dark:bg-black border border-black/10 dark:border-white/10 overflow-hidden">
         <div className="overflow-x-auto">
            <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/5 bg-[#050505]">
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">ID / Category</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Service Asset</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Base Rate</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Client Rate (Markup)</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Provider</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70 text-right">Status</th>
+                <tr className="border-b border-black/5 dark:border-white/5 bg-slate-50 dark:bg-[#050505]">
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">ID / Category</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Service Asset</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Base Rate</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Client Rate (Markup)</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Provider</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70 text-right">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
                   <tr>
                     <td colSpan={6} className="px-6 py-20 text-center">
-                       <div className="inline-block h-8 w-8 border-2 border-white/20 border-t-red-600 rounded-full animate-spin"></div>
+                       <div className="inline-block h-8 w-8 border-2 border-black/20 dark:border-white/20 border-t-red-600 rounded-full animate-spin"></div>
                     </td>
                   </tr>
                 ) : services.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-white/70">No services synchronized. Click "Sync External Nodes" to pull upstream inventory.</td>
+                    <td colSpan={6} className="px-6 py-20 text-center text-sm font-bold text-black/70 dark:text-white/70">No services synchronized. Click "Sync External Nodes" to pull upstream inventory.</td>
                   </tr>
                 ) : (
                   services.map(srv => (
-                    <tr key={srv.id} className={`border-b border-white/5 hover:bg-white/[0.02] transition-colors ${!srv.enabled ? 'opacity-50' : ''}`}>
+                    <tr key={srv.id} className={`border-b border-black/5 dark:border-white/5 hover:bg-black/[0.02] dark:bg-white/[0.02] transition-colors ${!srv.enabled ? 'opacity-50' : ''}`}>
                       <td className="px-6 py-4 align-top">
-                        <p className="text-xs font-mono font-bold text-white/90 mb-1">{srv.providerServiceId}</p>
-                        <p className="text-[10px] font-bold text-white/70 uppercase tracking-widest truncate max-w-[150px]">{srv.category}</p>
+                        <p className="text-xs font-mono font-bold text-black/90 dark:text-white/90 mb-1">{srv.providerServiceId}</p>
+                        <p className="text-[10px] font-bold text-black/70 dark:text-white/70 uppercase tracking-widest truncate max-w-[150px]">{srv.category}</p>
                       </td>
                       <td className="px-6 py-4 align-top max-w-[300px]">
                         <p className="text-sm font-bold truncate">{srv.name}</p>
                       </td>
                       <td className="px-6 py-4 align-top">
-                        <p className="text-sm font-bold text-white/70">${Number(srv.providerRate).toFixed(3)}</p>
+                        <p className="text-sm font-bold text-black/70 dark:text-white/70">${Number(srv.providerRate).toFixed(3)}</p>
                       </td>
                       <td className="px-6 py-4 align-top">
                         {editingId === srv.id ? (
                            <div className="flex gap-2">
-                              <input type="number" step="0.001" autoFocus value={editRate} onChange={(e) => setEditRate(e.target.value)} onKeyDown={(e) => { if(e.key==='Enter') saveRate(srv.id); if(e.key==='Escape') setEditingId(null); }} className="w-20 bg-white/10 border border-white/20 rounded px-2 py-1 text-sm font-bold" />
+                              <input type="number" step="0.001" autoFocus value={editRate} onChange={(e) => setEditRate(e.target.value)} onKeyDown={(e) => { if(e.key==='Enter') saveRate(srv.id); if(e.key==='Escape') setEditingId(null); }} className="w-20 bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 rounded px-2 py-1 text-sm font-bold" />
                               <button onClick={() => saveRate(srv.id)} className="text-[10px] font-black uppercase px-2 py-1 bg-green-500/20 text-green-500 rounded">Save</button>
                            </div>
                         ) : (
@@ -206,12 +206,12 @@ export default function AdminServicesPage() {
                         )}
                       </td>
                       <td className="px-6 py-4 align-top">
-                        <span className="px-2 py-1 rounded bg-white/[0.02] border border-white/10 text-[9px] font-black uppercase tracking-widest">{srv.provider?.name || 'Unknown'}</span>
+                        <span className="px-2 py-1 rounded bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 text-[9px] font-black uppercase tracking-widest">{srv.provider?.name || 'Unknown'}</span>
                       </td>
                       <td className="px-6 py-4 align-top text-right">
                          <button 
                            onClick={() => toggleStatus(srv.id, srv.enabled)}
-                           className={`p-2 rounded-xl transition-all ${srv.enabled ? 'bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-black' : 'bg-red-600/10 text-red-600 hover:bg-red-600 hover:text-white'}`}
+                           className={`p-2 rounded-xl transition-all ${srv.enabled ? 'bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white dark:text-black' : 'bg-red-600/10 text-red-600 hover:bg-red-600 hover:text-black dark:text-white'}`}
                          >
                            <Power size={14} />
                          </button>

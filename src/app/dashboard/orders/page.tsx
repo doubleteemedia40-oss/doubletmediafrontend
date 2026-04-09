@@ -57,7 +57,7 @@ export default function OrdersPage() {
       case 'pending': return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/20';
       case 'canceled':
       case 'partial': return 'text-red-500 bg-red-500/10 border-red-500/20';
-      default: return 'text-white/90 bg-white/5 border-white/10';
+      default: return 'text-black/90 dark:text-white/90 bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10';
     }
   };
 
@@ -66,11 +66,11 @@ export default function OrdersPage() {
       <div className="flex items-start sm:items-center justify-between flex-col sm:flex-row gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">Order History</h2>
-          <p className="text-white/70 text-sm font-medium mt-1">Track the status of all your campaigns.</p>
+          <p className="text-black/70 dark:text-white/70 text-sm font-medium mt-1">Track the status of all your campaigns.</p>
         </div>
         <button 
           onClick={fetchOrders}
-          className="h-10 px-4 flex items-center justify-center gap-2 rounded-xl bg-white/[0.02] border border-white/10 text-white/90 hover:text-white hover:bg-white/[0.05] transition-all text-xs font-bold shrink-0 shadow-sm"
+          className="h-10 px-4 flex items-center justify-center gap-2 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 text-black/90 dark:text-white/90 hover:text-black dark:text-white hover:bg-black/[0.05] dark:bg-white/[0.05] transition-all text-xs font-bold shrink-0 shadow-sm"
         >
            <Clock size={14} className={loading ? "animate-spin" : ""} />
            Refresh List
@@ -80,40 +80,40 @@ export default function OrdersPage() {
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl border border-white/10 overflow-hidden bg-black"
+        className="rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden bg-white dark:bg-black"
       >
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
-              <tr className="border-b border-white/5 bg-[#050505]">
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Order ID / Service</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Target URL</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Status</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Price</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Qty</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Created</th>
-                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/70 text-right">Actions</th>
+              <tr className="border-b border-black/5 dark:border-white/5 bg-slate-50 dark:bg-[#050505]">
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Order ID / Service</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Target URL</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Status</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Price</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Qty</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70">Created</th>
+                <th className="px-5 sm:px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70 text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
                   <td colSpan={7} className="px-6 py-20 text-center">
-                    <div className="inline-block h-6 w-6 border-2 border-white/20 border-t-red-600 rounded-full animate-spin" />
+                    <div className="inline-block h-6 w-6 border-2 border-black/20 dark:border-white/20 border-t-red-600 rounded-full animate-spin" />
                   </td>
                 </tr>
               ) : orders.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-20 text-center text-sm font-bold text-white/70">
+                  <td colSpan={7} className="px-6 py-20 text-center text-sm font-bold text-black/70 dark:text-white/70">
                     <Layers size={32} className="mx-auto mb-3 opacity-30" />
                     No orders found. Support campaigns to see data here.
                   </td>
                 </tr>
               ) : (
                 orders.map((order) => (
-                  <tr key={order.id} className="border-b last:border-0 border-white/5 hover:bg-white/[0.02] transition-colors">
+                  <tr key={order.id} className="border-b last:border-0 border-black/5 dark:border-white/5 hover:bg-black/[0.02] dark:bg-white/[0.02] transition-colors">
                     <td className="px-5 sm:px-6 py-4 align-top max-w-[200px]">
-                      <span className="inline-block text-xs font-bold font-mono text-white/90 bg-white/5 px-2 py-1 rounded-md mb-2">{order.id.slice(0,8)}</span>
+                      <span className="inline-block text-xs font-bold font-mono text-black/90 dark:text-white/90 bg-black/5 dark:bg-white/5 px-2 py-1 rounded-md mb-2">{order.id.slice(0,8)}</span>
                       <p className="text-sm font-bold truncate group relative">
                         {order.service?.name}
                       </p>
@@ -137,14 +137,14 @@ export default function OrdersPage() {
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top">
                       <p className="text-sm font-bold">{new Date(order.createdAt).toLocaleDateString()}</p>
-                      <p className="text-xs text-white/70 font-medium mt-0.5">{new Date(order.createdAt).toLocaleTimeString()}</p>
+                      <p className="text-xs text-black/70 dark:text-white/70 font-medium mt-0.5">{new Date(order.createdAt).toLocaleTimeString()}</p>
                     </td>
                     <td className="px-5 sm:px-6 py-4 align-top text-right">
                       <div className="flex flex-col items-end gap-2">
                         {order.service?.refill && order.status.toLowerCase() === 'completed' && (
                           <button 
                             onClick={() => handleAction(order.id, 'refill')}
-                            className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-blue-500/10 text-[9px] font-black uppercase tracking-widest text-white/70 hover:text-blue-400 transition-colors border border-transparent hover:border-blue-500/20"
+                            className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-blue-500/10 text-[9px] font-black uppercase tracking-widest text-black/70 dark:text-white/70 hover:text-blue-400 transition-colors border border-transparent hover:border-blue-500/20"
                           >
                             Refill
                           </button>
@@ -152,12 +152,12 @@ export default function OrdersPage() {
                         {order.service?.cancel && ['pending', 'processing', 'in_progress'].includes(order.status.toLowerCase()) && (
                           <button 
                             onClick={() => handleAction(order.id, 'cancel')}
-                            className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-red-500/10 text-[9px] font-black uppercase tracking-widest text-white/70 hover:text-red-400 transition-colors border border-transparent hover:border-red-500/20"
+                            className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-red-500/10 text-[9px] font-black uppercase tracking-widest text-black/70 dark:text-white/70 hover:text-red-400 transition-colors border border-transparent hover:border-red-500/20"
                           >
                             Cancel
                           </button>
                         )}
-                        <button className="text-[9px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors mt-1">Support</button>
+                        <button className="text-[9px] font-black uppercase tracking-widest text-white/40 hover:text-black dark:text-white transition-colors mt-1">Support</button>
                       </div>
                     </td>
                   </tr>

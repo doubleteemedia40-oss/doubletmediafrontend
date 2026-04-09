@@ -122,7 +122,7 @@ export default function DashboardLayout({
           <Wallet size={16} className="text-red-600 shrink-0" />
           <div className="min-w-0">
             <p className="text-[10px] font-black uppercase tracking-widest text-red-600">Balance</p>
-            <p className="text-sm font-bold truncate">${user.walletBalance?.toFixed(2) || '0.00'}</p>
+            <p className="text-sm font-bold truncate">₦{user.walletBalance?.toFixed(2) || '0.00'}</p>
           </div>
         </div>
         

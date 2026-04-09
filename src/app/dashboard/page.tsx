@@ -41,14 +41,14 @@ export default function DashboardPage() {
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/8"
+        className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-black/[0.03] dark:from-white/[0.03] to-black/[0.01] dark:to-white/[0.01] border border-black/10 dark:border-white/8"
       >
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
             <h2 className="text-xl sm:text-2xl font-black italic uppercase">
               Welcome back{user?.name ? `, ${user.name}` : ''}!
             </h2>
-            <p className="text-white/70 mt-1 text-sm font-medium">Your account is active. Start placing orders or add funds below.</p>
+            <p className="text-black/70 dark:text-white/70 mt-1 text-sm font-medium">Your account is active. Start placing orders or add funds below.</p>
           </div>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
             <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
@@ -65,11 +65,11 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + i * 0.07 }}
-            className="p-5 sm:p-6 rounded-2xl bg-black border border-white/10 flex flex-col gap-4 group hover:border-white/20 transition-all"
+            className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-black border border-black/10 dark:border-white/10 flex flex-col gap-4 group hover:border-black/20 dark:border-white/20 transition-all"
           >
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 mb-2">{stat.label}</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-black/70 dark:text-white/70 mb-2">{stat.label}</p>
                 <h3 className="text-xl sm:text-2xl font-black">{stat.value}</h3>
               </div>
               <div className={`p-2.5 rounded-xl border ${stat.bg} ${stat.color}`}>
@@ -78,7 +78,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href={stat.action.href}
-              className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] text-white/60 hover:text-red-600 transition-colors group-hover:text-white/80"
+              className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] text-black/60 dark:text-white/60 hover:text-red-600 transition-colors group-hover:text-black/80 dark:text-white/80"
             >
               {stat.action.label} <ArrowRight size={12} className="ml-1" />
             </Link>
@@ -92,13 +92,13 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35 }}
-          className="p-5 sm:p-6 rounded-2xl bg-black border border-white/10 flex flex-col gap-3"
+          className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-black border border-black/10 dark:border-white/10 flex flex-col gap-3"
         >
           <h3 className="text-xs font-black uppercase tracking-[0.2em] text-red-600">Platform Status</h3>
           <div className="flex flex-col gap-2">
             {['Order Processing', 'Payment Gateway'].map((sys) => (
-              <div key={sys} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
-                <p className="text-sm font-bold text-white/70">{sys}</p>
+              <div key={sys} className="flex items-center justify-between py-2 border-b border-black/5 dark:border-white/5 last:border-0">
+                <p className="text-sm font-bold text-black/70 dark:text-white/70">{sys}</p>
                 <span className="text-[9px] font-black uppercase tracking-[0.2em] text-green-500 bg-green-500/10 px-2 py-1 rounded border border-green-500/20">Operational</span>
               </div>
             ))}
@@ -109,7 +109,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45 }}
-          className="p-5 sm:p-6 rounded-2xl bg-black border border-white/10 flex flex-col gap-4"
+          className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-black border border-black/10 dark:border-white/10 flex flex-col gap-4"
         >
           <h3 className="text-xs font-black uppercase tracking-[0.2em] text-red-600">Quick Start Guide</h3>
           <div className="space-y-3">
@@ -120,13 +120,13 @@ export default function DashboardPage() {
             ].map(({ step, text }) => (
               <div key={step} className="flex items-center gap-3">
                 <div className="h-6 w-6 rounded-full bg-red-600/10 border border-red-600/20 flex items-center justify-center text-[10px] font-black text-red-600 shrink-0">{step}</div>
-                <p className="text-sm font-medium text-white/90">{text}</p>
+                <p className="text-sm font-medium text-black/90 dark:text-white/90">{text}</p>
               </div>
             ))}
           </div>
           <Link
             href="/dashboard/new-order"
-            className="mt-auto flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-red-600 hover:text-white transition-colors"
+            className="mt-auto flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-red-600 hover:text-black dark:text-white transition-colors"
           >
             Place Your First Order <ArrowRight size={12} />
           </Link>

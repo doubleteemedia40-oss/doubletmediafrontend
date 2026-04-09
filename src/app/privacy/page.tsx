@@ -7,7 +7,7 @@ import { Shield, Lock, Eye, FileText, Globe, Bell } from 'lucide-react';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-black flex flex-col">
       <Navbar />
       
       <main className="flex-grow pt-32 pb-24">
@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
             <h1 className="text-4xl sm:text-6xl font-black mb-6 uppercase italic tracking-tighter italic">
               Privacy <span className="text-red-600">Policy</span>
             </h1>
-            <p className="text-white/70 font-medium">Last Updated: April 5, 2026</p>
+            <p className="text-black/70 dark:text-white/70 font-medium">Last Updated: April 5, 2026</p>
           </motion.div>
 
           {/* Content Grid */}
@@ -64,14 +64,14 @@ export default function PrivacyPolicy() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group flex gap-8 p-8 rounded-3xl bg-[#080808] border border-white/5 hover:border-red-600/20 transition-all duration-500"
+                className="group flex gap-8 p-8 rounded-3xl bg-slate-100 dark:bg-[#080808] border border-black/5 dark:border-white/5 hover:border-red-600/20 transition-all duration-500"
               >
                 <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-red-600/10 border border-red-600/20 flex items-center justify-center text-red-600 group-hover:scale-110 transition-transform">
                   <section.icon size={24} />
                 </div>
                 <div>
                   <h2 className="text-xl font-black mb-4 uppercase italic tracking-tight">{section.title}</h2>
-                  <p className="text-white/70 leading-relaxed font-medium">{section.content}</p>
+                  <p className="text-black/70 dark:text-white/70 leading-relaxed font-medium">{section.content}</p>
                 </div>
               </motion.section>
             ))}
@@ -84,7 +84,7 @@ export default function PrivacyPolicy() {
             viewport={{ once: true }}
             className="mt-20 p-8 rounded-3xl bg-red-600/5 border border-red-600/10 text-center"
           >
-            <p className="text-sm text-white/90 font-medium">
+            <p className="text-sm text-black/90 dark:text-white/90 font-medium">
               By using DoubleTmedia, you agree to the collection and use of information in accordance with this policy. For any questions, please contact us at <span className="text-red-600">support@doubletmedia.com</span>
             </p>
           </motion.div>
