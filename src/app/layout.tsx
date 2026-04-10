@@ -9,8 +9,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "#1 Social Media Marketplace | DoubleTmedia",
-  description: "Accelerate your social media growth with DoubleTmedia. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.",
+  title: "#1 Social Media Marketplace | DoubleTBoosting",
+  description: "Accelerate your social media growth with DoubleTBoosting. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.",
 };
 
 import { AuthProvider } from "@/context/auth-context";

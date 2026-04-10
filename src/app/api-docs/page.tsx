@@ -25,7 +25,7 @@ export default function ApiDocsPage() {
                 Developer <span className="text-red-600">API.</span>
               </h1>
               <p className="text-lg sm:text-xl text-black/70 dark:text-white/70 font-medium leading-relaxed">
-                Integrate DoubleTmedia's industry-leading social infrastructure into your own applications. Our robust REST API allows for seamless order automation, service sync, and balance management.
+                Integrate DoubleTBoosting's industry-leading social infrastructure into your own applications. Our robust REST API allows for seamless order automation, service sync, and balance management.
               </p>
             </motion.div>
           </div>

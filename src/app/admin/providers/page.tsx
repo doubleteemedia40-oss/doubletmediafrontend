@@ -126,7 +126,7 @@ export default function AdminProvidersPage() {
               />
               <button 
                  type="submit" disabled={adding}
-                 className="w-full bg-red-600 text-black dark:text-white font-black uppercase text-[10px] tracking-widest py-4 rounded-xl hover:bg-black dark:bg-white hover:text-white dark:text-black transition-colors"
+                 className="w-full bg-red-600 text-white font-black uppercase text-[10px] tracking-widest py-4 rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-colors"
               >
                  {adding ? 'Connecting...' : 'Establish Provider'}
               </button>

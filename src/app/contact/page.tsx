@@ -54,7 +54,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-black/60 dark:text-white/60 mb-1">Email Support</p>
-                    <p className="text-xl font-bold text-black dark:text-white">{settings['support_email'] || 'support@doubletmedia.com'}</p>
+                    <p className="text-xl font-bold text-black dark:text-white">{settings['support_email'] || 'support@doubletboosting.com'}</p>
                   </div>
                 </div>
 

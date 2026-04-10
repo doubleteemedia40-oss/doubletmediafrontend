@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
               {
                 icon: Shield,
                 title: "Introduction",
-                content: "At DoubleTmedia, we respect your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information when you use our #1 Social Media Marketplace service."
+                content: "At DoubleTBoosting, we respect your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information when you use our #1 Social Media Marketplace service."
               },
               {
                 icon: Eye,
@@ -85,7 +85,7 @@ export default function PrivacyPolicy() {
             className="mt-20 p-8 rounded-3xl bg-red-600/5 border border-red-600/10 text-center"
           >
             <p className="text-sm text-black/90 dark:text-white/90 font-medium">
-              By using DoubleTmedia, you agree to the collection and use of information in accordance with this policy. For any questions, please contact us at <span className="text-red-600">support@doubletmedia.com</span>
+              By using DoubleTBoosting, you agree to the collection and use of information in accordance with this policy. For any questions, please contact us at <span className="text-red-600">support@doubletboosting.com</span>
             </p>
           </motion.div>
         </div>

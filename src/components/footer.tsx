@@ -9,10 +9,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
           <div className="col-span-1 md:col-span-2 space-y-8">
             <Link href="/" className="text-3xl font-black tracking-tighter text-red-600">
-              DoubleTmedia
+              DoubleTBoosting
             </Link>
             <p className="text-black/70 dark:text-white/70 text-sm font-medium leading-relaxed max-w-sm">
-              Accelerate your social media growth with DoubleTmedia. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
+              Accelerate your social media growth with DoubleTBoosting. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
             </p>
           </div>
           
@@ -42,7 +42,7 @@ export default function Footer() {
         
         <div className="pt-12 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-[10px] font-bold uppercase tracking-widest text-black/50 dark:text-white/50">
-            &copy; 2026 DoubleTmedia. SECURED BY ENCRYPTION PROTOCOL 2.4.0
+            &copy; 2026 DoubleTBoosting. SECURED BY ENCRYPTION PROTOCOL 2.4.0
           </p>
           <div className="flex gap-8">
              {/* Payment badges removed */}

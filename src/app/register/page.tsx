@@ -108,7 +108,7 @@ export default function RegisterPage() {
             <div>
               <h1 className="text-3xl sm:text-4xl font-black mb-3 tracking-tight uppercase italic">Create Account</h1>
               <div className="h-1 w-10 bg-red-600 mb-5" />
-              <p className="text-black/70 dark:text-white/70 text-sm font-medium">Join DoubleTmedia and skyrocket your social media presence today.</p>
+              <p className="text-black/70 dark:text-white/70 text-sm font-medium">Join DoubleTBoosting and skyrocket your social media presence today.</p>
             </div>
 
             {error && (
@@ -158,7 +158,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-2xl bg-red-600 font-black uppercase tracking-[0.2em] text-[11px] text-black dark:text-white shadow-[0_0_40px_-15px_rgba(220,38,38,0.6)] hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 mt-2"
+                className="w-full py-4 rounded-2xl bg-red-600 font-black uppercase tracking-[0.2em] text-[11px] text-white shadow-[0_0_40px_-15px_rgba(220,38,38,0.6)] hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 mt-2"
               >
                 {loading ? (
                   <div className="h-5 w-5 border-2 border-black/30 dark:border-white/30 border-t-white rounded-full animate-spin" />

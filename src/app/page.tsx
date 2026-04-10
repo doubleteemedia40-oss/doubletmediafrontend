@@ -46,7 +46,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="text-base sm:text-xl lg:text-2xl text-black/70 dark:text-white/70 font-medium max-w-2xl mb-6 sm:mb-10 leading-relaxed px-2 sm:px-0"
              >
-                Accelerate your social media growth with DoubleTmedia. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
+                Accelerate your social media growth with DoubleTBoosting. Quickly gain real followers, viewers, likes & more with our advanced blend of marketing tactics.
              </motion.p>
 
              {/* Buttons */}

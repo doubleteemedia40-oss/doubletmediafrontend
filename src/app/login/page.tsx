@@ -88,7 +88,7 @@ export default function LoginPage() {
           </div>
 
           <div className="relative z-10 w-full max-w-md pt-10 border-t border-black/5 dark:border-white/5 mb-8">
-             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 mb-3 italic">DoubleTmedia</p>
+             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 mb-3 italic">DoubleTBoosting</p>
              <div className="flex gap-6 opacity-20">
                  <div className="h-5 w-20 bg-black/20 dark:bg-white/20 rounded-full border border-black/10 dark:border-white/10" />
                  <div className="h-5 w-16 bg-black/20 dark:bg-white/20 rounded-full border border-black/10 dark:border-white/10" />
@@ -150,7 +150,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-2xl bg-red-600 font-black uppercase tracking-[0.2em] text-[11px] text-black dark:text-white shadow-[0_0_40px_-15px_rgba(220,38,38,0.6)] hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 mt-2"
+                className="w-full py-4 rounded-2xl bg-red-600 font-black uppercase tracking-[0.2em] text-[11px] text-white shadow-[0_0_40px_-15px_rgba(220,38,38,0.6)] hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 mt-2"
               >
                 {loading ? (
                   <div className="h-5 w-5 border-2 border-black/30 dark:border-white/30 border-t-white rounded-full animate-spin" />

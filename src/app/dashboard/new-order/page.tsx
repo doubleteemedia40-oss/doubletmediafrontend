@@ -520,7 +520,7 @@ export default function NewOrderPage() {
                 <button 
                   onClick={handleSingleSubmit}
                   disabled={submitting || !selectedService || !quantity || !link}
-                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-black dark:text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
+                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
                 >
                   {submitting ? <div className="h-5 w-5 border-2 border-black/30 dark:border-white/30 border-t-white rounded-full animate-spin" /> : 'Submit Order'}
                 </button>
@@ -528,7 +528,7 @@ export default function NewOrderPage() {
                 <button 
                   onClick={handleMassSubmit}
                   disabled={massLinesProcessing}
-                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-black dark:text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
+                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
                 >
                   {massLinesProcessing ? 'Processing mass order...' : 'Submit Mass Order'}
                 </button>

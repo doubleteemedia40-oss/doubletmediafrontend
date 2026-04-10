@@ -83,7 +83,7 @@ export default function AdminSettingsPage() {
                   type="email"
                   value={settings['support_email'] || ''} 
                   onChange={(e) => handleChange('support_email', e.target.value)}
-                  placeholder="support@doubletmedia.com"
+                  placeholder="support@doubletboosting.com"
                   className="w-full bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-sm font-bold outline-none focus:border-red-600/50 transition-all"
                 />
               </div>

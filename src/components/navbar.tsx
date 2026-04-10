@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="container-custom h-16 sm:h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-xl sm:text-2xl font-black tracking-tighter text-red-600 shrink-0" onClick={() => setOpen(false)}>
-            DoubleTmedia
+            DoubleTBoosting
           </Link>
 
           {/* Desktop nav links */}
@@ -64,7 +64,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/register"
-              className="px-5 py-2.5 rounded-xl bg-red-600 text-white text-xs font-bold uppercase tracking-widest hover:bg-black dark:bg-white hover:text-white dark:text-black transition-all shadow-[0_0_20px_-5px_rgba(220,38,38,0.4)]"
+              className="px-5 py-2.5 rounded-xl bg-red-600 text-white text-xs font-bold uppercase tracking-widest hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-[0_0_20px_-5px_rgba(220,38,38,0.4)]"
             >
               Get Started
             </Link>
@@ -104,7 +104,7 @@ export default function Navbar() {
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between p-6 border-b border-black/10 dark:border-white/10 text-black dark:text-white">
-                <span className="text-lg font-black tracking-tighter text-red-600">DoubleTmedia</span>
+                <span className="text-lg font-black tracking-tighter text-red-600">DoubleTBoosting</span>
                 <div className="flex items-center gap-3">
                   <ThemeToggle />
                   <button

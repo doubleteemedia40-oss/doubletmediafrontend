@@ -148,7 +148,7 @@ export default function AdminServicesPage() {
              </select>
              <button 
                 onClick={handleImport} disabled={importing || !selectedProviderId}
-                className="px-4 py-2 bg-red-600 text-black dark:text-white hover:bg-black dark:bg-white hover:text-white dark:text-black rounded-lg text-[10px] font-black uppercase tracking-widest transition-all disabled:opacity-50 flex items-center gap-2"
+                className="px-4 py-2 bg-red-600 text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black rounded-lg text-[10px] font-black uppercase tracking-widest transition-all disabled:opacity-50 flex items-center gap-2"
              >
                 {importing ? '...' : <DownloadCloud size={14} />}
              </button>
