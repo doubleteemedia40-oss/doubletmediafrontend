@@ -217,13 +217,13 @@ export default function NewOrderPage() {
       <div className="flex flex-wrap items-center gap-2 mb-8 p-1 bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl w-fit">
         <button 
           onClick={() => { setActiveTab('single'); setError(null); setSuccess(null); }}
-          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'single' ? 'bg-[#ff4e4e] text-black dark:text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:text-white hover:bg-black/5 dark:bg-white/5'}`}
+          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'single' ? 'bg-[#ff4e4e] text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:text-white hover:bg-black/5 dark:bg-white/5'}`}
         >
           Single order
         </button>
         <button 
           onClick={() => { setActiveTab('mass'); setError(null); setSuccess(null); }}
-          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'mass' ? 'bg-[#ff4e4e] text-black dark:text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:text-white hover:bg-black/5 dark:bg-white/5'}`}
+          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'mass' ? 'bg-[#ff4e4e] text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:text-white hover:bg-black/5 dark:bg-white/5'}`}
         >
           Mass order
         </button>
@@ -241,7 +241,7 @@ export default function NewOrderPage() {
         <div className="flex-1 w-full space-y-6">
           
           {activeTab === 'mass' && (
-            <div className="bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] p-6 lg:p-8">
+            <div className="bg-white dark:bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] p-6 lg:p-8">
               <div className="flex items-center gap-4 mb-4">
                  <div className="h-12 w-12 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/20 shrink-0">
                     <ListCollapse className="text-red-500" />
@@ -266,7 +266,7 @@ export default function NewOrderPage() {
                        className={`px-5 py-3 rounded-[16px] text-sm font-bold transition-all border ${
                          massFormat === fmt.id 
                          ? 'bg-[#ff4e4e] text-black dark:text-white border-[#ff4e4e] shadow-lg shadow-red-500/20' 
-                         : 'bg-[#222224] text-black/70 dark:text-white/70 border-black/5 dark:border-white/5 hover:border-black/20 dark:border-white/20'
+                         : 'bg-black/5 dark:bg-[#222224] text-black/70 dark:text-white/70 border-black/5 dark:border-white/5 hover:border-black/20 dark:border-white/20'
                        }`}
                      >
                        {fmt.label}
@@ -277,7 +277,7 @@ export default function NewOrderPage() {
             </div>
           )}
 
-          <div className="bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] p-4 sm:p-6 lg:p-8 overflow-hidden">
+          <div className="bg-white dark:bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] p-4 sm:p-6 lg:p-8 overflow-hidden">
             <div className="flex items-center justify-between mb-4">
               <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 ml-2">SERVICE</p>
               <button onClick={clearFilters} className="text-xs font-bold text-[#ff4e4e] hover:text-[#ff3030]">Clear filters</button>
@@ -285,7 +285,7 @@ export default function NewOrderPage() {
 
             {/* Search Bar */}
             <div className="relative mb-6">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-white/40" size={18} />
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-black/40 dark:text-white/40" size={18} />
               <input
                 type="text"
                 placeholder="Search by ID, name, category or geo..."
@@ -298,26 +298,26 @@ export default function NewOrderPage() {
             {/* Dropdown Filters */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
                <div className="min-w-0">
-                 <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Platform</label>
-                 <select value={platform} onChange={e => setPlatform(e.target.value)} className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
+                 <label className="text-[10px] font-semibold text-black/40 dark:text-white/40 ml-1 mb-1 block">Platform</label>
+                 <select value={platform} onChange={e => setPlatform(e.target.value)} className="w-full bg-transparent border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
                    {platforms.map(p => <option key={p} value={p}>{p}</option>)}
                  </select>
                </div>
                <div className="min-w-0">
-                 <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Type</label>
-                 <select className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
+                 <label className="text-[10px] font-semibold text-black/40 dark:text-white/40 ml-1 mb-1 block">Type</label>
+                 <select className="w-full bg-transparent border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
                    <option>All</option>
                  </select>
                </div>
                <div className="min-w-0">
-                 <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Category</label>
-                 <select value={category} onChange={e => setCategory(e.target.value)} className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none truncate">
+                 <label className="text-[10px] font-semibold text-black/40 dark:text-white/40 ml-1 mb-1 block">Category</label>
+                 <select value={category} onChange={e => setCategory(e.target.value)} className="w-full bg-transparent border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none truncate">
                    {categories.map(c => <option key={c} value={c}>{c}</option>)}
                  </select>
                </div>
                <div className="min-w-0">
-                 <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Budget</label>
-                 <select value={budget} onChange={e => setBudget(e.target.value)} className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
+                 <label className="text-[10px] font-semibold text-black/40 dark:text-white/40 ml-1 mb-1 block">Budget</label>
+                 <select value={budget} onChange={e => setBudget(e.target.value)} className="w-full bg-transparent border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
                    <option>No limit</option>
                    <option>&lt; ₦500</option>
                    <option>₦500 - ₦2000</option>
@@ -325,8 +325,8 @@ export default function NewOrderPage() {
                  </select>
                </div>
                <div className="min-w-0">
-                 <label className="text-[10px] font-semibold text-white/40 ml-1 mb-1 block">Sort by</label>
-                 <select value={sort} onChange={e => setSort(e.target.value)} className="w-full bg-[#18181A] border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
+                 <label className="text-[10px] font-semibold text-black/40 dark:text-white/40 ml-1 mb-1 block">Sort by</label>
+                 <select value={sort} onChange={e => setSort(e.target.value)} className="w-full bg-transparent border-b border-black/10 dark:border-white/10 pb-2 text-sm text-black/80 dark:text-white/80 outline-none hover:text-black dark:text-white cursor-pointer appearance-none">
                    <option>Relevance</option>
                    <option>Price: Low to High</option>
                    <option>Price: High to Low</option>
@@ -335,22 +335,22 @@ export default function NewOrderPage() {
             </div>
 
             {/* Services List Box */}
-            <div className="border border-black/5 dark:border-white/5 rounded-2xl bg-[#111112] overflow-hidden flex flex-col h-[500px]">
-               <div className="px-5 py-3 border-b border-black/5 dark:border-white/5 bg-[#18181A] flex items-center justify-between shadow-sm">
+            <div className="border border-black/5 dark:border-white/5 rounded-2xl bg-black/[0.02] dark:bg-[#111112] overflow-hidden flex flex-col h-[500px]">
+               <div className="px-5 py-3 border-b border-black/5 dark:border-white/5 bg-black/[0.05] dark:bg-[#18181A] flex items-center justify-between shadow-sm">
                  <p className="text-xs font-semibold text-black/60 dark:text-white/60">Showing {filteredServices.length} of {services.length} services</p>
                </div>
                <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
                   {loading ? (
                      <div className="p-8 flex justify-center"><div className="h-6 w-6 rounded-full border-2 border-red-500 border-t-transparent animate-spin"/></div>
                   ) : filteredServices.length === 0 ? (
-                     <p className="p-8 text-center text-white/40 text-sm">No services found matching your filters.</p>
+                     <p className="p-8 text-center text-black/40 dark:text-white/40 text-sm">No services found matching your filters.</p>
                   ) : (
                      <div className="flex flex-col">
                         {filteredServices.map((service, i) => (
                            <div 
                              key={service.id}
                              onClick={() => setSelectedServiceId(service.id)}
-                             className={`p-5 border-b border-black/5 dark:border-white/5 cursor-pointer transition-all hover:bg-black/[0.02] dark:bg-white/[0.02] ${selectedServiceId === service.id ? 'bg-red-500/5 hover:bg-red-500/10 relative z-10' : ''}`}
+                             className={`p-5 border-b border-black/5 dark:border-white/5 cursor-pointer transition-all hover:bg-black/[0.04] dark:hover:bg-white/[0.02] ${selectedServiceId === service.id ? 'bg-red-500/5 hover:bg-red-500/10 relative z-10' : ''}`}
                            >
                              <div className="flex items-start gap-3">
                                <div className="flex-1">
@@ -358,12 +358,12 @@ export default function NewOrderPage() {
                                     {service.name}
                                  </h4>
                                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium">
-                                   <span className="text-white/40">ID {service.providerServiceId}</span>
-                                   <span className="text-white/20">&bull;</span>
+                                   <span className="text-black/40 dark:text-white/40">ID {service.providerServiceId}</span>
+                                   <span className="text-black/20 dark:text-white/20">&bull;</span>
                                    <span className="text-[#ff4e4e] font-bold">₦{Number(service.userRate).toFixed(2)}<span className="text-[#ff4e4e]/60 font-medium">/1k</span></span>
-                                   <span className="text-white/20">&bull;</span>
+                                   <span className="text-black/20 dark:text-white/20">&bull;</span>
                                    <span className="text-black/60 dark:text-white/60 hidden sm:inline">{service.category}</span>
-                                   <span className="text-white/20 hidden sm:inline">&bull;</span>
+                                   <span className="text-black/20 dark:text-white/20 hidden sm:inline">&bull;</span>
                                    <span className="text-black/50 dark:text-white/50">{service.min.toLocaleString()} - {service.max.toLocaleString()}</span>
                                  </div>
                                </div>
@@ -399,7 +399,7 @@ export default function NewOrderPage() {
         {/* RIGHT COMPONENT */}
         <div className="w-full xl:w-[400px] shrink-0 sticky top-6 space-y-6">
           
-          <div className="bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] overflow-hidden flex flex-col">
+          <div className="bg-white dark:bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] overflow-hidden flex flex-col">
             <div className="p-6 border-b border-black/5 dark:border-white/5">
               <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 text-center">SERVICE DETAILS</p>
             </div>
@@ -407,10 +407,10 @@ export default function NewOrderPage() {
             {!selectedService ? (
                <div className="p-10 flex flex-col items-center justify-center text-center">
                   <div className="h-16 w-16 mb-4 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/5 dark:border-white/5">
-                     <ListCollapse className="text-white/20" size={24} />
+                     <ListCollapse className="text-black/20 dark:text-white/20" size={24} />
                   </div>
                   <h3 className="text-lg font-bold text-black dark:text-white mb-2">Select a service</h3>
-                  <p className="text-sm text-white/40">Pick one from the list to review details and place your order.</p>
+                  <p className="text-sm text-black/40 dark:text-white/40">Pick one from the list to review details and place your order.</p>
                </div>
             ) : (
                <div className="p-6 space-y-6">
@@ -423,12 +423,12 @@ export default function NewOrderPage() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
-                     <div className="p-4 bg-white dark:bg-black/30 rounded-xl border border-black/5 dark:border-white/5">
-                       <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">MIN ORDER</p>
+                     <div className="p-4 bg-black/[0.02] dark:bg-black/30 rounded-xl border border-black/5 dark:border-white/5">
+                       <p className="text-[10px] font-black uppercase tracking-widest text-black/40 dark:text-white/40 mb-1">MIN ORDER</p>
                        <p className="text-lg font-bold text-black dark:text-white">{selectedService.min.toLocaleString()}</p>
                      </div>
-                     <div className="p-4 bg-white dark:bg-black/30 rounded-xl border border-black/5 dark:border-white/5">
-                       <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">MAX ORDER</p>
+                     <div className="p-4 bg-black/[0.02] dark:bg-black/30 rounded-xl border border-black/5 dark:border-white/5">
+                       <p className="text-[10px] font-black uppercase tracking-widest text-black/40 dark:text-white/40 mb-1">MAX ORDER</p>
                        <p className="text-lg font-bold text-black dark:text-white">{selectedService.max.toLocaleString()}</p>
                      </div>
                   </div>
@@ -445,7 +445,7 @@ export default function NewOrderPage() {
                            type="text" 
                            value={link}
                            onChange={e => setLink(e.target.value)}
-                           className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] px-5 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-white/20 hover:bg-white dark:bg-black/60 transition-colors"
+                           className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] px-5 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-black/20 dark:placeholder:text-white/20 hover:bg-white dark:bg-black/60 transition-colors"
                            placeholder="https://..."
                          />
                        </div>
@@ -459,7 +459,7 @@ export default function NewOrderPage() {
                              min={selectedService.min}
                              max={selectedService.max}
                              onChange={(e) => setQuantity(e.target.value ? Number(e.target.value) : '')}
-                             className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] pl-5 pr-12 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-white/20 hover:bg-white dark:bg-black/60 transition-colors"
+                             className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] pl-5 pr-12 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-black/20 dark:placeholder:text-white/20 hover:bg-white dark:bg-black/60 transition-colors"
                              placeholder={`Min: ${selectedService.min}`}
                            />
                          </div>
@@ -480,17 +480,17 @@ export default function NewOrderPage() {
                            type="number" 
                            value={quantity}
                            onChange={(e) => setQuantity(e.target.value ? Number(e.target.value) : '')}
-                           className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] px-5 py-4 outline-none focus:border-[#00e1ff]/50 text-sm font-bold placeholder:text-white/20 transition-colors shadow-[0_0_15px_-3px_rgba(0,225,255,0.1)]"
+                           className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] px-5 py-4 outline-none focus:border-[#00e1ff]/50 text-sm font-bold placeholder:text-black/20 dark:placeholder:text-white/20 transition-colors shadow-[0_0_15px_-3px_rgba(0,225,255,0.1)]"
                            placeholder={`Quantity applied to each link`}
                          />
                        </div>
-                       <p className="text-xs text-white/40 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl">In <strong className="text-black dark:text-white">"One service, many URLs"</strong> format, just paste links in the Data textbox. We will apply this service and quantity to every link automatically.</p>
+                       <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl">In <strong className="text-black dark:text-white">"One service, many URLs"</strong> format, just paste links in the Data textbox. We will apply this service and quantity to every link automatically.</p>
                      </div>
                   )}
                   
                   {activeTab === 'mass' && massFormat === 'link_qty' && (
                      <div className="space-y-5">
-                       <p className="text-xs text-white/40 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl">In <strong className="text-black dark:text-white">"Link · Qty per line"</strong> format, parse your text as `link quantity` on each line. This chosen service will apply to all of them.</p>
+                       <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl">In <strong className="text-black dark:text-white">"Link · Qty per line"</strong> format, parse your text as `link quantity` on each line. This chosen service will apply to all of them.</p>
                      </div>
                   )}
                   

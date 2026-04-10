@@ -95,7 +95,7 @@ export default function UserSupportPage() {
         </div>
         <button 
           onClick={() => { setShowNew(true); setActiveTicket(null); }}
-          className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-black dark:text-white rounded-xl text-xs font-black uppercase tracking-widest transition-all w-fit"
+          className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-widest transition-all w-fit"
         >
           + New Ticket
         </button>
@@ -165,7 +165,7 @@ export default function UserSupportPage() {
                   <button 
                     onClick={handleCreate}
                     disabled={!subject.trim() || !message.trim()}
-                    className="px-6 py-3 bg-red-600 disabled:opacity-50 hover:bg-red-700 text-black dark:text-white rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2"
+                    className="px-6 py-3 bg-red-600 disabled:opacity-50 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2"
                   >
                     <Send size={14} /> Submit Ticket
                   </button>

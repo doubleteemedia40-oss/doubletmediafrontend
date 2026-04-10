@@ -143,7 +143,7 @@ function AddFundsContent() {
                    onClick={() => setAmount(val)}
                    className={`h-12 rounded-xl text-xs font-black uppercase transition-all ${
                      amount === val 
-                     ? 'bg-red-600 text-black dark:text-white shadow-[0_0_20px_-5px_rgba(220,38,38,0.5)]' 
+                     ? 'bg-red-600 text-white shadow-[0_0_20px_-5px_rgba(220,38,38,0.5)]' 
                      : 'bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 text-black/90 dark:text-white/90 hover:bg-black/5 dark:bg-white/5 hover:text-black dark:text-white'
                    }`}
                  >

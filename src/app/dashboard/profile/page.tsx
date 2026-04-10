@@ -138,7 +138,7 @@ export default function ProfilePage() {
                <button 
                  onClick={generateApiKey}
                  disabled={loadingKey}
-                 className="flex-1 sm:w-auto px-6 h-12 sm:h-14 rounded-xl bg-red-600/10 text-red-600 border border-red-600/20 font-black uppercase tracking-[0.1em] text-[10px] flex items-center justify-center gap-2 hover:bg-red-600 hover:text-black dark:text-white transition-all disabled:opacity-50 whitespace-nowrap"
+                 className="flex-1 sm:w-auto px-6 h-12 sm:h-14 rounded-xl bg-red-600/10 text-red-600 border border-red-600/20 font-black uppercase tracking-[0.1em] text-[10px] flex items-center justify-center gap-2 hover:bg-red-600 hover:text-white transition-all disabled:opacity-50 whitespace-nowrap"
                >
                  {loadingKey ? (
                     <RefreshCcw size={14} className="animate-spin" />
