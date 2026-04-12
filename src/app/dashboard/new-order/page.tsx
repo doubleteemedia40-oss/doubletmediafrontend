@@ -10,10 +10,13 @@ interface Service {
   id: string;
   name: string;
   category: string;
+  type: string | null;
   providerServiceId: string;
   userRate: number;
   min: number;
   max: number;
+  refill: boolean;
+  cancel: boolean;
   description: string;
 }
 
@@ -93,7 +96,12 @@ export default function NewOrderPage() {
   }, [services, search, category, platform, budget, sort]);
 
   const selectedService = services.find(s => s.id === selectedServiceId);
-  const totalCost = selectedService && quantity ? (Number(selectedService.userRate) / 1000) * Number(quantity) : 0;
+
+  // A "package" service has a fixed quantity (min === max) — user only needs to provide a link
+  const isPackageService = selectedService ? selectedService.min === selectedService.max : false;
+  const effectiveQuantity = isPackageService && selectedService ? selectedService.min : quantity;
+
+  const totalCost = selectedService && effectiveQuantity ? (Number(selectedService.userRate) / 1000) * Number(effectiveQuantity) : 0;
 
   const clearFilters = () => {
     setSearch('');
@@ -104,7 +112,7 @@ export default function NewOrderPage() {
   };
 
   const handleSingleSubmit = async () => {
-    if (!selectedService || !quantity || !link) return;
+    if (!selectedService || !effectiveQuantity || !link) return;
 
     if (totalCost > (user?.walletBalance || 0)) {
        setError('Insufficient account balance. Please add funds first.');
@@ -119,7 +127,7 @@ export default function NewOrderPage() {
       await api.post('/orders', {
         serviceId: selectedService.id,
         link,
-        quantity: Number(quantity)
+        quantity: Number(effectiveQuantity)
       });
       
       await refreshUser();
@@ -450,20 +458,31 @@ export default function NewOrderPage() {
                          />
                        </div>
 
-                       <div className="space-y-2">
-                         <label className="text-[10px] font-black uppercase tracking-widest text-black/50 dark:text-white/50 ml-1">Quantity</label>
-                         <div className="relative">
-                           <input 
-                             type="number" 
-                             value={quantity}
-                             min={selectedService.min}
-                             max={selectedService.max}
-                             onChange={(e) => setQuantity(e.target.value ? Number(e.target.value) : '')}
-                             className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] pl-5 pr-12 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-black/20 dark:placeholder:text-white/20 hover:bg-white dark:bg-black/60 transition-colors"
-                             placeholder={`Min: ${selectedService.min}`}
-                           />
+                       {isPackageService && (
+                          <div className="flex items-center gap-2 px-4 py-3 bg-amber-500/10 border border-amber-500/20 rounded-[14px]">
+                            <Star size={14} className="text-amber-400 shrink-0" />
+                            <p className="text-xs font-bold text-amber-400">
+                              Package — fixed at <strong>{selectedService!.min.toLocaleString()}</strong>. Only a link is needed.
+                            </p>
+                          </div>
+                        )}
+
+                       {!isPackageService && (
+                         <div className="space-y-2">
+                           <label className="text-[10px] font-black uppercase tracking-widest text-black/50 dark:text-white/50 ml-1">Quantity</label>
+                           <div className="relative">
+                             <input 
+                               type="number" 
+                               value={quantity}
+                               min={selectedService.min}
+                               max={selectedService.max}
+                               onChange={(e) => setQuantity(e.target.value ? Number(e.target.value) : '')}
+                               className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-[16px] pl-5 pr-12 py-4 outline-none focus:border-red-500/50 text-sm font-bold placeholder:text-black/20 dark:placeholder:text-white/20 hover:bg-white dark:bg-black/60 transition-colors"
+                               placeholder={`Min: ${selectedService.min.toLocaleString()}`}
+                             />
+                           </div>
                          </div>
-                       </div>
+                       )}
                        
                        <div className="flex items-center justify-between bg-red-500/10 border border-red-500/20 rounded-[16px] p-5">
                           <p className="text-xs font-black uppercase tracking-widest text-red-500/70">Total Cost</p>
@@ -519,7 +538,7 @@ export default function NewOrderPage() {
              {activeTab === 'single' ? (
                 <button 
                   onClick={handleSingleSubmit}
-                  disabled={submitting || !selectedService || !quantity || !link}
+                  disabled={submitting || !selectedService || !effectiveQuantity || !link || (!isPackageService && !quantity)}
                   className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
                 >
                   {submitting ? <div className="h-5 w-5 border-2 border-black/30 dark:border-white/30 border-t-white rounded-full animate-spin" /> : 'Submit Order'}
