@@ -386,42 +386,71 @@ export default function NewOrderPage() {
                </div>
             </div>
             
-            {/* MASS ORDER DATA TEXTAREA */}
-            {activeTab === 'mass' && (
+            {/* MASS ORDER DATA TEXTAREA FOR ID_LINK_QTY */}
+            {activeTab === 'mass' && massFormat === 'id_link_qty' && (
               <div className="mt-8 space-y-3">
                 <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 ml-2">DATA</p>
                 <textarea 
                   value={massData}
                   onChange={e => setMassData(e.target.value)}
                   disabled={massLinesProcessing}
-                  placeholder={`Paste your orders here... ${massFormat === 'id_link_qty' ? '\nExample:\n3214 https://instagram.com/p/123 100\n3214 https://instagram.com/p/456 500' : ''}`}
+                  placeholder="Example:\n3214 https://instagram.com/p/123 100\n3214 https://instagram.com/p/456 500"
                   className="w-full h-[200px] bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl p-5 text-sm font-medium text-black/90 dark:text-white/90 outline-none focus:border-red-500/50 resize-y font-mono whitespace-nowrap overflow-x-auto scrollbar-thin disabled:opacity-50"
                   spellCheck="false"
                 />
+                
+                <AnimatePresence>
+                   {error && (
+                     <motion.div initial={{ opacity:0, y: 10 }} animate={{ opacity:1, y: 0 }} exit={{ opacity:0 }} className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-bold flex gap-3">
+                       <AlertCircle className="shrink-0 mt-0.5" size={16} />
+                       <span>{error}</span>
+                     </motion.div>
+                   )}
+                   {success && (
+                     <motion.div initial={{ opacity:0, y: 10 }} animate={{ opacity:1, y: 0 }} exit={{ opacity:0 }} className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-bold flex gap-3">
+                       <CheckCircle2 className="shrink-0 mt-0.5" size={16} />
+                       <span>{success}</span>
+                     </motion.div>
+                   )}
+                </AnimatePresence>
+
+                <button 
+                  onClick={handleMassSubmit}
+                  disabled={massLinesProcessing}
+                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
+                >
+                  {massLinesProcessing ? 'Processing mass order...' : 'Submit Mass Order'}
+                </button>
               </div>
             )}
             
           </div>
         </div>
 
-        {/* RIGHT COMPONENT */}
-        <div className="w-full xl:w-[400px] shrink-0 sticky top-6 space-y-6">
-          
-          <div className="bg-white dark:bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] overflow-hidden flex flex-col">
-            <div className="p-6 border-b border-black/5 dark:border-white/5">
-              <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 text-center">SERVICE DETAILS</p>
-            </div>
-            
-            {!selectedService ? (
-               <div className="p-10 flex flex-col items-center justify-center text-center">
-                  <div className="h-16 w-16 mb-4 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/5 dark:border-white/5">
-                     <ListCollapse className="text-black/20 dark:text-white/20" size={24} />
-                  </div>
-                  <h3 className="text-lg font-bold text-black dark:text-white mb-2">Select a service</h3>
-                  <p className="text-sm text-black/40 dark:text-white/40">Pick one from the list to review details and place your order.</p>
-               </div>
-            ) : (
-               <div className="p-6 space-y-6">
+        {/* MODAL / RIGHT COMPONENT */}
+        <AnimatePresence>
+          {selectedService && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+              <motion.div 
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                onClick={() => setSelectedServiceId(null)}
+                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              />
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                className="relative w-full max-w-[500px] max-h-[90vh] overflow-y-auto bg-white dark:bg-[#18181A] border border-black/5 dark:border-white/5 rounded-[24px] shadow-2xl flex flex-col z-10"
+              >
+                <button 
+                  onClick={() => setSelectedServiceId(null)}
+                  className="absolute top-4 right-4 h-8 w-8 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-full flex items-center justify-center transition-colors z-20"
+                >
+                  <span className="text-black/50 dark:text-white/50 font-bold">×</span>
+                </button>
+                <div className="p-6 border-b border-black/5 dark:border-white/5 pr-14">
+                  <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50">PLACE ORDER</p>
+                </div>
+                
+                <div className="p-6 space-y-6">
                   
                   <div>
                     <h3 className="text-base font-bold text-black dark:text-white leading-snug mb-3">{selectedService.name}</h3>
@@ -512,49 +541,63 @@ export default function NewOrderPage() {
                        <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl">In <strong className="text-black dark:text-white">"Link · Qty per line"</strong> format, parse your text as `link quantity` on each line. This chosen service will apply to all of them.</p>
                      </div>
                   )}
+
+                  {activeTab === 'mass' && (
+                    <div className="space-y-3 pt-4 border-t border-black/5 dark:border-white/5">
+                      <p className="text-[10px] font-black uppercase tracking-[0.1em] text-black/50 dark:text-white/50 ml-1">DATA</p>
+                      <textarea 
+                        value={massData}
+                        onChange={e => setMassData(e.target.value)}
+                        disabled={massLinesProcessing}
+                        placeholder="Paste your links here..."
+                        className="w-full h-[150px] bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl p-5 text-sm font-medium text-black/90 dark:text-white/90 outline-none focus:border-red-500/50 resize-y font-mono whitespace-nowrap overflow-x-auto scrollbar-thin disabled:opacity-50"
+                        spellCheck="false"
+                      />
+                    </div>
+                  )}
                   
                </div>
-            )}
-          </div>
-          
-          {/* RESULTS/MESSAGES (Sticky under details) */}
-          <AnimatePresence>
-             {error && (
-               <motion.div initial={{ opacity:0, y: 10 }} animate={{ opacity:1, y: 0 }} exit={{ opacity:0 }} className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-bold flex gap-3">
-                 <AlertCircle className="shrink-0 mt-0.5" size={16} />
-                 <span>{error}</span>
-               </motion.div>
-             )}
-             {success && (
-               <motion.div initial={{ opacity:0, y: 10 }} animate={{ opacity:1, y: 0 }} exit={{ opacity:0 }} className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-bold flex gap-3">
-                 <CheckCircle2 className="shrink-0 mt-0.5" size={16} />
-                 <span>{success}</span>
-               </motion.div>
-             )}
-          </AnimatePresence>
+               
+               <div className="p-6 pt-0 space-y-4">
+                  {/* RESULTS/MESSAGES */}
+                  <AnimatePresence>
+                     {error && (
+                       <motion.div initial={{ opacity:0, y: 10 }} animate={{ opacity:1, y: 0 }} exit={{ opacity:0 }} className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-bold flex gap-3">
+                         <AlertCircle className="shrink-0 mt-0.5" size={16} />
+                         <span>{error}</span>
+                       </motion.div>
+                     )}
+                     {success && (
+                       <motion.div initial={{ opacity:0, y: 10 }} animate={{ opacity:1, y: 0 }} exit={{ opacity:0 }} className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-bold flex gap-3">
+                         <CheckCircle2 className="shrink-0 mt-0.5" size={16} />
+                         <span>{success}</span>
+                       </motion.div>
+                     )}
+                  </AnimatePresence>
 
-          {/* ACTION BUTTON */}
-          <div className="pt-2">
-             {activeTab === 'single' ? (
-                <button 
-                  onClick={handleSingleSubmit}
-                  disabled={submitting || !selectedService || !effectiveQuantity || !link || (!isPackageService && !quantity)}
-                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
-                >
-                  {submitting ? <div className="h-5 w-5 border-2 border-black/30 dark:border-white/30 border-t-white rounded-full animate-spin" /> : 'Submit Order'}
-                </button>
-             ) : (
-                <button 
-                  onClick={handleMassSubmit}
-                  disabled={massLinesProcessing}
-                  className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
-                >
-                  {massLinesProcessing ? 'Processing mass order...' : 'Submit Mass Order'}
-                </button>
-             )}
-          </div>
-
-        </div>
+                  {/* ACTION BUTTON */}
+                  {activeTab === 'single' ? (
+                     <button 
+                       onClick={handleSingleSubmit}
+                       disabled={submitting || !selectedService || !effectiveQuantity || !link || (!isPackageService && !quantity)}
+                       className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
+                     >
+                       {submitting ? <div className="h-5 w-5 border-2 border-black/30 dark:border-white/30 border-t-white rounded-full animate-spin" /> : 'Submit Order'}
+                     </button>
+                  ) : (
+                     <button 
+                       onClick={handleMassSubmit}
+                       disabled={massLinesProcessing}
+                       className="w-full py-5 rounded-[20px] bg-[#ff4e4e] text-white font-black uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(255,78,78,0.4)]"
+                     >
+                       {massLinesProcessing ? 'Processing mass order...' : 'Submit Mass Order'}
+                     </button>
+                  )}
+               </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
 
       </div>
     </div>
