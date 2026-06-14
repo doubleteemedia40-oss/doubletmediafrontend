@@ -225,13 +225,13 @@ export default function NewOrderPage() {
       <div className="flex flex-wrap items-center gap-2 mb-8 p-1 bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl w-fit">
         <button 
           onClick={() => { setActiveTab('single'); setError(null); setSuccess(null); }}
-          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'single' ? 'bg-[#ff4e4e] text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:text-white hover:bg-black/5 dark:bg-white/5'}`}
+          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'single' ? 'bg-[#ff4e4e] text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'}`}
         >
           Single order
         </button>
         <button 
           onClick={() => { setActiveTab('mass'); setError(null); setSuccess(null); }}
-          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'mass' ? 'bg-[#ff4e4e] text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:text-white hover:bg-black/5 dark:bg-white/5'}`}
+          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'mass' ? 'bg-[#ff4e4e] text-white shadow-lg' : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'}`}
         >
           Mass order
         </button>
@@ -273,8 +273,8 @@ export default function NewOrderPage() {
                        onClick={() => setMassFormat(fmt.id as any)}
                        className={`px-5 py-3 rounded-[16px] text-sm font-bold transition-all border ${
                          massFormat === fmt.id 
-                         ? 'bg-[#ff4e4e] text-black dark:text-white border-[#ff4e4e] shadow-lg shadow-red-500/20' 
-                         : 'bg-black/5 dark:bg-[#222224] text-black/70 dark:text-white/70 border-black/5 dark:border-white/5 hover:border-black/20 dark:border-white/20'
+                         ? 'bg-[#ff4e4e] text-white border-[#ff4e4e] shadow-lg shadow-red-500/20' 
+                         : 'bg-black/5 dark:bg-[#222224] text-black/70 dark:text-white/70 border-black/5 dark:border-white/5 hover:border-black/20 dark:hover:border-white/20'
                        }`}
                      >
                        {fmt.label}
